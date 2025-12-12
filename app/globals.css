@@ -1,26 +1,87 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+
+
+
+
+
+
+/* خط Cairo - كل الأوزان */
+@font-face {
+  font-family: 'Cairo';
+  src: url('/fonts/Cairo-SemiBold.ttf') format('woff2');
+  font-weight: 200;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Cairo';
+  src: url('/fonts/Cairo-Regular.ttf') format('woff2');
+  font-weight: 300;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Cairo';
+  src: url('/fonts/Cairo-Medium.ttf') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Cairo';
+  src: url('/fonts/Cairo-Light.ttf') format('woff2');
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Cairo';
+  src: url('/fonts/Cairo-ExtraLight.ttf') format('woff2');
+  font-weight: 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Cairo';
+  src: url('/fonts/Cairo-ExtraBold.ttf') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Cairo';
+  src: url('/fonts/Cairo-Bold.ttf') format('woff2');
+  font-weight: 800;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Cairo';
+  src: url('/fonts/Cairo-Black.ttf') format('woff2');
+  font-weight: 900;
+  font-display: swap;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* تطبيق الخط على كل المشروع */
+html, body, * {
+  font-family: 'Cairo', sans-serif !important;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Custom Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #c3b5fd;
+  border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #a78bfa;
+}
+
+/* For Firefox */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #c3b5fd #f1f1f1;
 }
