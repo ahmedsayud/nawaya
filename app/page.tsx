@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import HeaderProps from "@/components/HeaderProps";
 import { GoArrowLeft } from "react-icons/go";
@@ -12,7 +12,7 @@ import AuthModal from "@/components/AuthModal";
 import ProfileModal from "@/components/ProfileModal";
 
 export default function Home() {
-  const searchParams = useSearchParams();
+  /* Removed direct useSearchParams usage to fix build error */
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [showProfileModal, setShowProfileModal] = useState(false);
   const [showZoomModal, setShowZoomModal] = useState(false);
@@ -27,19 +27,6 @@ export default function Home() {
   });
 
   const [isFinished, setIsFinished] = useState(false);
-
-  // Check URL parameters for auth modal
-  useEffect(() => {
-    const showAuth = searchParams.get("showAuth");
-    const redirect = searchParams.get("redirect");
-
-    if (showAuth === "true") {
-      setShowAuthModal(true);
-      if (redirect) {
-        setAuthRedirectUrl(redirect);
-      }
-    }
-  }, [searchParams]);
 
   useEffect(() => {
     const targetDate = new Date("2026-01-01T00:00:00+02:00");
@@ -126,6 +113,9 @@ export default function Home() {
   return (
     <div className="flex min-h-screen  font-cairo">
       <WelcomeModal onProfileClick={() => setShowProfileModal(true)} />
+      <Suspense fallback={null}>
+        <AuthParamsHandler setShowAuthModal={setShowAuthModal} setAuthRedirectUrl={setAuthRedirectUrl} />
+      </Suspense>
       <main className="w-full">
         <HeaderProps onProfileClick={() => setShowProfileModal(true)} />
 
@@ -373,4 +363,28 @@ export default function Home() {
       </main>
     </div>
   );
+}
+
+function AuthParamsHandler({
+  setShowAuthModal,
+  setAuthRedirectUrl,
+}: {
+  setShowAuthModal: (show: boolean) => void;
+  setAuthRedirectUrl: (url: string | undefined) => void;
+}) {
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    const showAuth = searchParams.get("showAuth");
+    const redirect = searchParams.get("redirect");
+
+    if (showAuth === "true") {
+      setShowAuthModal(true);
+      if (redirect) {
+        setAuthRedirectUrl(redirect);
+      }
+    }
+  }, [searchParams, setShowAuthModal, setAuthRedirectUrl]);
+
+  return null;
 }
