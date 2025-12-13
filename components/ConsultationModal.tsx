@@ -89,10 +89,10 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
             >
               <BiX className="w-6 h-6 text-gray-600" />
             </button>
-            <h3 className="text-2xl text-[#664998] mb-2 font-bold text-center">
+            <h3 className="text-2xl text-[#270e4f] mb-2 font-bold text-center">
               طلب استشارة خاصة
             </h3>
-            <div className="w-full h-[1px] bg-[#BC4584] mt-5" />
+            <div className="w-full h-[1px] bg-[#e9479a] mt-5" />
           </div>
 
           <div className="p-6">
@@ -110,7 +110,7 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
               <>
                 {/* البوكس الوردي */}
                 <div className="mb-6 rounded-xl border border-pink-200 bg-[#FFF5F9] p-5 text-center">
-                  <p className="text-[#664998] text-base leading-relaxed font-medium">
+                  <p className="text-[#270e4f] text-base leading-relaxed font-medium">
                     سيتم مراجعة طلبك والتواصل معك عن طريق إدارة أمر السحر لتأكيد الوقت المناسب
                   </p>
                 </div>
@@ -130,7 +130,7 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
                       onChange={(e) => setMessage(e.target.value)}
                       placeholder="اكتبي هنا موضوع الاستشارة بالتفصيل لكي نرتب لها الوقت المناسب..."
                       rows={5}
-                      className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#BC4584] focus:ring-1 focus:ring-[#BC4584] focus:outline-none resize-none transition text-gray-700 placeholder-gray-400"
+                      className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#e9479a] focus:ring-1 focus:ring-[#e9479a] focus:outline-none resize-none transition text-gray-700 placeholder-gray-400"
                     />
                   </div>
 

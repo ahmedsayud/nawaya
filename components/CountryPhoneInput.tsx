@@ -88,7 +88,7 @@ export default function CountryPhoneInput({
                 <button
                     type="button"
                     onClick={() => setIsCountryOpen(!isCountryOpen)}
-                    className="w-full p-3 rounded-xl border border-gray-300 focus:border-[#6041FF] focus:outline-none text-right flex items-center justify-between"
+                    className="w-full p-3 rounded-xl border-2 border-[#e9479a]/20 focus:border-[#270e4f] focus:outline-none text-right flex items-center justify-between"
                 >
                     <span className="flex items-center gap-2" dir="ltr">
                         <span>{selectedCountryCode}</span>
@@ -135,7 +135,7 @@ export default function CountryPhoneInput({
                     placeholder={placeholder}
                     value={phoneValue}
                     onChange={(e) => onPhoneChange(e.target.value)}
-                    className={`w-full p-3 rounded-xl border ${phoneError ? 'border-red-500' : 'border-gray-300'} focus:border-[#6041FF] focus:outline-none`}
+                    className={`w-full p-3 rounded-xl border-2 ${phoneError ? 'border-red-500' : 'border-[#e9479a]/20'} focus:border-[#270e4f] focus:outline-none`}
                     required={required}
                 />
                 {phoneError && (

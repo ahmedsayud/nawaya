@@ -63,8 +63,8 @@ export default function ProfilePage() {
         return (
             <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-50 to-pink-50">
                 <div className="text-center">
-                    <div className="w-16 h-16 border-4 border-[#6041FF] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-                    <p className="text-[#664998] font-semibold">جاري التحميل...</p>
+                    <div className="w-16 h-16 border-4 border-[#270e4f] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+                    <p className="text-[#270e4f] font-semibold">جاري التحميل...</p>
                 </div>
             </div>
         );
@@ -83,7 +83,7 @@ export default function ProfilePage() {
                     <p className="text-gray-600 mb-6">{error}</p>
                     <button
                         onClick={() => router.push("/")}
-                        className="px-6 py-3 rounded-xl bg-gradient-to-r from-[#6041FF] to-[#FF99BA] text-white font-semibold hover:opacity-90 transition"
+                        className="px-6 py-3 rounded-xl bg-gradient-to-r from-[#e1459b] to-[#5b21b6] text-white font-semibold gradient-shift"
                     >
                         العودة للرئيسية
                     </button>
@@ -97,9 +97,9 @@ export default function ProfilePage() {
             <div className="container mx-auto max-w-4xl">
                 {/* Header */}
                 <div className="bg-white rounded-3xl shadow-2xl overflow-hidden mb-6">
-                    <div className="bg-gradient-to-r from-[#6041FF] to-[#FF99BA] p-8 text-white text-center">
+                    <div className="bg-gradient-to-r from-[#e1459b] to-[#5b21b6] p-8 text-white text-center">
                         <div className="w-24 h-24 bg-white rounded-full flex items-center justify-center mx-auto mb-4">
-                            <svg className="w-12 h-12 text-[#6041FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg className="w-12 h-12 text-[#270e4f]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                             </svg>
                         </div>
@@ -110,7 +110,7 @@ export default function ProfilePage() {
 
                 {/* Profile Info */}
                 <div className="bg-white rounded-3xl shadow-2xl p-8 mb-6">
-                    <h2 className="text-2xl font-bold text-[#664998] mb-6 flex items-center gap-2">
+                    <h2 className="text-2xl font-bold text-[#270e4f] mb-6 flex items-center gap-2">
                         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
@@ -118,8 +118,8 @@ export default function ProfilePage() {
                     </h2>
 
                     <div className="space-y-4">
-                        <div className="flex items-center gap-4 p-4 bg-purple-50 rounded-2xl">
-                            <div className="w-12 h-12 bg-gradient-to-r from-[#6041FF] to-[#FF99BA] rounded-xl flex items-center justify-center">
+                        <div className="flex items-center gap-4 p-4 bg-purple-50 rounded-2xl hover-lift">
+                            <div className="w-12 h-12 bg-gradient-to-r from-[#e1459b] to-[#5b21b6] rounded-xl flex items-center justify-center">
                                 <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                                 </svg>
@@ -130,8 +130,8 @@ export default function ProfilePage() {
                             </div>
                         </div>
 
-                        <div className="flex items-center gap-4 p-4 bg-purple-50 rounded-2xl">
-                            <div className="w-12 h-12 bg-gradient-to-r from-[#6041FF] to-[#FF99BA] rounded-xl flex items-center justify-center">
+                        <div className="flex items-center gap-4 p-4 bg-purple-50 rounded-2xl hover-lift">
+                            <div className="w-12 h-12 bg-gradient-to-r from-[#e1459b] to-[#5b21b6] rounded-xl flex items-center justify-center">
                                 <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                                 </svg>
@@ -142,8 +142,8 @@ export default function ProfilePage() {
                             </div>
                         </div>
 
-                        <div className="flex items-center gap-4 p-4 bg-purple-50 rounded-2xl">
-                            <div className="w-12 h-12 bg-gradient-to-r from-[#6041FF] to-[#FF99BA] rounded-xl flex items-center justify-center">
+                        <div className="flex items-center gap-4 p-4 bg-purple-50 rounded-2xl hover-lift">
+                            <div className="w-12 h-12 bg-gradient-to-r from-[#e1459b] to-[#5b21b6] rounded-xl flex items-center justify-center">
                                 <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                                 </svg>
@@ -154,8 +154,8 @@ export default function ProfilePage() {
                             </div>
                         </div>
 
-                        <div className="flex items-center gap-4 p-4 bg-purple-50 rounded-2xl">
-                            <div className="w-12 h-12 bg-gradient-to-r from-[#6041FF] to-[#FF99BA] rounded-xl flex items-center justify-center">
+                        <div className="flex items-center gap-4 p-4 bg-purple-50 rounded-2xl hover-lift">
+                            <div className="w-12 h-12 bg-gradient-to-r from-[#e1459b] to-[#5b21b6] rounded-xl flex items-center justify-center">
                                 <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
@@ -172,7 +172,7 @@ export default function ProfilePage() {
                 <div className="flex gap-4">
                     <button
                         onClick={() => router.push("/")}
-                        className="flex-1 py-3 rounded-xl border-2 border-[#6041FF] text-[#6041FF] font-semibold hover:bg-purple-50 transition"
+                        className="flex-1 py-3 rounded-xl border-2 border-[#270e4f] text-[#270e4f] font-semibold hover:bg-purple-50 transition"
                     >
                         العودة للرئيسية
                     </button>
@@ -181,7 +181,7 @@ export default function ProfilePage() {
                             localStorage.removeItem("authToken");
                             router.push("/");
                         }}
-                        className="flex-1 py-3 rounded-xl bg-gradient-to-r from-[#6041FF] to-[#FF99BA] text-white font-semibold hover:opacity-90 transition"
+                        className="flex-1 py-3 rounded-xl bg-gradient-to-r from-[#e1459b] to-[#5b21b6] text-white font-semibold gradient-shift"
                     >
                         تسجيل الخروج
                     </button>

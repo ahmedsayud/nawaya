@@ -35,7 +35,12 @@ export default function VideoModal({ isOpen, onClose }: VideoModalProps) {
     setIsLoading(true);
     setError("");
     try {
-      const response = await fetch(`${API_BASE_URL}/drhope/videos`);
+      const response = await fetch(`${API_BASE_URL}/drhope/videos`, {
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+        },
+      });
       const data = await response.json();
 
       if (response.ok && data.key === "success") {
@@ -78,17 +83,17 @@ export default function VideoModal({ isOpen, onClose }: VideoModalProps) {
             >
               <BiX className="w-6 h-6 text-gray-700" />
             </button>
-            <h3 className="text-xl font-bold text-[#664998] text-center">
+            <h3 className="text-xl font-bold text-[#270e4f] text-center">
               {currentVideo ? currentVideo.title : "من هي دكتور هوب"}
             </h3>
-            <div className="absolute left-0 right-0 bottom-0 h-[2px] bg-gradient-to-r from-[#664998] to-[#BC4584]" />
+            <div className="absolute left-0 right-0 bottom-0 h-[2px] bg-gradient-to-r from-[#e1459b] to-[#5b21b6]" />
           </div>
 
           {/* المحتوى */}
           <div className="overflow-y-auto p-6 flex-1 bg-gray-50">
             {isLoading ? (
               <div className="flex justify-center items-center h-64">
-                <div className="w-10 h-10 border-4 border-[#664998] border-t-transparent rounded-full animate-spin"></div>
+                <div className="w-10 h-10 border-4 border-[#270e4f] border-t-transparent rounded-full animate-spin"></div>
               </div>
             ) : error ? (
               <div className="text-center py-20 text-red-500">{error}</div>
@@ -108,15 +113,15 @@ export default function VideoModal({ isOpen, onClose }: VideoModalProps) {
                 {/* قائمة الفيديوهات الأخرى */}
                 {videos.length > 1 && (
                   <div className="mt-8">
-                    <h4 className="font-bold text-[#664998] mb-4 text-right">فيديوهات أخرى</h4>
+                    <h4 className="font-bold text-[#270e4f] mb-4 text-right">فيديوهات أخرى</h4>
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4" dir="rtl">
                       {videos.filter(v => v.id !== currentVideo.id).map((video) => (
                         <button
                           key={video.id}
                           onClick={() => setCurrentVideo(video)}
-                          className="group bg-white p-3 rounded-xl shadow-sm hover:shadow-md transition-all text-right flex items-center gap-3 border border-transparent hover:border-purple-200"
+                          className="group bg-white p-3 rounded-xl shadow-sm hover-lift text-right flex items-center gap-3 border border-transparent hover:border-purple-200"
                         >
-                          <div className="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center text-[#664998] group-hover:bg-[#664998] group-hover:text-white transition-colors flex-shrink-0">
+                          <div className="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center text-[#270e4f] group-hover:bg-[#270e4f] group-hover:text-white transition-colors flex-shrink-0">
                             <BiPlay className="text-2xl ml-0.5" />
                           </div>
                           <div className="min-w-0">

@@ -90,14 +90,14 @@ export default function OpinionsModal({ isOpen, onClose }: OpinionsModalProps) {
           dir="rtl"
         >
           {/* الهيدر */}
-          <div className="relative px-8 pt-6 pb-4 text-right border-b border-[#BC4584]/20">
+          <div className="relative px-8 pt-6 pb-4 text-right border-b border-[#e9479a]/20">
             <button
               onClick={onClose}
               className="absolute left-6 top-6 bg-white/90 hover:bg-gray-100 rounded-full p-2 shadow-md transition"
             >
               <BiX className="w-6 h-6 text-gray-600" />
             </button>
-            <h3 className="text-3xl font-bold text-[#664998] pr-10">
+            <h3 className="text-3xl font-bold text-[#270e4f] pr-10">
               آراء المشتركات
             </h3>
           </div>
@@ -106,7 +106,7 @@ export default function OpinionsModal({ isOpen, onClose }: OpinionsModalProps) {
           <div className="flex-1 overflow-y-auto px-6 py-6 space-y-5">
             {isLoading ? (
               <div className="flex justify-center items-center h-40">
-                <div className="w-10 h-10 border-4 border-[#664998] border-t-transparent rounded-full animate-spin"></div>
+                <div className="w-10 h-10 border-4 border-[#270e4f] border-t-transparent rounded-full animate-spin"></div>
               </div>
             ) : error ? (
               <div className="text-center text-red-500 py-10">{error}</div>
@@ -116,11 +116,11 @@ export default function OpinionsModal({ isOpen, onClose }: OpinionsModalProps) {
                 return (
                   <div
                     key={review.id}
-                    className="rounded-2xl border border-gray-200 bg-gradient-to-br from-pink-50/70 to-purple-50/70 p-6 shadow-sm hover:shadow-lg transition-all duration-300"
+                    className="rounded-2xl border border-gray-200 bg-gradient-to-br from-pink-50/70 to-purple-50/70 p-6 shadow-sm hover-lift"
                   >
                     {/* العنوان والتقييم */}
                     <div className="flex justify-between items-start mb-3">
-                      <h4 className="font-bold text-[#664998] text-lg leading-tight">
+                      <h4 className="font-bold text-[#270e4f] text-lg leading-tight">
                         {review.workshop_title}
                       </h4>
                       <div className="flex gap-1">
@@ -132,13 +132,13 @@ export default function OpinionsModal({ isOpen, onClose }: OpinionsModalProps) {
 
                     {/* المدربة */}
                     <div className="text-sm text-gray-700 mb-3 flex items-center gap-2">
-                      <PiGraduationCapLight className="w-5 h-5 text-[#664998]" />
+                      <PiGraduationCapLight className="w-5 h-5 text-[#270e4f]" />
                       <span>{review.workshop_teacher}</span>
                     </div>
 
                     {/* التعليق */}
                     <div className="flex items-start gap-3">
-                      <div className="w-1 h-16 bg-gradient-to-b from-[#BC4584] to-[#664998] rounded-full flex-shrink-0" />
+                      <div className="w-1 h-16 bg-gradient-to-b from-[#e1459b] to-[#5b21b6] rounded-full flex-shrink-0" />
                       <p className="text-gray-800 font-medium leading-relaxed">
                         {review.review}
                       </p>

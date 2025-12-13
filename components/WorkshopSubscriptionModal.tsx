@@ -64,12 +64,14 @@ interface WorkshopSubscriptionModalProps {
   isOpen: boolean;
   onClose: () => void;
   workshop: { id: number } | null;
+  onAuthRequired: () => void;
 }
 
 export default function WorkshopSubscriptionModal({
   isOpen,
   onClose,
   workshop,
+  onAuthRequired,
 }: WorkshopSubscriptionModalProps) {
   const [workshopDetails, setWorkshopDetails] =
     useState<WorkshopDetails | null>(null);
@@ -269,6 +271,11 @@ export default function WorkshopSubscriptionModal({
   };
 
   const handleSelfSubscription = () => {
+    const token = localStorage.getItem("authToken");
+    if (!token) {
+      onAuthRequired();
+      return;
+    }
     if (selectedPackage) {
       setIsGift(false);
       setShowSubscriptionForm(true);
@@ -276,6 +283,11 @@ export default function WorkshopSubscriptionModal({
   };
 
   const handleGiftSubscription = () => {
+    const token = localStorage.getItem("authToken");
+    if (!token) {
+      onAuthRequired();
+      return;
+    }
     if (selectedPackage) {
       setIsGift(true);
       setShowSubscriptionForm(true);
@@ -296,8 +308,8 @@ export default function WorkshopSubscriptionModal({
     return (
       <div className="space-y-6">
         {/* ملخص الطلب */}
-        <div className="bg-purple-50/50 rounded-2xl p-5 border border-purple-100">
-          <h4 className="text-[#664998] font-bold mb-4 text-lg">ملخص الطلب</h4>
+        <div className="bg-purple-50/50 rounded-2xl p-5 border-2 border-[#e9479a]/20">
+          <h4 className="text-[#270e4f] font-bold mb-4 text-lg">ملخص الطلب</h4>
           <div className="space-y-3">
             <div className="flex justify-between items-center text-gray-700">
               <span className="font-medium">ملخص الطلب:</span>
@@ -305,12 +317,12 @@ export default function WorkshopSubscriptionModal({
             </div>
             <div className="flex justify-between items-center text-gray-700">
               <span className="font-medium">الباقة:</span>
-              <span className="text-[#BC4584] font-medium">{subscription_details.package_title}</span>
+              <span className="text-[#e9479a] font-medium">{subscription_details.package_title}</span>
             </div>
             <div className="border-t border-purple-200/60 my-2"></div>
             <div className="flex justify-between items-center">
               <span className="font-medium text-gray-600">المبلغ الإجمالي للدفع</span>
-              <span className="font-bold text-xl text-[#664998]">{subscription_details.price} درهم اماراتي</span>
+              <span className="font-bold text-xl text-[#270e4f]">{subscription_details.price} درهم اماراتي</span>
             </div>
           </div>
         </div>
@@ -323,8 +335,8 @@ export default function WorkshopSubscriptionModal({
               <button
                 onClick={() => setPaymentMethod('card')}
                 className={`flex-1 py-3.5 px-4 rounded-xl border-2 flex items-center justify-center gap-2 transition-all ${paymentMethod === 'card'
-                  ? "border-[#BC4584] bg-[#BC4584] text-white shadow-md"
-                  : "border-gray-200 bg-white text-gray-600 hover:border-purple-200"
+                  ? "border-[#e9479a] bg-[#e9479a] text-white shadow-md shadow-[#e9479a]/20"
+                  : "border-gray-200 bg-white text-gray-600 hover:border-[#e9479a]/50"
                   }`}
               >
                 <BiCreditCard className="text-xl" />
@@ -336,8 +348,8 @@ export default function WorkshopSubscriptionModal({
               <button
                 onClick={() => setPaymentMethod('bank')}
                 className={`flex-1 py-3.5 px-4 rounded-xl border-2 flex items-center justify-center gap-2 transition-all ${paymentMethod === 'bank'
-                  ? "border-[#BC4584] bg-[#BC4584] text-white shadow-md"
-                  : "border-gray-200 bg-white text-gray-600 hover:border-purple-200"
+                  ? "border-[#e9479a] bg-[#e9479a] text-white shadow-md shadow-[#e9479a]/20"
+                  : "border-gray-200 bg-white text-gray-600 hover:border-[#e9479a]/50"
                   }`}
               >
                 <BiBuildingHouse className="text-xl" />
@@ -359,26 +371,26 @@ export default function WorkshopSubscriptionModal({
               <div className="space-y-4">
                 <div>
                   <label className="block text-gray-600 text-sm mb-1.5 font-medium">الاسم على البطاقة</label>
-                  <input type="text" placeholder="Paul Molive" className="w-full p-3 rounded-xl border border-gray-300 focus:outline-none focus:border-[#BC4584] focus:ring-1 focus:ring-[#BC4584]" />
+                  <input type="text" placeholder="Paul Molive" className="w-full p-3 rounded-xl border border-gray-300 focus:outline-none focus:border-[#e9479a] focus:ring-1 focus:ring-[#e9479a]" />
                 </div>
                 <div>
                   <label className="block text-gray-600 text-sm mb-1.5 font-medium">رقم البطاقة</label>
-                  <input type="text" placeholder="0000 0000 0000 0000" className="w-full p-3 rounded-xl border border-gray-300 focus:outline-none focus:border-[#BC4584] focus:ring-1 focus:ring-[#BC4584] text-left" dir="ltr" />
+                  <input type="text" placeholder="0000 0000 0000 0000" className="w-full p-3 rounded-xl border border-gray-300 focus:outline-none focus:border-[#e9479a] focus:ring-1 focus:ring-[#e9479a] text-left" dir="ltr" />
                 </div>
                 <div className="flex gap-4">
                   <div className="flex-1">
                     <label className="block text-gray-600 text-sm mb-1.5 font-medium">تاريخ الانتهاء</label>
-                    <input type="text" placeholder="MM / YY" className="w-full p-3 rounded-xl border border-gray-300 focus:outline-none focus:border-[#BC4584] focus:ring-1 focus:ring-[#BC4584] text-center" />
+                    <input type="text" placeholder="MM / YY" className="w-full p-3 rounded-xl border border-gray-300 focus:outline-none focus:border-[#e9479a] focus:ring-1 focus:ring-[#e9479a] text-center" />
                   </div>
                   <div className="flex-1">
                     <label className="block text-gray-600 text-sm mb-1.5 font-medium">رمز التحقق (CVC)</label>
-                    <input type="text" placeholder="123" className="w-full p-3 rounded-xl border border-gray-300 focus:outline-none focus:border-[#BC4584] focus:ring-1 focus:ring-[#BC4584] text-center" />
+                    <input type="text" placeholder="123" className="w-full p-3 rounded-xl border border-gray-300 focus:outline-none focus:border-[#e9479a] focus:ring-1 focus:ring-[#e9479a] text-center" />
                   </div>
                 </div>
               </div>
 
               <button
-                className="w-full mt-6 py-4 rounded-xl bg-gradient-to-r from-[#6B4B9F] to-[#C77FB5] text-white font-bold text-lg hover:opacity-90 transition shadow-lg shadow-purple-200"
+                className="w-full mt-6 py-4 rounded-xl bg-gradient-to-r from-[#e1459b] to-[#5b21b6] text-white font-bold text-lg gradient-shift shadow-lg shadow-[#e9479a]/20"
                 onClick={() => {
                   // Handle Card Payment Logic here
                   alert("سيتم ربط الدفع الإلكتروني قريباً");
@@ -392,8 +404,8 @@ export default function WorkshopSubscriptionModal({
           {paymentMethod === 'bank' && showBank && bank_account && (
             <div className="space-y-6">
               <div>
-                <h5 className="text-[#664998] font-bold mb-3 text-sm">تفاصيل الحساب البنكي للتحويل</h5>
-                <div className="bg-gray-50 border border-gray-200 rounded-xl p-5 space-y-3 shadow-inner">
+                <h5 className="text-[#270e4f] font-bold mb-3 text-sm">تفاصيل الحساب البنكي للتحويل</h5>
+                <div className="bg-gray-50 border-2 border-[#e9479a]/20 rounded-xl p-5 space-y-3 shadow-inner">
                   <div className="flex justify-between border-b border-gray-200 pb-2">
                     <span className="text-gray-500 text-sm">اسم صاحب الحساب</span>
                     <span className="font-bold text-gray-800 text-sm">{bank_account.account_name}</span>
@@ -423,7 +435,7 @@ export default function WorkshopSubscriptionModal({
               </div>
 
               <button
-                className="w-full mt-2 py-4 rounded-xl bg-gradient-to-r from-[#6B4B9F] to-[#C77FB5] text-white font-bold text-lg hover:opacity-90 transition shadow-lg shadow-purple-200"
+                className="w-full mt-2 py-4 rounded-xl bg-gradient-to-r from-[#e1459b] to-[#5b21b6] text-white font-bold text-lg gradient-shift shadow-lg shadow-[#e9479a]/20"
                 onClick={() => {
                   window.open(`https://wa.me/201234567890?text=${encodeURIComponent(`مرحباً، قمت بالتحويل البنكي للاشتراك في ورشة ${subscription_details.workshop_title} بقيمة ${subscription_details.price} د.إ. رقم الاشتراك: ${subscriptionResult.subscription_id}`)}`, '_blank');
                 }}
@@ -465,7 +477,7 @@ export default function WorkshopSubscriptionModal({
               }
             </h3>
           </div>
-          <div className="h-[1px] bg-[#BC4584] mx-10" />
+          <div className="h-[1px] bg-[#e9479a] mx-10" />
 
           {/* Content */}
           <div className="flex-1 overflow-y-auto p-6" dir="rtl">
@@ -484,7 +496,7 @@ export default function WorkshopSubscriptionModal({
             ) : showSubscriptionForm ? (
               // ---------------- Subscription Form (Self or Gift) ----------------
               <>
-                <div className="bg-purple-50 rounded-2xl p-5 mb-5 border border-purple-100">
+                <div className="bg-purple-50 rounded-2xl p-5 mb-5 border-2 border-[#e9479a]/20">
                   <div className="flex justify-between items-center">
                     <h4 className="text-base font-bold text-gray-900">
                       {selectedPackage?.title}
@@ -497,8 +509,8 @@ export default function WorkshopSubscriptionModal({
 
                 {/* Gift Info Box */}
                 {isGift && (
-                  <div className="bg-[#fdf2f8] border border-pink-200 rounded-xl p-4 mb-6 text-center">
-                    <p className="text-[#BC4584] text-sm">
+                  <div className="bg-[#fdf2f8] border-2 border-[#e9479a]/30 rounded-xl p-4 mb-6 text-center">
+                    <p className="text-[#e9479a] text-sm">
                       سيتم انشاء رابط هدية فريد بعد اتمام الدفع.
                       <br />
                       يمكنك نسخ هذا الرابط وارساله مباشرة الى من تحب
@@ -516,7 +528,7 @@ export default function WorkshopSubscriptionModal({
                   {isGift ? (
                     /* Gift Form Fields */
                     <>
-                      <h4 className="font-bold text-[#664998] mb-2 text-sm">بيانات المستلم</h4>
+                      <h4 className="font-bold text-[#270e4f] mb-2 text-sm">بيانات المستلم</h4>
                       <div>
                         <label className="block text-sm font-medium text-gray-700 mb-1.5">
                           اسم المستلم
@@ -526,7 +538,7 @@ export default function WorkshopSubscriptionModal({
                           placeholder="برجاء إدخال اسم المستلم"
                           value={recipientName}
                           onChange={(e) => setRecipientName(e.target.value)}
-                          className="w-full p-3 rounded-xl border border-gray-300 focus:border-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-500/20 text-sm"
+                          className="w-full p-3 rounded-xl border-2 border-[#e9479a]/20 focus:border-[#e9479a] focus:outline-none focus:ring-2 focus:ring-[#e9479a]/20 text-sm"
                           required
                         />
                       </div>
@@ -552,7 +564,7 @@ export default function WorkshopSubscriptionModal({
                           placeholder="اكتب رسالتك هنا"
                           value={giftMessage}
                           onChange={(e) => setGiftMessage(e.target.value)}
-                          className="w-full p-3 rounded-xl border border-gray-300 focus:border-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-500/20 text-sm h-24 resize-none"
+                          className="w-full p-3 rounded-xl border-2 border-[#e9479a]/20 focus:border-[#e9479a] focus:outline-none focus:ring-2 focus:ring-[#e9479a]/20 text-sm h-24 resize-none"
                         />
                       </div>
                     </>
@@ -568,7 +580,7 @@ export default function WorkshopSubscriptionModal({
                           placeholder="برجاء إدخال الاسم الكامل (يفضل أحمد محمد)"
                           value={name}
                           onChange={(e) => setName(e.target.value)}
-                          className="w-full p-3 rounded-xl border border-gray-300 focus:border-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-500/20 text-sm"
+                          className="w-full p-3 rounded-xl border-2 border-[#e9479a]/20 focus:border-[#e9479a] focus:outline-none focus:ring-2 focus:ring-[#e9479a]/20 text-sm"
                           required
                         />
                       </div>
@@ -582,7 +594,7 @@ export default function WorkshopSubscriptionModal({
                           placeholder="برجاء إدخال البريد الإلكتروني"
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
-                          className="w-full p-3 rounded-xl border border-gray-300 focus:border-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-500/20 text-sm"
+                          className="w-full p-3 rounded-xl border-2 border-[#e9479a]/20 focus:border-[#e9479a] focus:outline-none focus:ring-2 focus:ring-[#e9479a]/20 text-sm"
                           required
                         />
                       </div>
@@ -603,10 +615,10 @@ export default function WorkshopSubscriptionModal({
                   )}
 
                   {/* Payment Summary */}
-                  <div className="flex justify-between items-center py-4 mt-6 border-t border-gray-100">
+                  <div className="flex justify-between items-center py-4 mt-6 border-t-2 border-[#e9479a]/20">
                     <p className="text-gray-600 font-medium">ملخص الدفع</p>
                     <div className="text-left">
-                      <p className="font-bold text-[#664998] text-lg">الاجمالي: {selectedPackage?.price} درهم</p>
+                      <p className="font-bold text-[#270e4f] text-lg">الاجمالي: {selectedPackage?.price} درهم</p>
                     </div>
                   </div>
 
@@ -614,14 +626,14 @@ export default function WorkshopSubscriptionModal({
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="flex-1 py-3 rounded-xl bg-gradient-to-r from-[#6B4B9F] to-[#C77FB5] text-white font-bold hover:opacity-90 transition disabled:opacity-50"
+                      className="flex-1 py-3 rounded-xl bg-gradient-to-r from-[#e1459b] to-[#5b21b6] text-white font-bold gradient-shift disabled:opacity-50"
                     >
                       {isSubmitting ? "جاري الاشتراك..." : (isGift ? "الانتقال الى الدفع" : "تأكيد الاشتراك")}
                     </button>
                     <button
                       type="button"
                       onClick={handleBackToPackages}
-                      className="flex-1 py-3 rounded-xl bg-gradient-to-r from-[#E89BB3] to-[#F4C4D6] text-white font-bold hover:opacity-90 transition"
+                      className="flex-1 py-3 rounded-xl bg-gradient-to-r from-[#E89BB3] to-[#F4C4D6] text-white font-bold gradient-shift"
                     >
                       الرجوع للباقات
                     </button>
@@ -632,8 +644,8 @@ export default function WorkshopSubscriptionModal({
               // ---------------- DETAILS / PACKAGES VIEW ----------------
               <>
                 {/* Workshop Info */}
-                <div className=" rounded-2xl  mb-5 text-[#664998]">
-                  <div className="grid grid-cols-2 gap-4  border border-gray-200 rounded-xl p-4">
+                <div className=" rounded-2xl  mb-5 text-[#270e4f]">
+                  <div className="grid grid-cols-2 gap-4  border-2 border-[#e9479a]/30 rounded-xl p-4">
                     <div>
                       <p className=" mb-1 flex items-center">
                         {" "}
@@ -646,7 +658,7 @@ export default function WorkshopSubscriptionModal({
                     </div>
                   </div>
                   {workshopDetails?.subject_of_discussion && (
-                    <div className="mt-4 pt-4  border border-gray-200 rounded-xl p-4">
+                    <div className="mt-4 pt-4  border-2 border-[#e9479a]/30 rounded-xl p-4">
                       <p className=" mb-2">
                         {" "}
                         <PiGraduationCapBold className="inline-block mr-1 font-bold text-2xl" />{" "}
@@ -659,7 +671,7 @@ export default function WorkshopSubscriptionModal({
 
                 {/* Packages Selection */}
                 <div className="space-y-4">
-                  <h4 className="font-bold text-[#664998] mb-3">اختر الباقة المناسبة</h4>
+                  <h4 className="font-bold text-[#270e4f] mb-3">اختر الباقة المناسبة</h4>
 
                   {workshopDetails?.packages?.map((pkg) => {
                     const isSelected = selectedPackage?.id === pkg.id;
@@ -669,8 +681,8 @@ export default function WorkshopSubscriptionModal({
                         key={pkg.id}
                         onClick={() => setSelectedPackage(pkg)}
                         className={`relative border-2 rounded-2xl p-5 cursor-pointer transition-all ${isSelected
-                          ? "border-[#BC4584] bg-pink-50/30"
-                          : "border-gray-100 hover:border-purple-200 bg-white"
+                          ? "border-[#e9479a] bg-pink-50/30"
+                          : "border-[#e9479a]/30 hover:border-[#e9479a]/50 bg-white"
                           }`}
                       >
                         <div className="flex items-start gap-4">
@@ -680,7 +692,7 @@ export default function WorkshopSubscriptionModal({
                               <h6 className="text-lg font-bold text-gray-800">
                                 {pkg.title}
                               </h6>
-                              <span className="text-xl font-bold text-[#664998]">
+                              <span className="text-xl font-bold text-[#270e4f]">
                                 {pkg.price} ج.م
                               </span>
                             </div>
@@ -715,7 +727,7 @@ export default function WorkshopSubscriptionModal({
                           </div>
 
                           {/* Radio Indicator (Moved to End for Left position in RTL) */}
-                          <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center flex-shrink-0 transition-colors mt-1 ${isSelected ? "border-[#BC4584] bg-[#BC4584]" : "border-gray-300"
+                          <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center flex-shrink-0 transition-colors mt-1 ${isSelected ? "border-[#e9479a] bg-[#e9479a]" : "border-[#e9479a]/30"
                             }`}>
                             {isSelected && <BiCheck className="text-white w-4 h-4" />}
                           </div>
@@ -733,8 +745,8 @@ export default function WorkshopSubscriptionModal({
                 </div>
 
                 {/* Refund Policy */}
-                <div className="bg-purple-50/50 rounded-2xl p-4 mt-6 border border-purple-100/50">
-                  <h5 className="text-[#664998] font-bold mb-2 text-sm">سياسة الاسترجاع :</h5>
+                <div className="bg-purple-50/50 rounded-2xl p-4 mt-6 border-2 border-[#e9479a]/20">
+                  <h5 className="text-[#270e4f] font-bold mb-2 text-sm">سياسة الاسترجاع :</h5>
                   <ul className="text-xs text-gray-600 space-y-1.5 list-none">
                     <li>1- يحق للمشتركة الانسحاب واسترجاع المبلغ كامل قبل بداية الورشة باسبوع ( 7 أيام )</li>
                     <li>2- قبل بدء الورشة بسبعة ايام نعتذر لا يمكننا استرجاع المبلغ</li>
@@ -747,14 +759,14 @@ export default function WorkshopSubscriptionModal({
                   <button
                     onClick={handleSelfSubscription}
                     disabled={!selectedPackage}
-                    className="flex-1 py-3.5 rounded-xl bg-gradient-to-r from-[#B469FF] to-[#FF85B3] text-white font-bold hover:opacity-90 transition disabled:opacity-50 disabled:cursor-not-allowed shadow-md shadow-purple-500/20"
+                    className="flex-1 py-3.5 rounded-xl bg-gradient-to-r from-[#e1459b] to-[#5b21b6] text-white font-bold gradient-shift disabled:opacity-50 disabled:cursor-not-allowed shadow-md shadow-[#e9479a]/20"
                   >
                     اهداء الورشة لنفسي
                   </button>
                   <button
                     onClick={handleGiftSubscription}
                     disabled={!selectedPackage}
-                    className="flex-1 py-3.5 rounded-xl bg-gradient-to-r from-[#8A2BE2] to-[#BC4584] text-white font-bold hover:opacity-90 transition disabled:opacity-50 shadow-md shadow-purple-900/10"
+                    className="flex-1 py-3.5 rounded-xl bg-gradient-to-r from-[#e1459b] to-[#5b21b6] text-white font-bold gradient-shift disabled:opacity-50 shadow-md shadow-[#e9479a]/20"
                   >
                     <span className="flex items-center justify-center gap-2">
                       اهداء الورشة الى صديقة

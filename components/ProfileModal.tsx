@@ -339,7 +339,7 @@ export default function ProfileModal({ isOpen, onClose }: ProfileModalProps) {
         >
           {/* Header */}
           <div className="flex justify-between items-center p-6 pb-2 shrink-0">
-            <h2 className="text-xl font-bold text-[#664998]">الملف الشخصي</h2>
+            <h2 className="text-xl font-bold text-[#270e4f]">الملف الشخصي</h2>
             <button
               onClick={onClose}
               className="text-gray-400 hover:text-gray-600 transition"
@@ -351,14 +351,14 @@ export default function ProfileModal({ isOpen, onClose }: ProfileModalProps) {
           <div className="px-8 pb-8 overflow-y-auto custom-scrollbar flex-1">
             {isLoading ? (
               <div className="flex justify-center items-center py-12">
-                <div className="w-8 h-8 border-4 border-[#664998] border-t-transparent rounded-full animate-spin"></div>
+                <div className="w-8 h-8 border-4 border-[#270e4f] border-t-transparent rounded-full animate-spin"></div>
               </div>
             ) : (
               <>
                 {/* User Info Section */}
                 <div className="flex flex-col items-start mb-6">
                   <div className="flex items-center gap-4 mb-2">
-                    <div className="w-14 h-14 rounded-full border-2 border-[#BC4584] flex items-center justify-center text-[#BC4584]">
+                    <div className="w-14 h-14 rounded-full border-2 border-[#e9479a] flex items-center justify-center text-[#e9479a]">
                       <BiUser className="w-7 h-7" />
                     </div>
                     <div className="text-right">
@@ -371,13 +371,13 @@ export default function ProfileModal({ isOpen, onClose }: ProfileModalProps) {
                   <div className="flex items-center gap-6 text-gray-500 text-sm mr-[70px]">
                     <div className="flex items-center gap-2">
                       <span className="font-mono text-xs">{userData?.email}</span>
-                      <BiEnvelope className="w-4 h-4 text-[#BC4584]" />
+                      <BiEnvelope className="w-4 h-4 text-[#e9479a]" />
                     </div>
                     <div className="flex items-center gap-2">
                       <span className="font-mono text-xs" dir="ltr">
                         {userData?.phone}
                       </span>
-                      <BiPhone className="w-4 h-4 text-[#BC4584]" />
+                      <BiPhone className="w-4 h-4 text-[#e9479a]" />
                     </div>
                   </div>
                   <div className="w-full h-px bg-pink-100 mt-6 mb-4"></div>
@@ -388,7 +388,7 @@ export default function ProfileModal({ isOpen, onClose }: ProfileModalProps) {
                   <button
                     onClick={() => setActiveTab("my-workshops")}
                     className={`flex items-center gap-2 pb-1 text-sm font-bold transition ${activeTab === "my-workshops"
-                      ? "text-[#664998] border-b-2 border-[#664998]"
+                      ? "text-[#270e4f] border-b-2 border-[#270e4f]"
                       : "text-gray-400 hover:text-gray-600"
                       }`}
                   >
@@ -398,7 +398,7 @@ export default function ProfileModal({ isOpen, onClose }: ProfileModalProps) {
                   <button
                     onClick={() => setActiveTab("suggested")}
                     className={`flex items-center gap-2 pb-1 text-sm font-bold transition ${activeTab === "suggested"
-                      ? "text-[#664998]"
+                      ? "text-[#270e4f]"
                       : "text-gray-400 hover:text-gray-600"
                       }`}
                   >
@@ -411,7 +411,7 @@ export default function ProfileModal({ isOpen, onClose }: ProfileModalProps) {
                 <div className="min-h-[200px]">
                   {activeTab === "my-workshops" && (
                     <div>
-                      <h4 className="text-[#664998] font-bold mb-4 text-sm text-right">
+                      <h4 className="text-[#270e4f] font-bold mb-4 text-sm text-right">
                         الورش المشترك بها ({userData?.active_subscriptions?.length || 0})
                       </h4>
                       {userData?.active_subscriptions &&
@@ -420,17 +420,17 @@ export default function ProfileModal({ isOpen, onClose }: ProfileModalProps) {
                           {userData.active_subscriptions.map((sub) => (
                             <div
                               key={sub.id}
-                              className="border border-gray-200 rounded-xl overflow-hidden"
+                              className="border-2 border-[#e9479a]/20 rounded-xl overflow-hidden"
                             >
                               {/* Accordion Header */}
                               <button
                                 onClick={() => toggleAccordion(sub.id)}
                                 className="w-full flex items-center justify-between p-4 bg-white hover:bg-gray-50 transition"
                               >
-                                <span className="font-bold text-[#664998] text-sm md:text-base">
+                                <span className="font-bold text-[#270e4f] text-sm md:text-base">
                                   {sub.workshop.title}
                                 </span>
-                                <div className="text-[#BC4584]">
+                                <div className="text-[#e9479a]">
                                   {expandedSubId === sub.id ? (
                                     <BiChevronUp className="w-6 h-6" />
                                   ) : (
@@ -444,17 +444,17 @@ export default function ProfileModal({ isOpen, onClose }: ProfileModalProps) {
                                 <div className="p-4 bg-white border-t border-gray-100">
                                   {/* Workshop Details Section */}
                                   <div className="mb-6">
-                                    <h5 className="text-[#664998] font-bold text-xs mb-2 text-right">
+                                    <h5 className="text-[#270e4f] font-bold text-xs mb-2 text-right">
                                       تفاصيل الورشة
                                     </h5>
-                                    <div className="bg-pink-50 rounded-xl p-4 space-y-3">
-                                      <div className="flex items-center justify-start gap-2 text-[#BC4584] text-sm">
+                                    <div className="bg-pink-50 rounded-xl p-4 space-y-3 border border-[#e9479a]/20">
+                                      <div className="flex items-center justify-start gap-2 text-[#e9479a] text-sm">
                                         <BiWorld className="w-5 h-5" />
                                         <span className="text-gray-700 font-medium">
                                           {sub.workshop.type_label}
                                         </span>
                                       </div>
-                                      <div className="flex items-center justify-start gap-2 text-[#BC4584] text-sm">
+                                      <div className="flex items-center justify-start gap-2 text-[#e9479a] text-sm">
                                         <BiCalendar className="w-5 h-5" />
                                         <span className="text-gray-700 font-medium" dir="ltr">
                                           {sub.workshop.date_range}
@@ -465,7 +465,7 @@ export default function ProfileModal({ isOpen, onClose }: ProfileModalProps) {
 
                                   {/* Workshop Contents & Invoices Section */}
                                   <div className="mb-6">
-                                    <h5 className="text-[#664998] font-bold text-xs mb-2 text-right">
+                                    <h5 className="text-[#270e4f] font-bold text-xs mb-2 text-right">
                                       محتويات الورشة والفواتير
                                     </h5>
                                     <div className="space-y-3">
@@ -477,7 +477,7 @@ export default function ProfileModal({ isOpen, onClose }: ProfileModalProps) {
                                             href={sub.online_link}
                                             target="_blank"
                                             rel="noreferrer w-full"
-                                            className="flex items-center justify-start gap-2 text-[#BC4584] hover:text-[#664998] transition-colors"
+                                            className="flex items-center justify-start gap-2 text-[#e9479a] hover:text-[#270e4f] transition-colors"
                                           >
                                             <BiVideo className="w-5 h-5 shrink-0" />
                                             <span className="text-gray-700 font-medium font-bold text-right">الدخول الى البث المباشر عبر ZOOM</span>
@@ -488,7 +488,7 @@ export default function ProfileModal({ isOpen, onClose }: ProfileModalProps) {
                                       {/* Recordings */}
                                       {sub.recordings?.map((rec) => (
                                         <div key={`rec-${rec.id}`} className="bg-pink-50 rounded-xl p-3">
-                                          <div className="text-[#BC4584] text-sm">
+                                          <div className="text-[#e9479a] text-sm">
                                             {!rec.is_available ? (
                                               <div className="flex items-center justify-start gap-2 opacity-60 w-full cursor-not-allowed">
                                                 <BiLock className="w-5 h-5 shrink-0" />
@@ -502,7 +502,7 @@ export default function ProfileModal({ isOpen, onClose }: ProfileModalProps) {
                                                 href={rec.link || "#"}
                                                 target="_blank"
                                                 rel="noreferrer"
-                                                className="flex items-center justify-start gap-2 hover:text-[#664998] transition-colors w-full"
+                                                className="flex items-center justify-start gap-2 hover:text-[#270e4f] transition-colors w-full"
                                               >
                                                 <BiPlayCircle className="w-5 h-5 shrink-0" />
                                                 <div className="flex flex-col items-start">
@@ -524,7 +524,7 @@ export default function ProfileModal({ isOpen, onClose }: ProfileModalProps) {
                                             href={file.file}
                                             target="_blank"
                                             rel="noreferrer"
-                                            className="flex items-center justify-start gap-2 text-[#BC4584] hover:text-[#664998] transition-colors w-full"
+                                            className="flex items-center justify-start gap-2 text-[#e9479a] hover:text-[#270e4f] transition-colors w-full"
                                           >
                                             <BiFile className="w-5 h-5 shrink-0" />
                                             <div className="flex flex-col items-start">
@@ -544,7 +544,7 @@ export default function ProfileModal({ isOpen, onClose }: ProfileModalProps) {
                                             href={att.file}
                                             target="_blank"
                                             rel="noreferrer"
-                                            className="flex items-center justify-start gap-2 text-[#BC4584] hover:text-[#664998] transition-colors w-full"
+                                            className="flex items-center justify-start gap-2 text-[#e9479a] hover:text-[#270e4f] transition-colors w-full"
                                           >
                                             {att.type === 'audio' ? <BiMicrophone className="w-5 h-5 shrink-0" /> : <BiFile className="w-5 h-5 shrink-0" />}
                                             <div className="flex flex-col items-start">
@@ -559,7 +559,7 @@ export default function ProfileModal({ isOpen, onClose }: ProfileModalProps) {
 
                                       {/* Certificate Row */}
                                       <div className={`bg-pink-50 rounded-xl p-3 flex items-center justify-between ${!sub.can_install_certificate ? 'opacity-60' : ''}`}>
-                                        <div className="flex items-center gap-2 text-[#BC4584] text-sm">
+                                        <div className="flex items-center gap-2 text-[#e9479a] text-sm">
                                           <PiGraduationCapLight className="w-5 h-5" />
                                           <span className="text-gray-700 font-medium font-bold">
                                             الحصول على شهادة اتمام الورشة
@@ -569,7 +569,7 @@ export default function ProfileModal({ isOpen, onClose }: ProfileModalProps) {
                                           <button
                                             onClick={() => sub.can_install_certificate && handleFileAction('certificate', 'download', sub.workshop.id, sub.workshop.title)}
                                             disabled={!sub.can_install_certificate}
-                                            className="p-2 bg-white rounded-lg text-[#BC4584] hover:text-[#664998] shadow-sm transition disabled:cursor-not-allowed disabled:bg-gray-100 disabled:text-gray-400"
+                                            className="p-2 bg-white rounded-lg text-[#e9479a] hover:text-[#270e4f] shadow-sm transition disabled:cursor-not-allowed disabled:bg-gray-100 disabled:text-gray-400"
                                             title={sub.can_install_certificate ? "تحميل الشهادة" : "الشهادة غير متاحة بعد"}
                                           >
                                             {sub.can_install_certificate ? <BiDownload className="w-5 h-5" /> : <BiLock className="w-5 h-5" />}
@@ -577,7 +577,7 @@ export default function ProfileModal({ isOpen, onClose }: ProfileModalProps) {
                                           <button
                                             onClick={() => sub.can_install_certificate && handleFileAction('certificate', 'view', sub.workshop.id, sub.workshop.title)}
                                             disabled={!sub.can_install_certificate}
-                                            className="p-2 bg-white rounded-lg text-[#BC4584] hover:text-[#664998] shadow-sm transition disabled:cursor-not-allowed disabled:bg-gray-100 disabled:text-gray-400"
+                                            className="p-2 bg-white rounded-lg text-[#e9479a] hover:text-[#270e4f] shadow-sm transition disabled:cursor-not-allowed disabled:bg-gray-100 disabled:text-gray-400"
                                             title={sub.can_install_certificate ? "عرض الشهادة" : "الشهادة غير متاحة بعد"}
                                           >
                                             {sub.can_install_certificate ? <BiShow className="w-5 h-5" /> : <BiLock className="w-5 h-5" />}
@@ -587,7 +587,7 @@ export default function ProfileModal({ isOpen, onClose }: ProfileModalProps) {
 
                                       {/* Invoice Row */}
                                       <div className="bg-pink-50 rounded-xl p-3 flex items-center justify-between">
-                                        <div className="flex items-center gap-2 text-[#BC4584] text-sm">
+                                        <div className="flex items-center gap-2 text-[#e9479a] text-sm">
                                           <PiReceipt className="w-5 h-5" />
                                           <span className="text-gray-700 font-medium font-bold">
                                             عرض الفاتورة الضريبية
@@ -596,14 +596,14 @@ export default function ProfileModal({ isOpen, onClose }: ProfileModalProps) {
                                         <div className="flex gap-2">
                                           <button
                                             onClick={() => handleFileAction('invoice', 'download', sub.id, sub.workshop.title)}
-                                            className="p-2 bg-white rounded-lg text-[#BC4584] hover:text-[#664998] shadow-sm transition"
+                                            className="p-2 bg-white rounded-lg text-[#e9479a] hover:text-[#270e4f] shadow-sm transition"
                                             title="تحميل الفاتورة"
                                           >
                                             <BiDownload className="w-5 h-5" />
                                           </button>
                                           <button
                                             onClick={() => handleFileAction('invoice', 'view', sub.id, sub.workshop.title)}
-                                            className="p-2 bg-white rounded-lg text-[#BC4584] hover:text-[#664998] shadow-sm transition"
+                                            className="p-2 bg-white rounded-lg text-[#e9479a] hover:text-[#270e4f] shadow-sm transition"
                                             title="عرض الفاتورة"
                                           >
                                             <BiShow className="w-5 h-5" />
@@ -616,7 +616,7 @@ export default function ProfileModal({ isOpen, onClose }: ProfileModalProps) {
 
                                   {/* Rating Section */}
                                   <div>
-                                    <h5 className="text-[#664998] font-bold text-xs mb-3 text-right">
+                                    <h5 className="text-[#270e4f] font-bold text-xs mb-3 text-right">
                                       اضف تقييمك
                                     </h5>
 
@@ -646,13 +646,13 @@ export default function ProfileModal({ isOpen, onClose }: ProfileModalProps) {
                                           value={workshopRatings[sub.id]?.comment || ""}
                                           onChange={(e) => handleCommentChange(sub.id, e.target.value)}
                                           placeholder="شارك رأيك في الورشة"
-                                          className="w-full p-3 rounded-xl border border-gray-200 text-right text-sm focus:border-[#664998] focus:ring-1 focus:ring-[#664998] outline-none min-h-[80px]"
+                                          className="w-full p-3 rounded-xl border border-gray-200 text-right text-sm focus:border-[#270e4f] focus:ring-1 focus:ring-[#270e4f] outline-none min-h-[80px]"
                                         />
                                       </div>
 
                                       <button
                                         onClick={() => submitRating(sub.id)}
-                                        className="w-full py-3 rounded-xl bg-gradient-to-r from-[#6041FF] to-[#FF99BA] text-white font-bold text-sm hover:opacity-90 transition shadow-lg shadow-purple-200"
+                                        className="w-full py-3 rounded-xl bg-gradient-to-r from-[#e1459b] to-[#5b21b6] text-white font-bold text-sm gradient-shift shadow-lg shadow-[#e9479a]/20"
                                       >
                                         ارسال التقييم
                                       </button>
@@ -676,7 +676,7 @@ export default function ProfileModal({ isOpen, onClose }: ProfileModalProps) {
                                 .getElementById("courses-section")
                                 ?.scrollIntoView({ behavior: "smooth" });
                             }}
-                            className="mt-4 text-[#BC4584] text-sm font-bold hover:underline"
+                            className="mt-4 text-[#e9479a] text-sm font-bold hover:underline"
                           >
                             تصفح الورش المتاحة
                           </button>
@@ -687,12 +687,12 @@ export default function ProfileModal({ isOpen, onClose }: ProfileModalProps) {
 
                   {activeTab === "suggested" && (
                     <div>
-                      <h4 className="text-[#664998] font-bold mb-4 text-sm text-right">
+                      <h4 className="text-[#270e4f] font-bold mb-4 text-sm text-right">
                         ورشات قد تهمك
                       </h4>
                       {isSuggestedLoading ? (
                         <div className="flex justify-center items-center py-12">
-                          <div className="w-8 h-8 border-4 border-[#664998] border-t-transparent rounded-full animate-spin"></div>
+                          <div className="w-8 h-8 border-4 border-[#270e4f] border-t-transparent rounded-full animate-spin"></div>
                         </div>
                       ) : suggestedWorkshops && suggestedWorkshops.length > 0 ? (
                         <div className="grid grid-cols-1 gap-3">
@@ -702,20 +702,20 @@ export default function ProfileModal({ isOpen, onClose }: ProfileModalProps) {
                               className="bg-white p-4 rounded-xl border border-gray-200 shadow-sm flex flex-col sm:flex-row justify-between items-center gap-4"
                             >
                               <div className="text-right flex-1">
-                                <h5 className="font-bold text-[#664998] text-base mb-1">
+                                <h5 className="font-bold text-[#270e4f] text-base mb-1">
                                   {workshop.title}
                                 </h5>
                                 <div className="flex items-center gap-2 text-xs text-gray-500">
-                                  <span className="text-[#BC4584]">📅</span>
+                                  <span className="text-[#e9479a]">📅</span>
                                   <span>{workshop.date_range}</span>
                                   <span className="mx-1">|</span>
-                                  <span className="text-[#BC4584]">🏷️</span>
+                                  <span className="text-[#e9479a]">🏷️</span>
                                   <span>{workshop.type_label}</span>
                                 </div>
                               </div>
                               <button
                                 onClick={() => handleWorkshopClick(workshop.id)}
-                                className="px-6 py-2 rounded-lg bg-gradient-to-r from-[#6041FF] to-[#FF99BA] text-white font-bold text-sm hover:opacity-90 transition whitespace-nowrap"
+                                className="px-6 py-2 rounded-lg bg-gradient-to-r from-[#e1459b] to-[#5b21b6] text-white font-bold text-sm gradient-shift whitespace-nowrap"
                               >
                                 التفاصيل
                               </button>

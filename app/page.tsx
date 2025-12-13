@@ -10,6 +10,8 @@ import Footer from "@/components/Footer";
 import WelcomeModal from "@/components/WelcomeModal";
 import AuthModal from "@/components/AuthModal";
 import ProfileModal from "@/components/ProfileModal";
+import SplashScreen from "@/components/SplashScreen";
+
 
 export default function Home() {
   /* Removed direct useSearchParams usage to fix build error */
@@ -112,6 +114,7 @@ export default function Home() {
 
   return (
     <div className="flex min-h-screen  font-cairo">
+      <SplashScreen />
       <WelcomeModal onProfileClick={() => setShowProfileModal(true)} />
       <Suspense fallback={null}>
         <AuthParamsHandler setShowAuthModal={setShowAuthModal} setAuthRedirectUrl={setAuthRedirectUrl} />
@@ -121,9 +124,9 @@ export default function Home() {
 
         <div className="max-w-4xl mx-auto px-4 py-12 text-center">
           <div className="mb-8 space-y-3">
-            <p className="text-xl font-bold text-[#BC4584]">الورشة المباشرة القادمة</p>
-            <p className="text-2xl font-bold text-[#664998]">التخطيط الاستراتيجي الشخصي لعام 2026</p>
-            <p className="text-xl font-bold text-[#BC4584]">DRHOPE</p>
+            <p className="text-lg font-bold text-[#BC4584]">الورشة المباشرة القادمة</p>
+            <p className="text-xl font-bold text-[#270e4f]">التخطيط الاستراتيجي الشخصي لعام 2026</p>
+            <p className="text-lg font-bold text-[#BC4584]">DRHOPE</p>
           </div>
 
           {/* العداد */}
@@ -135,57 +138,67 @@ export default function Home() {
             ) : (
               <>
                 <div className="text-center">
-                  <span className="block text-3xl md:text-5xl font-bold text-[#664998]">{timeLeft.days}</span>
-                  <p className="text-sm text-gray-600">أيام</p>
+                  <span className="block text-2xl md:text-4xl font-bold text-[#270e4f]">{timeLeft.days}</span>
+                  <p className="text-xs text-gray-600">أيام</p>
                 </div>
-                <span className="text-4xl md:text-5xl text-gray-400">:</span>
+                <span className="text-3xl md:text-4xl text-gray-400">:</span>
                 <div className="text-center">
-                  <span className="block text-3xl md:text-5xl font-bold text-[#664998]">
+                  <span className="block text-2xl md:text-4xl font-bold text-[#270e4f]">
                     {timeLeft.hours.toString().padStart(2, "0")}
                   </span>
-                  <p className="text-sm text-gray-600">ساعات</p>
+                  <p className="text-xs text-gray-600">ساعات</p>
                 </div>
-                <span className="text-4xl md:text-5xl text-gray-400">:</span>
+                <span className="text-3xl md:text-4xl text-gray-400">:</span>
                 <div className="text-center">
-                  <span className="block text-3xl md:text-5xl font-bold text-[#664998]">
+                  <span className="block text-2xl md:text-4xl font-bold text-[#270e4f]">
                     {timeLeft.minutes.toString().padStart(2, "0")}
                   </span>
-                  <p className="text-sm text-gray-600">دقائق</p>
+                  <p className="text-xs text-gray-600">دقائق</p>
                 </div>
-                <span className="text-4xl md:text-5xl text-gray-400">:</span>
+                <span className="text-3xl md:text-4xl text-gray-400">:</span>
                 <div className="text-center">
-                  <span className="block text-3xl md:text-5xl font-bold text-[#664998]">
+                  <span className="block text-2xl md:text-4xl font-bold text-[#270e4f]">
                     {timeLeft.seconds.toString().padStart(2, "0")}
                   </span>
-                  <p className="text-sm text-gray-600">ثواني</p>
+                  <p className="text-xs text-gray-600">ثواني</p>
                 </div>
               </>
             )}
           </div>
 
           {/* زر الاشتراك */}
-          <button className="mb-16 inline-flex items-center gap-2 bg-gradient-to-r from-[#664998] to-[#FF99BA] text-white font-bold px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all hover:scale-105">
+          {/* زر الاشتراك */}
+          <button
+            onClick={() => {
+              document.getElementById("courses-section")?.scrollIntoView({ behavior: "smooth" });
+            }}
+            className="mb-16 inline-flex items-center gap-2 bg-gradient-to-r from-[#e1459b] to-[#5b21b6] text-white font-bold px-8 py-4 rounded-xl shadow-lg gradient-shift"
+          >
             عرض التفاصيل والاشتراك
             <GoArrowLeft className="text-2xl" />
           </button>
 
           {/* كارت Zoom */}
           <div className="mt-16 max-w-2xl mx-auto"> {/* تم تصحيح max-lg → max-w-lg */}
-            <div className="bg-gradient-to-l from-[#664998] to-[#FF99BA] rounded-2xl p-8 text-white ">
-              <div className="flex justify-center mb-6">
-                <div className="w-20 h-20 rounded-full border-4 border-white flex items-center justify-center">
+            <div className="bg-gradient-to-l from-[#e1459b] to-[#5b21b6] rounded-2xl p-8 text-white ">
+              <div className="flex justify-center mb-6 relative">
+                <div className="w-20 h-20 rounded-full border-4 border-white flex items-center justify-center animate-pulse-ring z-10 bg-white/10">
                   <HiOutlineVideoCamera className="text-5xl" />
                 </div>
               </div>
+              {/* 
+              <div className="flex items-center justify-center gap-2 mb-4">
+                <span className="w-3 h-3 bg-red-500 rounded-full animate-pulse shadow-[0_0_8px_rgba(239,68,68,0.6)]"></span>
+                <p className="text-lg font-bold">البث المباشر عبر ZOOM</p>
+              </div> */}
 
-              <p className="text-sm font-medium mb-3">افتتاح المنصة عبر ZOOM</p>
               <p className="text-base md:text-lg leading-relaxed mb-8 px-4 md:px-12">
                 انضم الآن إلى ورشة “التخطيط الاستراتيجي الشخصي لعام 2026” مباشرة عبر ZOOM لتجربة تفاعلية فريدة
               </p>
 
               <button
                 onClick={handleZoomJoin}
-                className="w-full md:w-auto mx-auto block bg-white text-[#664998] font-bold px-8 py-3 rounded-xl hover:bg-gray-100 transition"
+                className="w-full md:w-auto mx-auto block bg-gradient-to-l from-[#e1459b] to-[#5b21b6] text-white font-bold px-8 py-3 rounded-xl gradient-shift"
               >
                 الدخول إلى البث
               </button>
@@ -196,7 +209,9 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <CoursesSection />
+        <div id="courses-section">
+          <CoursesSection />
+        </div>
         <Footer />
 
         {/* Auth Modal */}
@@ -226,10 +241,10 @@ export default function Home() {
               >
                 {zoomModalType === "login" ? (
                   <>
-                    <div className="w-16 h-16 mx-auto mb-6 rounded-full border-4 border-[#664998] flex items-center justify-center">
-                      <HiOutlineVideoCamera className="text-4xl text-[#664998]" />
+                    <div className="w-16 h-16 mx-auto mb-6 rounded-full border-4 border-[#270e4f] flex items-center justify-center">
+                      <HiOutlineVideoCamera className="text-4xl text-[#270e4f]" />
                     </div>
-                    <h3 className="text-xl font-bold text-[#664998] mb-4">تسجيل الدخول أولاً</h3>
+                    <h3 className="text-xl font-bold text-[#270e4f] mb-4">تسجيل الدخول أولاً</h3>
                     <p className="text-gray-600 mb-6 leading-relaxed">
                       للانضمام إلى ورشة "التخطيط الاستراتيجي الشخصي لعام 2026" يتوجب عليك تسجيل الدخول أو إنشاء حساب
                     </p>
@@ -238,7 +253,7 @@ export default function Home() {
                         setShowZoomModal(false);
                         setShowAuthModal(true);
                       }}
-                      className="w-full bg-gradient-to-r from-[#664998] to-[#FF99BA] text-white font-bold py-3 rounded-xl hover:opacity-90 transition"
+                      className="w-full bg-gradient-to-r from-[#e1459b] to-[#5b21b6] text-white font-bold py-3 rounded-xl gradient-shift"
                     >
                       تسجيل الدخول
                     </button>
@@ -259,10 +274,10 @@ export default function Home() {
                       </svg>
                     </div>
 
-                    <h4 className="text-[#664998] font-bold text-xl mb-4">
+                    <h4 className="text-[#270e4f] font-bold text-xl mb-4">
                       تنبيه هام قبل مشاهدة تسجيل ورشة
                     </h4>
-                    <p className="text-[#664998] font-semibold mb-4">
+                    <p className="text-[#270e4f] font-semibold mb-4">
                       "ورشة التخطيط الاستراتيجي الشخصي لعام 2026"
                     </p>
 
@@ -285,7 +300,7 @@ export default function Home() {
                             window.open(zoomLink, "_blank");
                           }
                         }}
-                        className="flex-1 bg-gradient-to-r from-[#664998] to-[#FF99BA] text-white font-bold py-3 rounded-xl hover:opacity-90 transition"
+                        className="flex-1 bg-gradient-to-r from-[#e1459b] to-[#5b21b6] text-white font-bold py-3 rounded-xl gradient-shift"
                       >
                         إوافق وتابع المشاهدة
                       </button>
@@ -305,10 +320,10 @@ export default function Home() {
                     >
                       ✕
                     </button>
-                    <div className="w-16 h-16 mx-auto mb-6 rounded-full border-4 border-[#664998] flex items-center justify-center">
-                      <HiOutlineVideoCamera className="text-4xl text-[#664998]" />
+                    <div className="w-16 h-16 mx-auto mb-6 rounded-full border-4 border-[#270e4f] flex items-center justify-center">
+                      <HiOutlineVideoCamera className="text-4xl text-[#270e4f]" />
                     </div>
-                    <h3 className="text-xl font-bold text-[#664998] mb-4">الاستعداد للانضمام إلى البث المباشر</h3>
+                    <h3 className="text-xl font-bold text-[#270e4f] mb-4">الاستعداد للانضمام إلى البث المباشر</h3>
                     <p className="text-gray-600 mb-6 leading-relaxed px-4">
                       سيتم الآن فتح تطبيق زووم للانضمام للحضور. إذا لم يفتح لديك التطبيق، <br />
                       سيفتح لمتصفح لترتبط خدمه في المتصفح.
@@ -317,7 +332,7 @@ export default function Home() {
                       onClick={() => {
                         setZoomModalType("terms"); // Go to terms modal
                       }}
-                      className="w-full bg-gradient-to-r from-[#664998] to-[#FF99BA] text-white font-bold py-3 rounded-xl hover:opacity-90 transition mb-3 flex items-center justify-center gap-2"
+                      className="w-full bg-gradient-to-r from-[#e1459b] to-[#5b21b6] text-white font-bold py-3 rounded-xl gradient-shift mb-3 flex items-center justify-center gap-2"
                     >
                       <span>الانتقال إلى زووم</span>
                       <span className="text-xl">📹</span>
@@ -349,7 +364,7 @@ export default function Home() {
                           setShowZoomModal(false);
                           document.getElementById("courses-section")?.scrollIntoView({ behavior: "smooth" });
                         }}
-                        className="flex-1 bg-gradient-to-r from-[#664998] to-[#FF99BA] text-white font-bold py-3 rounded-xl hover:opacity-90 transition"
+                        className="flex-1 bg-gradient-to-r from-[#e1459b] to-[#5b21b6] text-white font-bold py-3 rounded-xl gradient-shift"
                       >
                         تصفح ورشاتنا
                       </button>

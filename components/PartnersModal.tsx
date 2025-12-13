@@ -135,8 +135,8 @@ export default function PartnersModal({ isOpen, onClose }: PartnersModalProps) {
           onClick={(e) => e.stopPropagation()}
         >
           {/* الهيدر الثابت */}
-          <div className="relative px-10 pt-6 pb-4 flex items-center justify-between border-b border-[#BC4584] mx-5">
-            <h3 className="text-3xl font-bold text-[#664998]">شركاء النجاح</h3>
+          <div className="relative px-10 pt-6 pb-4 flex items-center justify-between border-b border-[#e9479a] mx-5">
+            <h3 className="text-3xl font-bold text-[#270e4f]">شركاء النجاح</h3>
             <button
               onClick={() => {
                 onClose();
@@ -155,7 +155,7 @@ export default function PartnersModal({ isOpen, onClose }: PartnersModalProps) {
               <>
                 {isLoadingList ? (
                   <div className="flex justify-center py-20">
-                    <div className="w-12 h-12 border-4 border-[#664998] border-t-transparent rounded-full animate-spin"></div>
+                    <div className="w-12 h-12 border-4 border-[#270e4f] border-t-transparent rounded-full animate-spin"></div>
                   </div>
                 ) : listError ? (
                   <div className="text-center text-red-500 py-20">{listError}</div>
@@ -166,16 +166,16 @@ export default function PartnersModal({ isOpen, onClose }: PartnersModalProps) {
                         <button
                           key={partner.id}
                           onClick={() => handlePartnerClick(partner.id)}
-                          className="group text-center border border-[#BC4584] p-5 rounded-2xl hover:shadow-2xl transition w-full"
+                          className="group text-center border border-[#e9479a] p-5 rounded-2xl hover:shadow-2xl transition w-full"
                         >
-                          <div className="w-40 h-40 mx-auto rounded-full overflow-hidden ring-4 ring-transparent group-hover:ring-[#BC4584]/50 transition-all duration-300 shadow-xl">
+                          <div className="w-40 h-40 mx-auto rounded-full overflow-hidden ring-4 ring-transparent group-hover:ring-[#e9479a]/50 transition-all duration-300 shadow-xl">
                             <img
                               src={partner.image}
                               alt={partner.title}
                               className="w-full h-full object-cover group-hover:scale-110 transition"
                             />
                           </div>
-                          <p className="mt-4 text-sm font-semibold text-[#664998] line-clamp-2">
+                          <p className="mt-4 text-sm font-semibold text-[#270e4f] line-clamp-2">
                             {partner.title}
                           </p>
                         </button>
@@ -193,8 +193,8 @@ export default function PartnersModal({ isOpen, onClose }: PartnersModalProps) {
             {/* Loading Details View */}
             {isLoadingDetails && (
               <div className="flex flex-col items-center justify-center py-32 space-y-4">
-                <div className="w-12 h-12 border-4 border-[#664998] border-t-transparent rounded-full animate-spin"></div>
-                <p className="text-[#664998]">جاري تحميل التفاصيل...</p>
+                <div className="w-12 h-12 border-4 border-[#270e4f] border-t-transparent rounded-full animate-spin"></div>
+                <p className="text-[#270e4f]">جاري تحميل التفاصيل...</p>
               </div>
             )}
 
@@ -204,7 +204,7 @@ export default function PartnersModal({ isOpen, onClose }: PartnersModalProps) {
                 <p className="text-red-500 mb-4">{detailsError}</p>
                 <button
                   onClick={() => setDetailsError("")} // Go back to list effectively (state reset in effect if we just clear error, wait, logic above hides list if !selectedPartner. Use handleCloseDetails)
-                  className="text-[#664998] underline"
+                  className="text-[#270e4f] underline"
                 >
                   العودة للقائمة
                 </button>
@@ -217,16 +217,16 @@ export default function PartnersModal({ isOpen, onClose }: PartnersModalProps) {
               <div className="text-center space-y-6 px-4 relative flex flex-col sm:flex-row items-center border-t-0 animate-fadeIn">
                 <button
                   onClick={handleCloseDetails}
-                  className="absolute -top-5 left-0 text-[#664998] hover:text-[#BC4584] font-medium items-center px-4 py-2 bg-purple-50 rounded-lg transition"
+                  className="absolute -top-5 left-0 text-[#270e4f] hover:text-[#e9479a] font-medium items-center px-4 py-2 bg-purple-50 rounded-lg transition"
                 >
                   العودة للقائمة
                 </button>
 
                 <div className="flex-1 w-full pt-8 sm:pt-0">
-                  <h3 className="text-2xl font-bold text-[#664998] mb-5">
+                  <h3 className="text-2xl font-bold text-[#270e4f] mb-5">
                     {selectedPartner.title}
                   </h3>
-                  <div className="w-32 h-32 mx-auto rounded-full overflow-hidden ring-8 ring-[#BC4584]/20 shadow-2xl mb-6">
+                  <div className="w-32 h-32 mx-auto rounded-full overflow-hidden ring-8 ring-[#e9479a]/20 shadow-2xl mb-6">
                     <img
                       src={selectedPartner.image}
                       alt={selectedPartner.title}
@@ -241,7 +241,7 @@ export default function PartnersModal({ isOpen, onClose }: PartnersModalProps) {
                         href={selectedPartner.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-6 py-2 bg-[#664998] text-white rounded-full hover:bg-[#BC4584] transition shadow-md"
+                        className="flex items-center gap-2 px-6 py-2 bg-[#270e4f] text-white rounded-full hover:bg-[#e9479a] transition shadow-md"
                       >
                         <FiGlobe />
                         زيارة الرابط
@@ -252,9 +252,9 @@ export default function PartnersModal({ isOpen, onClose }: PartnersModalProps) {
 
                 <div className="w-full sm:w-1/2 p-4 text-center sm:text-right rtl:text-center">
                   <p className="text-gray-600 leading-relaxed text-lg whitespace-pre-line bg-gray-50 p-6 rounded-2xl border border-purple-100 shadow-sm relative">
-                    <span className="text-4xl text-[#BC4584] absolute -top-4 -right-2 opacity-30">"</span>
+                    <span className="text-4xl text-[#e9479a] absolute -top-4 -right-2 opacity-30">"</span>
                     {selectedPartner.description || "لا يوجد وصف متاح حالياً."}
-                    <span className="text-4xl text-[#BC4584] absolute -bottom-8 -left-2 opacity-30">"</span>
+                    <span className="text-4xl text-[#e9479a] absolute -bottom-8 -left-2 opacity-30">"</span>
                   </p>
                 </div>
               </div>

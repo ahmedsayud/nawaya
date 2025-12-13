@@ -90,20 +90,20 @@ export default function InstagramModal({
             >
               <BiX className="w-6 h-6 text-gray-700" />
             </button>
-            <h3 className="text-xl font-bold text-[#664998] text-center">بثوث انستجرام</h3>
-            <div className="absolute left-0 right-0 bottom-0 h-[2px] bg-gradient-to-r from-[#BC4584] to-[#664998]" />
+            <h3 className="text-xl font-bold text-[#270e4f] text-center">بثوث انستجرام</h3>
+            <div className="absolute left-0 right-0 bottom-0 h-[2px] bg-gradient-to-r from-[#e1459b] to-[#5b21b6]" />
           </div>
 
           {/* الجسم - Scrollable */}
           <div className="p-6 overflow-y-auto flex-1 text-center space-y-6 bg-gray-50">
             <div className="flex justify-center">
               <div className="p-4 bg-white rounded-full shadow-sm">
-                <RxInstagramLogo className="w-14 h-14 text-[#BC4584]" />
+                <RxInstagramLogo className="w-14 h-14 text-[#e9479a]" />
               </div>
             </div>
 
             <div className="space-y-2">
-              <h4 className="text-lg font-bold text-[#664998]">
+              <h4 className="text-lg font-bold text-[#270e4f]">
                 اختار البث لمشاهدته
               </h4>
               <p className="text-sm text-gray-600">
@@ -115,7 +115,7 @@ export default function InstagramModal({
             <div className="space-y-4 w-full">
               {isLoading ? (
                 <div className="flex justify-center py-8">
-                  <div className="w-8 h-8 border-4 border-[#664998] border-t-transparent rounded-full animate-spin"></div>
+                  <div className="w-8 h-8 border-4 border-[#270e4f] border-t-transparent rounded-full animate-spin"></div>
                 </div>
               ) : error ? (
                 <div className="text-red-500 py-4">{error}</div>
@@ -126,12 +126,12 @@ export default function InstagramModal({
                     href={item.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-between w-full p-4 rounded-xl bg-white border border-purple-100 shadow-sm hover:shadow-md hover:border-[#BC4584] transition-all group"
+                    className="flex items-center justify-between w-full p-4 rounded-xl bg-white border border-purple-100 shadow-sm hover:shadow-md hover:border-[#e9479a] transition-all group"
                   >
-                    <div className="flex items-center justify-center w-8 h-8 rounded-full bg-purple-50 text-[#BC4584] group-hover:bg-[#BC4584] group-hover:text-white transition-colors">
+                    <div className="flex items-center justify-center w-8 h-8 rounded-full bg-purple-50 text-[#e9479a] group-hover:bg-[#e9479a] group-hover:text-white transition-colors">
                       <BiPlay className="text-xl pl-0.5" />
                     </div>
-                    <span className="font-bold text-[#664998] text-right flex-1 mr-4">{item.title}</span>
+                    <span className="font-bold text-[#270e4f] text-right flex-1 mr-4">{item.title}</span>
                   </a>
                 ))
               ) : (

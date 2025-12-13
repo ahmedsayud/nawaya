@@ -106,7 +106,7 @@ export default function AuthModal({ isOpen, onClose, redirectUrl, onLoginSuccess
 
   return (
     <div
-      className="fixed inset-0 bg-black/50 bg-opacity-50 flex items-center justify-center z-[9999] p-4"
+      className="fixed inset-0 bg-black/50 bg-opacity-50 flex items-center justify-center z-[10000] p-4"
       onClick={() => {
         onClose();
       }}
@@ -120,7 +120,7 @@ export default function AuthModal({ isOpen, onClose, redirectUrl, onLoginSuccess
         {activeForm === "register" ? (
           <button
             onClick={() => setActiveForm("login")}
-            className="absolute top-8 left-4 text-[#664998] hover:text-gray-600 flex items-center gap-2"
+            className="absolute top-8 left-4 text-[#270e4f] hover:text-gray-600 flex items-center gap-2"
           >
             عودة
             <GoArrowLeft className="text-xl" />
@@ -128,7 +128,7 @@ export default function AuthModal({ isOpen, onClose, redirectUrl, onLoginSuccess
         ) : (
           <button
             onClick={onClose}
-            className="absolute top-8 left-4 text-[#664998] hover:text-gray-600"
+            className="absolute top-8 left-4 text-[#270e4f] hover:text-gray-600"
           >
             <FiX className="text-xl" />
           </button>
@@ -136,7 +136,7 @@ export default function AuthModal({ isOpen, onClose, redirectUrl, onLoginSuccess
 
         {/* علامة صح */}
         <div className="flex justify-center mb-4">
-          <div className="w-10 h-10 bg-[#664998] rounded-full flex items-center justify-center text-white">
+          <div className="w-10 h-10 bg-[#270e4f] rounded-full flex items-center justify-center text-white">
             <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
             </svg>
@@ -151,7 +151,7 @@ export default function AuthModal({ isOpen, onClose, redirectUrl, onLoginSuccess
         )}
 
         {/* العنوان */}
-        <h2 className="text-center text-[#664998] font-semibold mb-4">
+        <h2 className="text-center text-[#270e4f] font-semibold mb-4">
           {activeForm === "login" ? "تسجيل الدخول مطلوب للمتابعة" : "إنشاء حساب جديد"}
         </h2>
 
@@ -165,7 +165,7 @@ export default function AuthModal({ isOpen, onClose, redirectUrl, onLoginSuccess
                 placeholder="برجاء ادخال البريد الإلكتروني"
                 value={loginEmail}
                 onChange={(e) => setLoginEmail(e.target.value)}
-                className="w-full p-3 rounded-xl border border-gray-300 focus:border-[#6041FF] focus:outline-none"
+                className="w-full p-3 rounded-xl border-2 border-gray-300 focus:border-[#270e4f] focus:outline-none"
                 required
               />
             </div>
@@ -186,7 +186,7 @@ export default function AuthModal({ isOpen, onClose, redirectUrl, onLoginSuccess
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full py-3 rounded-xl bg-gradient-to-r from-[#6041FF] to-[#FF99BA] text-white font-bold text-lg hover:opacity-90 transition disabled:opacity-50"
+              className="w-full py-3 rounded-xl bg-gradient-to-r from-[#e1459b] to-[#5b21b6] text-white font-bold text-lg gradient-shift disabled:opacity-50 shadow-lg shadow-[#e9479a]/20"
             >
               {isLoading ? "جاري الدخول..." : "دخول"}
             </button>
@@ -256,7 +256,7 @@ export default function AuthModal({ isOpen, onClose, redirectUrl, onLoginSuccess
                 placeholder="برجاء إدخال الاسم الكامل (مثل: أحمد محمد)"
                 value={registerName}
                 onChange={(e) => setRegisterName(e.target.value)}
-                className="w-full p-3 rounded-xl border border-gray-300 focus:border-[#6041FF] focus:outline-none"
+                className="w-full p-3 rounded-xl border-2 border-gray-300 focus:border-[#270e4f] focus:outline-none"
                 required
               />
             </div>
@@ -268,7 +268,7 @@ export default function AuthModal({ isOpen, onClose, redirectUrl, onLoginSuccess
                 placeholder="برجاء إدخال البريد الإلكتروني"
                 value={registerEmail}
                 onChange={(e) => setRegisterEmail(e.target.value)}
-                className="w-full p-3 rounded-xl border border-gray-300 focus:border-[#6041FF] focus:outline-none"
+                className="w-full p-3 rounded-xl border-2 border-gray-300 focus:border-[#270e4f] focus:outline-none"
                 required
               />
             </div>
@@ -288,19 +288,19 @@ export default function AuthModal({ isOpen, onClose, redirectUrl, onLoginSuccess
 
             <p className="text-xs text-gray-500">
               * عند إنشاء حساب، توافق على{" "}
-              <a href="#" className="text-[#6041FF] hover:underline">شروط الخدمة</a> و{" "}
-              <a href="#" className="text-[#6041FF] hover:underline">سياسة الخصوصية</a>
+              <a href="#" className="text-[#270e4f] hover:underline">شروط الخدمة</a> و{" "}
+              <a href="#" className="text-[#270e4f] hover:underline">سياسة الخصوصية</a>
             </p>
 
             <label className="flex items-center gap-2 border border-gray-300 rounded-xl p-3">
-              <input type="checkbox" className="w-5 h-5 text-[#6041FF] rounded" />
+              <input type="checkbox" className="w-5 h-5 text-[#270e4f] rounded" />
               <span className="font-medium text-gray-700">أنا لست برنامج روبوت</span>
             </label>
 
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full py-3 rounded-xl bg-gradient-to-r from-[#6041FF] to-[#FF99BA] text-white font-bold text-lg hover:opacity-90 transition disabled:opacity-50"
+              className="w-full py-3 rounded-xl bg-gradient-to-r from-[#e1459b] to-[#5b21b6] text-white font-bold text-lg gradient-shift disabled:opacity-50 shadow-lg shadow-[#e9479a]/20"
             >
               {isLoading ? "جاري إنشاء الحساب..." : "إنشاء الحساب"}
             </button>
@@ -315,7 +315,7 @@ export default function AuthModal({ isOpen, onClose, redirectUrl, onLoginSuccess
             <>
               ليس لديك حساب؟{" "}
               <span
-                className="text-[#664998] font-semibold cursor-pointer hover:underline"
+                className="text-[#270e4f] font-semibold cursor-pointer hover:underline"
                 onClick={() => setActiveForm("register")}
               >
                 أنشئي حسابًا
@@ -325,7 +325,7 @@ export default function AuthModal({ isOpen, onClose, redirectUrl, onLoginSuccess
             <>
               لديك حساب بالفعل؟{" "}
               <span
-                className="text-[#664998] font-semibold cursor-pointer hover:underline"
+                className="text-[#270e4f] font-semibold cursor-pointer hover:underline"
                 onClick={() => setActiveForm("login")}
               >
                 سجلي الدخول

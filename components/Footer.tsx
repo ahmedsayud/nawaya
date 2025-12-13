@@ -27,7 +27,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="w-full bg-gradient-to-r from-pink-400 via-purple-400 to-blue-500 py-8 mt-16">
+    <footer className="w-full bg-gradient-to-r from-[#e1459b] to-[#5b21b6] py-8 mt-16">
       <div className="max-w-7xl mx-auto px-4 flex flex-col items-center justify-center text-center ">
         {/* Social Icons */}
         {!isLoading && settings && (
@@ -37,9 +37,9 @@ export default function Footer() {
                 href={settings.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-12 h-12 bg-white backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-all"
+                className="w-12 h-12 flex items-center justify-center transition-all text-white hover:scale-110"
               >
-                <LiaFacebookF className="w-6 h-6 text-[#664998]" />
+                <LiaFacebookF className="w-8 h-8" />
               </a>
             )}
             {settings.instagram && (
@@ -47,9 +47,9 @@ export default function Footer() {
                 href={settings.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-12 h-12 bg-white backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-all"
+                className="w-12 h-12 flex items-center justify-center transition-all text-white hover:scale-110"
               >
-                <FaInstagram className="w-6 h-6  text-[#664998] " />
+                <FaInstagram className="w-7 h-7" />
               </a>
             )}
             {settings.tiktok && (
@@ -57,9 +57,9 @@ export default function Footer() {
                 href={settings.tiktok}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-12 h-12 bg-white backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-all"
+                className="w-12 h-12 flex items-center justify-center transition-all text-white hover:scale-110"
               >
-                <RiTiktokFill className="w-6 h-6  text-[#664998]" />
+                <RiTiktokFill className="w-7 h-7" />
               </a>
             )}
             {settings.twitter && (
@@ -67,9 +67,9 @@ export default function Footer() {
                 href={settings.twitter}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-12 h-12 bg-white backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-all"
+                className="w-12 h-12 flex items-center justify-center transition-all text-white hover:scale-110"
               >
-                <PiXLogo className="w-6 h-6  text-[#664998]" />
+                <PiXLogo className="w-7 h-7" />
               </a>
             )}
             {settings.snapchat && (
@@ -77,9 +77,9 @@ export default function Footer() {
                 href={settings.snapchat}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-12 h-12 bg-white backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-all"
+                className="w-12 h-12 flex items-center justify-center transition-all text-white hover:scale-110"
               >
-                <FaSnapchatGhost className="w-6 h-6 text-[#664998] " />
+                <FaSnapchatGhost className="w-7 h-7" />
               </a>
             )}
             {settings.whatsapp && (
@@ -87,9 +87,9 @@ export default function Footer() {
                 href={getWhatsAppLink(settings.whatsapp)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-12 h-12 bg-white backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-all"
+                className="w-12 h-12 flex items-center justify-center transition-all text-white hover:scale-110"
               >
-                <FaWhatsapp className="w-6 h-6 text-[#664998]" />
+                <FaWhatsapp className="w-7 h-7" />
               </a>
             )}
           </div>
@@ -171,7 +171,7 @@ export default function Footer() {
                 >
                   ✕
                 </button>
-                <h2 className="text-2xl font-bold text-[#664998] text-center flex-1">
+                <h2 className="text-2xl font-bold text-[#270e4f] text-center flex-1">
                   سياسة الشحن والتوصيل
                 </h2>
                 <div className="w-6"></div> {/* Spacer for centering */}
@@ -179,8 +179,8 @@ export default function Footer() {
 
               {/* Scrollable Content */}
               <div className="p-8 overflow-y-auto custom-scrollbar flex-1">
-                <div className="bg-purple-50 rounded-lg p-6 mb-6">
-                  <h3 className="text-lg font-bold text-[#664998] mb-4">
+                <div className="bg-purple-50 rounded-lg p-6 mb-6 border border-[#270e4f]/10">
+                  <h3 className="text-lg font-bold text-[#270e4f] mb-4">
                     1. المنتجات الرقمية (الدورات والدورات):
                   </h3>
 
@@ -211,8 +211,8 @@ export default function Footer() {
                     </ul>
                   </div>
 
-                  <div className="bg-pink-50 rounded-lg p-4">
-                    <h4 className="font-bold text-[#BC4584] mb-3">● رسوم الشحن والتواصل:</h4>
+                  <div className="bg-pink-50 rounded-lg p-4 border border-[#e9479a]/20">
+                    <h4 className="font-bold text-[#e9479a] mb-3">● رسوم الشحن والتواصل:</h4>
                     <ul className="space-y-2 text-sm">
                       <li>● رسوم الشحن لا يتم تغطيتها بشكل على المنصة الأساسية للاشتراك</li>
                       <li>● يتم حاسبة الرسوم الشحن بشكل مذتمل على الشحن المساهدات، للشكل قيد الإضافة عملية (Checkout) بناء على دورات الفراغ والحضمة والمعونة متصلة.</li>
@@ -220,8 +220,8 @@ export default function Footer() {
                     </ul>
                   </div>
 
-                  <div className="bg-purple-50 rounded-lg p-4">
-                    <h4 className="font-bold text-[#664998] mb-3">● تتبع الشحنة:</h4>
+                  <div className="bg-purple-50 rounded-lg p-4 border border-[#270e4f]/10">
+                    <h4 className="font-bold text-[#270e4f] mb-3">● تتبع الشحنة:</h4>
                     <p>بخصوص تود سياق استغراق إعادة وساكة المنشأة إو إرخل أو تجعك حقوق نطول الخدمة والنشمة اتقرانة رجاليه خليط مختلفة.</p>
                   </div>
 
@@ -236,7 +236,7 @@ export default function Footer() {
               <div className="p-6 border-t border-gray-100 shrink-0">
                 <button
                   onClick={() => setShowShippingModal(false)}
-                  className="w-full bg-gradient-to-r from-[#664998] to-[#FF99BA] text-white font-bold py-3 rounded-xl hover:opacity-90 transition"
+                  className="w-full bg-gradient-to-r from-[#e1459b] to-[#5b21b6] text-white font-bold py-3 rounded-xl gradient-shift shadow-lg shadow-[#e9479a]/20"
                 >
                   إغلاق
                 </button>
@@ -262,7 +262,7 @@ export default function Footer() {
                 >
                   ✕
                 </button>
-                <h2 className="text-2xl font-bold text-[#664998] text-center flex-1">
+                <h2 className="text-2xl font-bold text-[#270e4f] text-center flex-1">
                   الشروط والأحكام
                 </h2>
                 <div className="w-6"></div> {/* Spacer */}
@@ -273,7 +273,7 @@ export default function Footer() {
                 <div className="space-y-8">
                   {/* Section 1 */}
                   <div>
-                    <h3 className="text-lg font-bold text-[#664998] mb-3">
+                    <h3 className="text-lg font-bold text-[#270e4f] mb-3">
                       1. مقدمة والموافقة على الشروط
                     </h3>
                     <p className="text-gray-700 leading-relaxed text-sm">
@@ -283,7 +283,7 @@ export default function Footer() {
 
                   {/* Section 2 - Intellectual Property with Red Box */}
                   <div>
-                    <h3 className="text-lg font-bold text-[#664998] mb-3">
+                    <h3 className="text-lg font-bold text-[#270e4f] mb-3">
                       2. حقوق الملكية الفكرية والاستخدام (هام جداً)
                     </h3>
                     <p className="text-gray-700 leading-relaxed text-sm mb-4">
@@ -316,7 +316,7 @@ export default function Footer() {
 
                   {/* Section 3 - Registration */}
                   <div>
-                    <h3 className="text-lg font-bold text-[#664998] mb-3">
+                    <h3 className="text-lg font-bold text-[#270e4f] mb-3">
                       3. التسجيل والحسابات
                     </h3>
                     <ul className="list-disc list-inside space-y-2 text-gray-700 text-sm">
@@ -328,7 +328,7 @@ export default function Footer() {
 
                   {/* Section 4 - Payment */}
                   <div>
-                    <h3 className="text-lg font-bold text-[#664998] mb-3">
+                    <h3 className="text-lg font-bold text-[#270e4f] mb-3">
                       4. سياسة الدفع
                     </h3>
                     <ul className="list-disc list-inside space-y-2 text-gray-700 text-sm">
@@ -339,13 +339,13 @@ export default function Footer() {
 
                   {/* Section 5 - Cancellation Policy */}
                   <div>
-                    <h3 className="text-lg font-bold text-[#664998] mb-3">
+                    <h3 className="text-lg font-bold text-[#270e4f] mb-3">
                       5. سياسة الإلغاء والاسترداد
                     </h3>
 
                     <div className="bg-purple-50 border border-purple-100 rounded-lg p-6 space-y-6">
                       <div>
-                        <h4 className="font-bold text-[#664998] mb-2 underline underline-offset-4">
+                        <h4 className="font-bold text-[#270e4f] mb-2 underline underline-offset-4">
                           أ. الورش المباشرة (أونلاين / حضوري):
                         </h4>
                         <p className="text-gray-700 text-sm leading-relaxed mb-2">
@@ -357,7 +357,7 @@ export default function Footer() {
                       </div>
 
                       <div>
-                        <h4 className="font-bold text-[#664998] mb-2 underline underline-offset-4">
+                        <h4 className="font-bold text-[#270e4f] mb-2 underline underline-offset-4">
                           ب. الورش المسجلة (المنتجات الرقمية):
                         </h4>
                         <p className="text-gray-700 text-sm leading-relaxed">
@@ -366,7 +366,7 @@ export default function Footer() {
                       </div>
 
                       <div>
-                        <h4 className="font-bold text-[#664998] mb-2 underline underline-offset-4">
+                        <h4 className="font-bold text-[#270e4f] mb-2 underline underline-offset-4">
                           ج. الاستشارات الخاصة:
                         </h4>
                         <p className="text-gray-700 text-sm leading-relaxed">
@@ -375,7 +375,7 @@ export default function Footer() {
                       </div>
 
                       <div>
-                        <h4 className="font-bold text-[#664998] mb-2 underline underline-offset-4">
+                        <h4 className="font-bold text-[#270e4f] mb-2 underline underline-offset-4">
                           د. منتجات البوتيك:
                         </h4>
                         <p className="text-gray-700 text-sm leading-relaxed">
@@ -387,7 +387,7 @@ export default function Footer() {
 
                   {/* Section 6 - Disclaimer */}
                   <div>
-                    <h3 className="text-lg font-bold text-[#664998] mb-3">
+                    <h3 className="text-lg font-bold text-[#270e4f] mb-3">
                       6. إخلاء المسؤولية
                     </h3>
                     <p className="text-gray-700 text-sm leading-relaxed mb-2">
@@ -408,7 +408,7 @@ export default function Footer() {
               <div className="p-6 border-t border-gray-100 shrink-0">
                 <button
                   onClick={() => setShowTermsModal(false)}
-                  className="w-full bg-gradient-to-r from-[#664998] to-[#FF99BA] text-white font-bold py-3 rounded-xl hover:opacity-90 transition"
+                  className="w-full bg-gradient-to-r from-[#e1459b] to-[#5b21b6] text-white font-bold py-3 rounded-xl gradient-shift shadow-lg shadow-[#e9479a]/20"
                 >
                   إغلاق
                 </button>
@@ -434,7 +434,7 @@ export default function Footer() {
                 >
                   ✕
                 </button>
-                <h2 className="text-2xl font-bold text-[#664998] text-center flex-1">
+                <h2 className="text-2xl font-bold text-[#270e4f] text-center flex-1">
                   نبذة عن الشركة والتواصل
                 </h2>
                 <div className="w-6"></div> {/* Spacer */}
@@ -446,10 +446,10 @@ export default function Footer() {
                 {/* Header Banner */}
                 <div className="bg-gradient-to-r from-pink-100 to-purple-100 rounded-xl p-8 text-center border border-purple-200 shadow-sm">
                   {/* Logo Placeholder - assuming centered logo in design */}
-                  <div className="w-32 h-32 mx-auto bg-white rounded-full flex items-center justify-center border-2 border-[#BC4584] mb-4 shadow-sm">
-                    <span className="text-2xl font-bold text-[#BC4584] tracking-widest">NAWAYA</span>
+                  <div className="w-32 h-32 mx-auto bg-white rounded-full flex items-center justify-center border-2 border-[#e9479a] mb-4 shadow-sm">
+                    <span className="text-2xl font-bold text-[#e9479a] tracking-widest">NAWAYA</span>
                   </div>
-                  <h3 className="text-xl font-bold text-[#664998] mb-1">
+                  <h3 className="text-xl font-bold text-[#270e4f] mb-1">
                     عن مؤسسة نوايا للفعاليات
                   </h3>
                   <p className="text-gray-500 text-sm">
@@ -459,7 +459,7 @@ export default function Footer() {
 
                 {/* Who We Are */}
                 <div className="border border-blue-400 rounded-xl p-6 bg-blue-50/30">
-                  <h4 className="text-[#664998] font-bold mb-3 text-lg">من نحن</h4>
+                  <h4 className="text-[#270e4f] font-bold mb-3 text-lg">من نحن</h4>
                   <p className="text-gray-700 text-sm leading-8 text-justify">
                     "نوايا للفعاليات" هي منصة رائدة ومؤسسة متخصصة في إدارة الدورات والفعاليات، وورش العمل التطويرية (مرخصة من التنمية الاقتصادية بأبوظبي - دولة الإمارات العربية المتحدة). تأسست برؤية تهدف إلى تمكين الأفراد من اكتشاف ذواتهم وتطوير مهاراتهم الشخصية والمهنية في بيئة إيجابية ومحفزة. بقيادة الدكتورة أمل العتيسى (DRHOPE). نسعى لتقديم محتوى ذو جودة عالية يلامس الاحتياجات، يجمع بين العلم الحديث والأصالة، ويقدم أدوات عملية قابلة للتطبيق.
                   </p>
@@ -472,7 +472,7 @@ export default function Footer() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {/* Vision */}
                   <div className="border border-purple-200 rounded-xl p-6 bg-purple-50">
-                    <div className="flex items-center gap-2 mb-3 text-[#664998]">
+                    <div className="flex items-center gap-2 mb-3 text-[#270e4f]">
                       <MdOutlineVisibility className="text-2xl" />
                       <h4 className="font-bold text-lg">رؤيتنا</h4>
                     </div>
@@ -483,7 +483,7 @@ export default function Footer() {
 
                   {/* Mission */}
                   <div className="border border-purple-200 rounded-xl p-6 bg-purple-50">
-                    <div className="flex items-center gap-2 mb-3 text-[#664998]">
+                    <div className="flex items-center gap-2 mb-3 text-[#270e4f]">
                       <IoRocketOutline className="text-2xl" />
                       <h4 className="font-bold text-lg">رسالتنا</h4>
                     </div>
@@ -495,11 +495,11 @@ export default function Footer() {
 
                 {/* Services Section */}
                 <div>
-                  <h4 className="text-[#664998] font-bold mb-4 text-center text-lg">خدماتنا</h4>
+                  <h4 className="text-[#270e4f] font-bold mb-4 text-center text-lg">خدماتنا</h4>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {/* Live Workshops */}
-                    <div className="bg-purple-50 rounded-lg p-4 border-r-4 border-[#664998]">
-                      <h5 className="font-bold text-[#664998] mb-2 text-sm">الورش المباشرة:</h5>
+                    <div className="bg-purple-50 rounded-lg p-4 border-r-4 border-[#270e4f]">
+                      <h5 className="font-bold text-[#270e4f] mb-2 text-sm">الورش المباشرة:</h5>
                       <p className="text-gray-600 text-xs leading-relaxed">
                         دورات تفاعلية عبر Zoom أو حضورية في قاعات فندقية مميزة.
                       </p>
@@ -507,15 +507,15 @@ export default function Footer() {
 
                     {/* Recorded Workshops */}
                     <div className="bg-blue-50 rounded-lg p-4 border-r-4 border-[#2d9cdb]">
-                      <h5 className="font-bold text-[#664998] mb-2 text-sm">الورش المسجلة:</h5>
+                      <h5 className="font-bold text-[#270e4f] mb-2 text-sm">الورش المسجلة:</h5>
                       <p className="text-gray-600 text-xs leading-relaxed">
                         مكتبة متنوعة من الدورات المتاحة للمشاهدة في أي وقت ومن أي مكان.
                       </p>
                     </div>
 
                     {/* Private Consultations */}
-                    <div className="bg-purple-50 rounded-lg p-4 border-r-4 border-[#bc4584]">
-                      <h5 className="font-bold text-[#664998] mb-2 text-sm">الاستشارات الخاصة:</h5>
+                    <div className="bg-purple-50 rounded-lg p-4 border-r-4 border-[#e9479a]">
+                      <h5 className="font-bold text-[#270e4f] mb-2 text-sm">الاستشارات الخاصة:</h5>
                       <p className="text-gray-600 text-xs leading-relaxed">
                         جلسات فردية خاصة مع مختصين لتقديم التوجيه والدعم المباشر.
                       </p>
@@ -523,7 +523,7 @@ export default function Footer() {
 
                     {/* Boutique */}
                     <div className="bg-orange-50 rounded-lg p-4 border-r-4 border-orange-400">
-                      <h5 className="font-bold text-[#664998] mb-2 text-sm">البوتيك:</h5>
+                      <h5 className="font-bold text-[#270e4f] mb-2 text-sm">البوتيك:</h5>
                       <p className="text-gray-600 text-xs leading-relaxed">
                         منتجات مختارة بعناية (كتب، مفكرات، أدوات) تدعم رحلتك التطويرية.
                       </p>
@@ -533,8 +533,8 @@ export default function Footer() {
 
                 {/* Contact Us placeholder from Figma */}
                 <div className="border border-purple-300 rounded-xl p-4 bg-purple-50/50 mt-4 text-center">
-                  <h4 className="text-[#664998] font-bold mb-3 text-lg">تواصل معنا</h4>
-                  <p className="text-[#664998] font-semibold text-sm mb-4">
+                  <h4 className="text-[#270e4f] font-bold mb-3 text-lg">تواصل معنا</h4>
+                  <p className="text-[#270e4f] font-semibold text-sm mb-4">
                     فريق خدمة العملاء جاهز دائماً لمساعدتك والرد على استفساراتك:
                   </p>
 
@@ -553,7 +553,7 @@ export default function Footer() {
 
                     <div className="flex items-center gap-2 w-full justify-end">
                       <span className="text-right">المقر الرئيسي</span>
-                      <IoLocationOutline className="text-[#664998] text-xl" />
+                      <IoLocationOutline className="text-[#270e4f] text-xl" />
                     </div>
                     <p className="text-gray-600 text-xs w-full text-right pr-6">الامارات العربية المتحدة - ابو ظبي - البطين</p>
                   </div>
@@ -565,7 +565,7 @@ export default function Footer() {
               <div className="p-6 border-t border-gray-100 shrink-0">
                 <button
                   onClick={() => setShowAboutModal(false)}
-                  className="w-full bg-gradient-to-r from-[#664998] to-[#FF99BA] text-white font-bold py-3 rounded-xl hover:opacity-90 transition"
+                  className="w-full bg-gradient-to-r from-[#e1459b] to-[#5b21b6] text-white font-bold py-3 rounded-xl gradient-shift shadow-lg shadow-[#e9479a]/20"
                 >
                   إغلاق
                 </button>
@@ -591,7 +591,7 @@ export default function Footer() {
                 >
                   ✕
                 </button>
-                <h2 className="text-2xl font-bold text-[#664998] text-center flex-1">
+                <h2 className="text-2xl font-bold text-[#270e4f] text-center flex-1">
                   سياسة الخصوصية
                 </h2>
                 <div className="w-6"></div> {/* Spacer */}
@@ -602,7 +602,7 @@ export default function Footer() {
 
                 {/* Intro */}
                 <div className="text-center space-y-4">
-                  <p className="text-[#664998] font-bold">تاريخ آخر تحديث: 8/12/2025</p>
+                  <p className="text-[#270e4f] font-bold">تاريخ آخر تحديث: 8/12/2025</p>
                   <p className="text-gray-700 text-sm leading-relaxed">
                     نحن في "نوايا للفعاليات" (يشار إليها بـ "المنصة" أو "نحن") نلتزم بحماية خصوصيتك وضمان أمان بياناتك الشخصية. تشرح سياسة الخصوصية هذه كيفية جمعنا واستخدامنا وحمايتنا لمعلوماتك عند استخدامك لموقعنا وخدماتنا.
                   </p>
@@ -610,34 +610,34 @@ export default function Footer() {
 
                 {/* Section 1 */}
                 <div className="bg-purple-50 rounded-xl p-6 border border-purple-100">
-                  <h3 className="text-[#664998] font-bold text-lg mb-4">1. المعلومات التي نقوم بجمعها</h3>
+                  <h3 className="text-[#270e4f] font-bold text-lg mb-4">1. المعلومات التي نقوم بجمعها</h3>
                   <p className="text-gray-700 text-sm mb-3">نقوم بجمع أنواع مختلفة من المعلومات لتقديم خدماتنا وتحسينها لك:</p>
                   <ul className="list-disc list-inside space-y-2 text-gray-700 text-sm">
-                    <li><span className="font-bold text-[#664998]">بيانات الهوية والاتصال:</span> الاسم الكامل، رقم الهاتف، عنوان البريد الإلكتروني، والدولة (عند إنشاء الحساب أو التواصل معنا).</li>
-                    <li><span className="font-bold text-[#664998]">بيانات المعاملات المالية:</span> تفاصيل حول المدفوعات من وإلى حسابك، وتفاصيل الورش والمنتجات التي اشتريتها.</li>
+                    <li><span className="font-bold text-[#270e4f]">بيانات الهوية والاتصال:</span> الاسم الكامل، رقم الهاتف، عنوان البريد الإلكتروني، والدولة (عند إنشاء الحساب أو التواصل معنا).</li>
+                    <li><span className="font-bold text-[#270e4f]">بيانات المعاملات المالية:</span> تفاصيل حول المدفوعات من وإلى حسابك، وتفاصيل الورش والمنتجات التي اشتريتها.</li>
                     <li className="text-xs text-gray-500 mr-4">ملاحظة: لا نقوم بتخزين بيانات بطاقات الدفع على خوادمنا. تتم معالجة عمليات الدفع عبر بوابات دفع آمنة ومشفرة وفق معيار PCI-DSS.</li>
-                    <li><span className="font-bold text-[#664998]">بيانات التوصيل والشحن:</span> العنوان الفعلي، المدينة، الرمز البريدي (في حال طلب منتجات مادية من البوتيك).</li>
-                    <li><span className="font-bold text-[#664998]">بيانات فنية وتقنية:</span> عنوان بروتوكول الإنترنت (IP)، نوع المتصفح وإصداره، إعدادات المنطقة الزمنية، نظام التشغيل، وذلك لأغراض التحليل والأمان.</li>
-                    <li><span className="font-bold text-[#664998]">بيانات الاستخدام:</span> معلومات حول كيفية استخدامك للموقع، والورش التي شاهدتها، والتقدم المحرز في الدورات.</li>
+                    <li><span className="font-bold text-[#270e4f]">بيانات التوصيل والشحن:</span> العنوان الفعلي، المدينة، الرمز البريدي (في حال طلب منتجات مادية من البوتيك).</li>
+                    <li><span className="font-bold text-[#270e4f]">بيانات فنية وتقنية:</span> عنوان بروتوكول الإنترنت (IP)، نوع المتصفح وإصداره، إعدادات المنطقة الزمنية، نظام التشغيل، وذلك لأغراض التحليل والأمان.</li>
+                    <li><span className="font-bold text-[#270e4f]">بيانات الاستخدام:</span> معلومات حول كيفية استخدامك للموقع، والورش التي شاهدتها، والتقدم المحرز في الدورات.</li>
                   </ul>
                 </div>
 
                 {/* Section 2 */}
                 <div>
-                  <h3 className="text-[#664998] font-bold text-lg mb-4">2. كيف نستخدم بياناتك</h3>
+                  <h3 className="text-[#270e4f] font-bold text-lg mb-4">2. كيف نستخدم بياناتك</h3>
                   <p className="text-gray-700 text-sm mb-3">نستخدم بياناتك الشخصية للأغراض التالية:</p>
                   <ul className="list-disc list-inside space-y-2 text-gray-700 text-sm">
-                    <li><span className="font-bold text-[#664998]">تقديم الخدمات:</span> إنشاء حسابك، وإدارة تسجيلك في الورش، وتمكينك من الوصول للمحتوى المدفوع (المباشر والمسجل).</li>
-                    <li><span className="font-bold text-[#664998]">إدارة الطلبات:</span> معالجة وتوصيل طلبات البوتيك وإدارة المدفوعات والرسوم.</li>
-                    <li><span className="font-bold text-[#664998]">التواصل:</span> إرسال تأكيدات التسجيل، روابط الدخول (Zoom)، تحديثات الورش، والرد على استفساراتك.</li>
-                    <li><span className="font-bold text-[#664998]">التحسين والتطوير:</span> تحليل بيانات الاستخدام لتحسين تجربة المستخدم وجودة المحتوى المقدم.</li>
-                    <li><span className="font-bold text-[#664998]">الأمان:</span> لحماية موقعنا من الاحتيال وسوء الاستخدام.</li>
+                    <li><span className="font-bold text-[#270e4f]">تقديم الخدمات:</span> إنشاء حسابك، وإدارة تسجيلك في الورش، وتمكينك من الوصول للمحتوى المدفوع (المباشر والمسجل).</li>
+                    <li><span className="font-bold text-[#270e4f]">إدارة الطلبات:</span> معالجة وتوصيل طلبات البوتيك وإدارة المدفوعات والرسوم.</li>
+                    <li><span className="font-bold text-[#270e4f]">التواصل:</span> إرسال تأكيدات التسجيل، روابط الدخول (Zoom)، تحديثات الورش، والرد على استفساراتك.</li>
+                    <li><span className="font-bold text-[#270e4f]">التحسين والتطوير:</span> تحليل بيانات الاستخدام لتحسين تجربة المستخدم وجودة المحتوى المقدم.</li>
+                    <li><span className="font-bold text-[#270e4f]">الأمان:</span> لحماية موقعنا من الاحتيال وسوء الاستخدام.</li>
                   </ul>
                 </div>
 
                 {/* Section 3 - Cookies */}
                 <div>
-                  <h3 className="text-[#664998] font-bold text-lg mb-4">3. ملفات تعريف الارتباط (Cookies)</h3>
+                  <h3 className="text-[#270e4f] font-bold text-lg mb-4">3. ملفات تعريف الارتباط (Cookies)</h3>
                   <p className="text-gray-700 text-sm leading-relaxed mb-4">
                     يستخدم موقعنا ملفات تعريف الارتباط وتقنيات التتبع المماثلة لتتبع النشاط على خدمتنا والاحتفاظ بمعلومات معينة.
                     <br />
@@ -645,7 +645,7 @@ export default function Footer() {
                   </p>
 
                   <div className="bg-blue-50 p-4 rounded-lg border-r-4 border-blue-400">
-                    <h4 className="text-[#664998] font-bold text-sm mb-2">تساعد الكوكيز في:</h4>
+                    <h4 className="text-[#270e4f] font-bold text-sm mb-2">تساعد الكوكيز في:</h4>
                     <ul className="list-disc list-inside space-y-1 text-gray-700 text-xs">
                       <li>تذكر حالة تسجيل الدخول الخاصة بك</li>
                       <li>تذكر تفضيلاتك على الموقع</li>
@@ -657,17 +657,17 @@ export default function Footer() {
 
                 {/* Section 4 */}
                 <div>
-                  <h3 className="text-[#664998] font-bold text-lg mb-4">4. مشاركة البيانات والإفصاح عنها</h3>
+                  <h3 className="text-[#270e4f] font-bold text-lg mb-4">4. مشاركة البيانات والإفصاح عنها</h3>
                   <p className="text-gray-700 text-sm mb-3">نحن لا نبيع بياناتك الشخصية. قد نشارك بياناتك فقط في الحالات التالية:</p>
                   <ul className="list-disc list-inside space-y-2 text-gray-700 text-sm">
-                    <li><span className="font-bold text-[#664998]">مقدمو الخدمات:</span> مثل بوابات الدفع أو شركات الشحن، فقط لأداء المهام نيابة عنا وهم ملزمون بعدم الكشف عنها أو استخدامها لأي غرض آخر.</li>
-                    <li><span className="font-bold text-[#664998]">الامتثال للقوانين:</span> سنقوم بالكشف عن بياناتك إذا كان ذلك مطلوباً بموجب القانون.</li>
+                    <li><span className="font-bold text-[#270e4f]">مقدمو الخدمات:</span> مثل بوابات الدفع أو شركات الشحن، فقط لأداء المهام نيابة عنا وهم ملزمون بعدم الكشف عنها أو استخدامها لأي غرض آخر.</li>
+                    <li><span className="font-bold text-[#270e4f]">الامتثال للقوانين:</span> سنقوم بالكشف عن بياناتك إذا كان ذلك مطلوباً بموجب القانون.</li>
                   </ul>
                 </div>
 
                 {/* Section 5 */}
                 <div>
-                  <h3 className="text-[#664998] font-bold text-lg mb-4">5. أمن البيانات</h3>
+                  <h3 className="text-[#270e4f] font-bold text-lg mb-4">5. أمن البيانات</h3>
                   <p className="text-gray-700 text-sm leading-relaxed mb-2">
                     أمان بياناتك مهم بالنسبة لنا.
                   </p>
@@ -681,13 +681,13 @@ export default function Footer() {
 
                 {/* Section 6 */}
                 <div>
-                  <h3 className="text-[#664998] font-bold text-lg mb-4">6. حقوقك</h3>
+                  <h3 className="text-[#270e4f] font-bold text-lg mb-4">6. حقوقك</h3>
                   <p className="text-gray-700 text-sm leading-relaxed mb-4">
                     لديك الحق في الوصول إلى بياناتك الشخصية التي نحتفظ بها، وتصحيحها، أو طلب حذفها في ظروف معينة.
                   </p>
 
                   <div className="bg-gray-50 p-4 rounded-xl text-center">
-                    <p className="text-[#664998] font-medium text-sm">
+                    <p className="text-[#270e4f] font-medium text-sm">
                       يمكنك إدارة معظم بياناتك من خلال صفحة <span className="font-bold">"ملفي الشخصي"</span> أو التواصل معنا عبر القنوات المتاحة.
                     </p>
                   </div>
@@ -699,7 +699,7 @@ export default function Footer() {
               <div className="p-6 border-t border-gray-100 shrink-0">
                 <button
                   onClick={() => setShowPrivacyModal(false)}
-                  className="w-full bg-gradient-to-r from-[#664998] to-[#FF99BA] text-white font-bold py-3 rounded-xl hover:opacity-90 transition"
+                  className="w-full bg-gradient-to-r from-[#e1459b] to-[#5b21b6] text-white font-bold py-3 rounded-xl gradient-shift shadow-lg shadow-[#e9479a]/20"
                 >
                   إغلاق
                 </button>

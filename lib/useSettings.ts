@@ -6,6 +6,7 @@ import { API_BASE_URL } from "@/lib/config";
 
 interface SettingsData {
     logo: string;
+    welcome_message: string;
     facebook: string;
     instagram: string;
     tiktok: string;

@@ -109,7 +109,7 @@ export default function GalleryModal({ isOpen, onClose }: GalleryModalProps) {
         >
           {/* الهيدر */}
           <div className="relative px-8 pt-6 pb-4 flex items-center justify-between ">
-            <h3 className="text-2xl sm:text-3xl  text-[#664998]">
+            <h3 className="text-2xl sm:text-3xl  text-[#270e4f]">
               ألبوم الصور
             </h3>
             <button
@@ -120,13 +120,13 @@ export default function GalleryModal({ isOpen, onClose }: GalleryModalProps) {
             </button>
           </div>
           <div className="px-8">
-            <div className="w-full h-[1px]   bg-[#BC4584] mb-10" />
+            <div className="w-full h-[1px]   bg-[#e9479a] mb-10" />
           </div>
           {/* الصور */}
           <div className="flex-1 overflow-y-auto px-8 pb-6">
             {isLoading ? (
               <div className="flex justify-center items-center h-64">
-                <div className="w-12 h-12 border-4 border-[#664998] border-t-transparent rounded-full animate-spin"></div>
+                <div className="w-12 h-12 border-4 border-[#270e4f] border-t-transparent rounded-full animate-spin"></div>
               </div>
             ) : error ? (
               <div className="text-center py-20 text-red-500">{error}</div>
@@ -137,7 +137,7 @@ export default function GalleryModal({ isOpen, onClose }: GalleryModalProps) {
                     images.map((img, index) => (
                       <div
                         key={img.id || index}
-                        className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300"
+                        className="group relative overflow-hidden rounded-2xl shadow-lg hover-lift"
                       >
                         <img
                           src={img.image}
@@ -160,7 +160,7 @@ export default function GalleryModal({ isOpen, onClose }: GalleryModalProps) {
                     <button
                       onClick={loadMore}
                       disabled={isLoadingMore}
-                      className="px-8 py-2 rounded-full border-2 border-[#664998] text-[#664998] font-bold hover:bg-[#664998] hover:text-white transition-all disabled:opacity-50 flex items-center gap-2"
+                      className="px-8 py-2 rounded-full border-2 border-[#270e4f] text-[#270e4f] font-bold hover:bg-[#270e4f] hover:text-white transition-all disabled:opacity-50 flex items-center gap-2"
                     >
                       {isLoadingMore ? (
                         <>
@@ -183,7 +183,7 @@ export default function GalleryModal({ isOpen, onClose }: GalleryModalProps) {
               href="https://instagram.com/your_instagram_handle"
               target="_blank"
               rel="noopener noreferrer"
-              className="block w-full text-center py-4 px-8 bg-gradient-to-r from-[#664998] to-[#BC4584] text-white font-semibold text-lg rounded-xl hover:opacity-90 transition shadow-lg"
+              className="block w-full text-center py-4 px-8 bg-gradient-to-r from-[#e1459b] to-[#5b21b6] text-white font-semibold text-lg rounded-xl gradient-shift shadow-lg"
             >
               شاهدي المزيد من الصور في الانستجرام
             </a>

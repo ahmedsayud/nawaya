@@ -7,6 +7,7 @@ import { PiGraduationCapLight, PiGlobeSimple, PiCalendarMinus } from "react-icon
 import { FcAlarmClock } from "react-icons/fc";
 import { API_BASE_URL } from "@/lib/config";
 import WorkshopSubscriptionModal from "@/components/WorkshopSubscriptionModal";
+import AuthModal from "@/components/AuthModal";
 
 interface Workshop {
   id: number;
@@ -39,6 +40,7 @@ export default function CoursesSection() {
   const [error, setError] = useState("");
   const [selectedWorkshop, setSelectedWorkshop] = useState<Workshop | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [showAuthModal, setShowAuthModal] = useState(false);
 
   // Pagination state
   const [currentPage, setCurrentPage] = useState(1);
@@ -138,21 +140,22 @@ export default function CoursesSection() {
                 placeholder="ابحث عن ورشة أو مدرب..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pr-12 pl-4 py-3 text-sm border border-[#664998] rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 transition"
+                className="w-full pr-12 pl-4 py-3 text-sm border-2 border-[#e9479a]/30 rounded-xl focus:outline-none focus:border-[#270e4f] transition"
                 suppressHydrationWarning
               />
-              <BiSearch className="absolute left-4 top-1/2 transform -translate-y-1/2 text-[#664998] w-5 h-5" />
+              <BiSearch className="absolute left-4 top-1/2 transform -translate-y-1/2 text-[#270e4f] w-5 h-5" />
             </div>
 
+
             {/* Filter Buttons - Responsive */}
-            <div className="flex flex-wrap items-center justify-center gap-2 bg-[#f8ecf3] px-4 py-3 rounded-xl w-full md:w-auto">
+            <div className="flex flex-wrap items-center justify-center gap-2 bg-[#f8ecf3] px-4 py-3 rounded-xl w-full md:w-auto border border-[#e9479a]/20">
               {(["الكل", "أونلاين", "حضوري", "أونلاين و حضوري", "مسجلة"] as const).map((filter) => (
                 <button
                   key={filter}
                   onClick={() => setActiveFilter(filter)}
-                  className={`px-3 py-2 rounded-lg text-xs font-medium transition whitespace-nowrap ${activeFilter === filter
-                      ? "bg-gradient-to-r from-[#664998] to-[#FF99BA] text-white shadow-md"
-                      : "text-gray-600 hover:bg-white/50"
+                  className={`px-4 py-2 rounded-xl text-sm font-bold transition whitespace-nowrap ${activeFilter === filter
+                    ? "bg-gradient-to-r from-[#e1459b] to-[#5b21b6] text-white shadow-md shadow-[#e9479a]/20"
+                    : "text-gray-600 hover:bg-white/50"
                     }`}
                 >
                   {filter}
@@ -190,12 +193,12 @@ export default function CoursesSection() {
               {currentWorkshops.map((workshop) => (
                 <div
                   key={workshop.id}
-                  className="bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden hover:shadow-xl transition-all duration-300 group relative"
+                  className="bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden hover-lift group relative"
                 >
                   {/* Badge */}
                   {workshop.has_multiple_packages && (
                     <div className="absolute top-4 left-4 z-10">
-                      <span className="bg-red-500 text-white px-3 py-1 rounded-full text-xs font-bold">
+                      <span className="bg-[#5b21b6] text-white px-3 py-1 rounded-full text-xs font-bold">
                         عدة باقات
                       </span>
                     </div>
@@ -212,7 +215,7 @@ export default function CoursesSection() {
                     </h3>
 
                     <div className="flex items-center gap-3 text-gray-600 mb-4">
-                      <PiGraduationCapLight className="w-6 h-6 text-[#BC4584]" />
+                      <PiGraduationCapLight className="w-6 h-6 text-[#e9479a]" />
                       <span className="font-medium">{workshop.teacher}</span>
                     </div>
 
@@ -222,12 +225,12 @@ export default function CoursesSection() {
                     <div className="space-y-4 text-sm text-gray-600">
                       {workshop.address && (
                         <div className="flex items-center gap-3">
-                          <PiGlobeSimple className="w-5 h-5 text-[#BC4584]" />
+                          <PiGlobeSimple className="w-5 h-5 text-[#e9479a]" />
                           <span>{workshop.address}</span>
                         </div>
                       )}
                       <div className="flex items-center gap-3">
-                        <PiCalendarMinus className="w-5 h-5 text-[#BC4584]" />
+                        <PiCalendarMinus className="w-5 h-5 text-[#e9479a]" />
                         <span>{workshop.date_range}</span>
                       </div>
                       <div className="flex items-center gap-3">
@@ -245,7 +248,7 @@ export default function CoursesSection() {
                     <div className="flex items-center justify-center">
                       <button
                         onClick={() => handleSubscribeClick(workshop)}
-                        className="w-full bg-gradient-to-r from-[#664998] to-[#FF99BA] text-white px-6 py-3 rounded-xl font-medium hover:shadow-lg transform hover:scale-105 transition flex items-center justify-center gap-2"
+                        className="w-full bg-gradient-to-r from-[#e1459b] to-[#5b21b6] text-white px-6 py-3 rounded-xl font-medium gradient-shift flex items-center justify-center gap-2"
                       >
                         التفاصيل والاشتراك
                         <span className="transform rotate-180">←</span>
@@ -279,8 +282,8 @@ export default function CoursesSection() {
                     key={page}
                     onClick={() => handlePageChange(page)}
                     className={`px-4 py-2 rounded-lg font-medium transition ${currentPage === page
-                        ? "bg-gradient-to-r from-[#664998] to-[#FF99BA] text-white shadow-md"
-                        : "border border-gray-300 hover:bg-gray-100"
+                      ? "bg-gradient-to-r from-[#e1459b] to-[#5b21b6] text-white shadow-md shadow-[#e9479a]/20"
+                      : "border border-gray-300 hover:bg-gray-100"
                       }`}
                   >
                     {page}
@@ -300,7 +303,6 @@ export default function CoursesSection() {
         )}
       </div>
 
-      {/* Workshop Subscription Modal */}
       <WorkshopSubscriptionModal
         isOpen={isModalOpen}
         onClose={() => {
@@ -308,6 +310,16 @@ export default function CoursesSection() {
           setSelectedWorkshop(null);
         }}
         workshop={selectedWorkshop}
+        onAuthRequired={() => setShowAuthModal(true)}
+      />
+
+      <AuthModal
+        isOpen={showAuthModal}
+        onClose={() => setShowAuthModal(false)}
+        onLoginSuccess={() => {
+          setShowAuthModal(false);
+          // Optional: Re-trigger subscription if needed, or just let user click again
+        }}
       />
     </div>
   );

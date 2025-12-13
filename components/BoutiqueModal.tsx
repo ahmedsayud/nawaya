@@ -432,7 +432,7 @@ export default function BoutiqueModal({ isOpen, onClose }: BoutiqueModalProps) {
                   onClose();
                 }
               }}
-              className="bg-gray-50 hover:bg-gray-100 rounded-full p-2 transition text-gray-500 hover:text-[#664998]"
+              className="bg-gray-50 hover:bg-gray-100 rounded-full p-2 transition text-gray-500 hover:text-[#e9479a]"
             >
               {activeTab === "cart" ? (
                 <BiArrowBack className="w-6 h-6 rotate-180" />
@@ -441,14 +441,14 @@ export default function BoutiqueModal({ isOpen, onClose }: BoutiqueModalProps) {
               )}
             </button>
 
-            <h3 className="text-2xl font-bold text-[#664998]">
+            <h3 className="text-2xl font-bold text-[#270e4f]">
               بوتيك دكتور هوب
             </h3>
 
             <div className="relative cursor-pointer" onClick={() => setActiveTab("cart")}>
-              <BiCart className={`w-7 h-7 ${activeTab === "cart" ? "text-[#BC4584]" : "text-gray-600"}`} />
+              <BiCart className={`w-7 h-7 ${activeTab === "cart" ? "text-[#e9479a]" : "text-gray-600"}`} />
               {cartCount > 0 && (
-                <span className="absolute -top-2 -right-2 bg-[#BC4584] text-white text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full border-2 border-white">
+                <span className="absolute -top-2 -right-2 bg-[#e9479a] text-white text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full border-2 border-white">
                   {cartCount}
                 </span>
               )}
@@ -472,7 +472,7 @@ export default function BoutiqueModal({ isOpen, onClose }: BoutiqueModalProps) {
                     {products.map((product) => (
                       <div
                         key={product.id}
-                        className="bg-white rounded-3xl shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden border border-gray-100 flex flex-col group"
+                        className="bg-white rounded-3xl shadow-sm hover-lift overflow-hidden border border-gray-100 flex flex-col group"
                       >
                         <div className="h-48 overflow-hidden relative bg-gray-100">
                           <img
@@ -486,14 +486,14 @@ export default function BoutiqueModal({ isOpen, onClose }: BoutiqueModalProps) {
                           <h4 className="font-bold text-gray-800 text-lg mb-2 line-clamp-1">
                             {product.title}
                           </h4>
-                          <p className="text-[#BC4584] font-bold text-xl mb-4">
+                          <p className="text-[#e9479a] font-bold text-xl mb-4">
                             {product.price} جنيه
                           </p>
 
                           <button
                             onClick={() => handleAddToCart(product)}
                             disabled={addingToCartId === product.id}
-                            className="mt-auto w-full bg-gradient-to-r from-[#664998] to-[#BC4584] text-white py-3 rounded-xl font-bold text-sm shadow-md hover:shadow-lg hover:opacity-90 transition flex items-center justify-center gap-2 disabled:opacity-70"
+                            className="mt-auto w-full bg-gradient-to-r from-[#e1459b] to-[#5b21b6] text-white py-3 rounded-xl font-bold text-sm shadow-md hover:shadow-lg gradient-shift flex items-center justify-center gap-2 disabled:opacity-70"
                           >
                             {addingToCartId === product.id ? (
                               <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
@@ -511,7 +511,7 @@ export default function BoutiqueModal({ isOpen, onClose }: BoutiqueModalProps) {
                 )}
                 {isLoading && (
                   <div className="flex justify-center py-8 w-full">
-                    <div className="w-8 h-8 border-4 border-[#664998] border-t-transparent rounded-full animate-spin"></div>
+                    <div className="w-8 h-8 border-4 border-[#270e4f] border-t-transparent rounded-full animate-spin"></div>
                   </div>
                 )}
               </div>
@@ -526,7 +526,7 @@ export default function BoutiqueModal({ isOpen, onClose }: BoutiqueModalProps) {
                         <p className="text-lg">سلة المشتريات فارغة</p>
                         <button
                           onClick={() => setActiveTab("products")}
-                          className="text-[#BC4584] font-bold hover:underline"
+                          className="text-[#e9479a] font-bold hover:underline"
                         >
                           تصفح المنتجات
                         </button>
@@ -543,7 +543,7 @@ export default function BoutiqueModal({ isOpen, onClose }: BoutiqueModalProps) {
                               />
                               <div>
                                 <h4 className="font-bold text-gray-800 mb-1">{item.product.title}</h4>
-                                <p className="text-[#BC4584] font-bold">{item.price} جنيه</p>
+                                <p className="text-[#e9479a] font-bold">{item.price} جنيه</p>
                               </div>
                             </div>
 
@@ -552,14 +552,14 @@ export default function BoutiqueModal({ isOpen, onClose }: BoutiqueModalProps) {
                               <div className="flex items-center gap-3 bg-gray-50 rounded-xl px-2 py-1 border border-gray-200">
                                 <button
                                   onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                                  className="w-7 h-7 flex items-center justify-center bg-white rounded-lg shadow-sm text-gray-600 hover:text-[#BC4584] transition"
+                                  className="w-7 h-7 flex items-center justify-center bg-white rounded-lg shadow-sm text-gray-600 hover:text-[#e9479a] transition"
                                 >
                                   <BiMinus />
                                 </button>
                                 <span className="font-bold w-4 text-center">{item.quantity}</span>
                                 <button
                                   onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                                  className="w-7 h-7 flex items-center justify-center bg-white rounded-lg shadow-sm text-gray-600 hover:text-[#BC4584] transition"
+                                  className="w-7 h-7 flex items-center justify-center bg-white rounded-lg shadow-sm text-gray-600 hover:text-[#e9479a] transition"
                                 >
                                   <BiPlus />
                                 </button>
@@ -578,10 +578,10 @@ export default function BoutiqueModal({ isOpen, onClose }: BoutiqueModalProps) {
                         <div className="mt-8 bg-white p-6 rounded-3xl shadow-sm border border-gray-100">
                           <div className="flex justify-between items-center mb-6">
                             <span className="text-gray-600 font-medium">إجمالي السلة</span>
-                            <span className="text-2xl font-bold text-[#664998]">{cartTotal} جنيه</span>
+                            <span className="text-2xl font-bold text-[#270e4f]">{cartTotal} جنيه</span>
                           </div>
                           <button
-                            className="w-full bg-gradient-to-r from-[#664998] to-[#BC4584] text-white py-4 rounded-xl font-bold text-lg shadow-lg hover:shadow-xl hover:opacity-90 transition disabled:opacity-70 disabled:cursor-not-allowed"
+                            className="w-full bg-gradient-to-r from-[#e1459b] to-[#5b21b6] text-white py-4 rounded-xl font-bold text-lg shadow-lg hover:shadow-xl gradient-shift disabled:opacity-70 disabled:cursor-not-allowed"
                             onClick={handleProceedToCheckout}
                             disabled={isFetchingSummary}
                           >
@@ -607,8 +607,8 @@ export default function BoutiqueModal({ isOpen, onClose }: BoutiqueModalProps) {
               <div className="flex-1 overflow-y-auto p-6 animate-fadeIn">
                 <div className="space-y-6">
                   {/* Invoice Summary */}
-                  <div className="bg-purple-50/50 rounded-2xl p-5 border border-purple-100">
-                    <h4 className="text-[#664998] font-bold mb-4 text-lg">ملخص الطلب</h4>
+                  <div className="bg-purple-50/50 rounded-2xl p-5 border-2 border-[#e9479a]/20">
+                    <h4 className="text-[#270e4f] font-bold mb-4 text-lg">ملخص الطلب</h4>
                     <div className="space-y-3">
                       {orderSummary.products.map(p => (
                         <div key={p.id} className="flex justify-between items-center text-gray-700 text-sm">
@@ -628,7 +628,7 @@ export default function BoutiqueModal({ isOpen, onClose }: BoutiqueModalProps) {
                       <div className="border-t border-purple-200/60 my-2"></div>
                       <div className="flex justify-between items-center">
                         <span className="font-medium text-gray-600">المبلغ الإجمالي للدفع</span>
-                        <span className="font-bold text-xl text-[#664998]">{orderSummary.prices.total_price} جنيه</span>
+                        <span className="font-bold text-xl text-[#270e4f]">{orderSummary.prices.total_price} جنيه</span>
                       </div>
                     </div>
                   </div>
@@ -641,8 +641,8 @@ export default function BoutiqueModal({ isOpen, onClose }: BoutiqueModalProps) {
                         <button
                           onClick={() => setPaymentMethod('card')}
                           className={`flex-1 py-3.5 px-4 rounded-xl border-2 flex items-center justify-center gap-2 transition-all ${paymentMethod === 'card'
-                            ? "border-[#BC4584] bg-[#BC4584] text-white shadow-md"
-                            : "border-gray-200 bg-white text-gray-600 hover:border-purple-200"
+                            ? "border-[#e9479a] bg-[#e9479a] text-white shadow-md shadow-[#e9479a]/20"
+                            : "border-gray-200 bg-white text-gray-600 hover:border-[#e9479a]/50"
                             }`}
                         >
                           <BiCreditCard className="text-xl" />
@@ -654,8 +654,8 @@ export default function BoutiqueModal({ isOpen, onClose }: BoutiqueModalProps) {
                         <button
                           onClick={() => setPaymentMethod('bank')}
                           className={`flex-1 py-3.5 px-4 rounded-xl border-2 flex items-center justify-center gap-2 transition-all ${paymentMethod === 'bank'
-                            ? "border-[#BC4584] bg-[#BC4584] text-white shadow-md"
-                            : "border-gray-200 bg-white text-gray-600 hover:border-purple-200"
+                            ? "border-[#e9479a] bg-[#e9479a] text-white shadow-md shadow-[#e9479a]/20"
+                            : "border-gray-200 bg-white text-gray-600 hover:border-[#e9479a]/50"
                             }`}
                         >
                           <BiBuildingHouse className="text-xl" />
@@ -685,7 +685,7 @@ export default function BoutiqueModal({ isOpen, onClose }: BoutiqueModalProps) {
                           </div>
                         </div>
                         <button
-                          className="w-full mt-6 py-4 rounded-xl bg-gradient-to-r from-[#6B4B9F] to-[#C77FB5] text-white font-bold text-lg hover:opacity-90 transition shadow-lg shadow-purple-200"
+                          className="w-full mt-6 py-4 rounded-xl bg-gradient-to-r from-[#e1459b] to-[#5b21b6] text-white font-bold text-lg gradient-shift shadow-lg shadow-[#e9479a]/20"
                           onClick={() => showToast("سيتم تفعيل الدفع الإلكتروني قريباً", "info")}
                         >
                           دفع {orderSummary.prices.total_price} جنيه
@@ -696,7 +696,7 @@ export default function BoutiqueModal({ isOpen, onClose }: BoutiqueModalProps) {
                     {paymentMethod === 'bank' && orderSummary.payment_options.bank_transfer && orderSummary.bank_account && (
                       <div className="space-y-6">
                         <div>
-                          <h5 className="text-[#664998] font-bold mb-3 text-sm">تفاصيل الحساب البنكي</h5>
+                          <h5 className="text-[#270e4f] font-bold mb-3 text-sm">تفاصيل الحساب البنكي</h5>
                           <div className="bg-gray-50 border border-gray-200 rounded-xl p-5 space-y-3 shadow-inner">
                             <div className="flex justify-between border-b border-gray-200 pb-2">
                               <span className="text-gray-500 text-sm">اسم صاحب الحساب</span>
@@ -717,7 +717,7 @@ export default function BoutiqueModal({ isOpen, onClose }: BoutiqueModalProps) {
                           </div>
                         </div>
                         <button
-                          className="w-full mt-2 py-4 rounded-xl bg-gradient-to-r from-[#6B4B9F] to-[#C77FB5] text-white font-bold text-lg hover:opacity-90 transition shadow-lg shadow-purple-200"
+                          className="w-full mt-2 py-4 rounded-xl bg-gradient-to-r from-[#e1459b] to-[#5b21b6] text-white font-bold text-lg gradient-shift shadow-lg shadow-[#e9479a]/20"
                           onClick={handleFinalSubmit}
                           disabled={isCheckingOut}
                         >

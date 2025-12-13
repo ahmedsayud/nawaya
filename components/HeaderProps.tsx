@@ -18,7 +18,7 @@ import { FiUser } from "react-icons/fi";
 
 import Link from "next/link";
 import Image from "next/image";
-import logo from "@/public/image 22 (1).png";
+import logo from "@/public/nawaya-logo.png";
 
 import AuthModal from "./AuthModal";
 
@@ -194,32 +194,36 @@ export default function HeaderProps({ onProfileClick }: HeaderPropsInterface) {
         {/* Desktop Header */}
         <div className="hidden md:flex container mx-auto px-4 sm:px-6 lg:px-10 py-3 items-center justify-between font-semibold">
           <Link href="/" className="flex items-center">
-            {settings?.logo && !settingsLoading ? (
-              <Image
-                src={settings.logo}
-                alt="شعار نوايا"
-                width={48}
-                height={48}
-                className="w-12 h-12 object-contain"
-                priority
-              />
-            ) : (
-              <Image
-                src={logo}
-                alt="شعار نوايا"
-                width={48}
-                height={48}
-                className="w-12 h-12"
-                priority
-              />
-            )}
+            <div className="p-1 rounded-full bg-gradient-to-r from-[#e1459b] to-[#5b21b6]">
+              <div className="bg-white rounded-full p-1 w-14 h-14 flex items-center justify-center overflow-hidden">
+                {settings?.logo && !settingsLoading ? (
+                  <Image
+                    src={settings.logo}
+                    alt="شعار نوايا"
+                    width={100}
+                    height={100}
+                    className="w-full h-full object-contain"
+                    priority
+                  />
+                ) : (
+                  <Image
+                    src={logo}
+                    alt="شعار نوايا"
+                    width={100}
+                    height={100}
+                    className="w-full h-full object-contain"
+                    priority
+                  />
+                )}
+              </div>
+            </div>
           </Link>
 
           {/* دكتور هوب منيو */}
           <div className="relative">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="flex items-center gap-2 text-[#664998] hover:text-[#BC4584] transition-colors duration-200 text-lg"
+              className="flex items-center gap-2 text-[#270e4f] hover:text-[#e9479a] transition-colors duration-200 text-xl font-bold"
             >
               دكتور هوب
               <FiChevronDown
@@ -230,10 +234,10 @@ export default function HeaderProps({ onProfileClick }: HeaderPropsInterface) {
 
             {isMenuOpen && (
               <div
-                className="absolute left-1/2 -translate-x-1/2 mt-4 w-150 bg-white rounded-3xl shadow-2xl border border-purple-100 p-6 z-50"
+                className="absolute left-1/2 -translate-x-1/2 mt-4 w-150 bg-white rounded-3xl shadow-2xl border-2 border-[#e9479a]/20 p-6 z-50"
                 dir="rtl"
               >
-                <h3 className="text-center text-[#664998] font-bold text-xl mb-5">
+                <h3 className="text-center text-[#270e4f] font-bold text-xl mb-5">
                   دكتور هوب
                 </h3>
                 <div className="grid grid-cols-2 gap-4">
@@ -245,13 +249,13 @@ export default function HeaderProps({ onProfileClick }: HeaderPropsInterface) {
                             item.onClick?.();
                             setIsMenuOpen(false);
                           }}
-                          className="w-full flex items-center gap-3 p-4 rounded-2xl hover:bg-purple-50 transition-colors group text-right"
+                          className="w-full flex items-center gap-3 p-4 rounded-2xl hover-lift group text-right border border-transparent hover:border-[#e9479a]/30"
                         >
-                          <div className="p-2 rounded-xl text-[#BC4584] group-hover:scale-110 transition-transform">
-                            <item.icon className="text-xl" />
+                          <div className="p-2 rounded-xl text-[#e9479a] group-hover:scale-110 transition-transform">
+                            <item.icon className="text-3xl" />
                           </div>
                           <div>
-                            <p className="font-medium text-base">
+                            <p className="font-bold text-lg text-[#270e4f]">
                               {item.label}
                             </p>
                             <p className="font-normal text-sm text-gray-600">
@@ -263,13 +267,13 @@ export default function HeaderProps({ onProfileClick }: HeaderPropsInterface) {
                         <Link
                           href={item.href!}
                           onClick={() => setIsMenuOpen(false)}
-                          className="flex items-center gap-3 p-4 rounded-2xl hover:bg-purple-50 transition-colors group"
+                          className="flex items-center gap-3 p-4 rounded-2xl hover-lift group border border-transparent hover:border-[#e9479a]/30"
                         >
-                          <div className="p-2 rounded-xl text-[#BC4584] group-hover:scale-110 transition-transform">
-                            <item.icon className="text-xl" />
+                          <div className="p-2 rounded-xl text-[#e9479a] group-hover:scale-110 transition-transform">
+                            <item.icon className="text-3xl" />
                           </div>
                           <div>
-                            <p className="font-medium text-base">
+                            <p className="font-bold text-lg text-[#270e4f]">
                               {item.label}
                             </p>
                             <p className="font-normal text-sm text-gray-600">
@@ -290,14 +294,14 @@ export default function HeaderProps({ onProfileClick }: HeaderPropsInterface) {
 
             <button
               onClick={handleProfileClick}
-              className="p-2 rounded-xl text-[#664998] hover:bg-purple-50 transition"
+              className="p-2 rounded-xl text-[#270e4f] hover:bg-purple-50 transition border border-[#270e4f]/20 hover:border-[#270e4f]"
               title="الملف الشخصي"
             >
               <FiUser className="text-2xl" />
             </button>
             <button
               onClick={handleAuthButtonClick}
-              className="px-6 py-2 rounded-xl text-white text-base bg-gradient-to-r from-[#6041FF] to-[#FF99BA] hover:opacity-90 transition flex items-center gap-2"
+              className="px-6 py-2 rounded-xl text-white text-base bg-gradient-to-r from-[#e1459b] to-[#5b21b6] gradient-shift flex items-center gap-2 shadow-lg shadow-[#e9479a]/20"
             >
               <CgPushLeft className="text-3xl" />
               {isLoggedIn ? "تسجيل خروج" : "تسجيل الدخول / إنشاء الحساب"}
@@ -331,7 +335,7 @@ export default function HeaderProps({ onProfileClick }: HeaderPropsInterface) {
           <div className="flex items-center gap-4">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="flex items-center gap-1 text-[#664998] text-sm"
+              className="flex items-center gap-1 text-[#270e4f] text-sm"
             >
               دكتور هوب
               <FiChevronDown
@@ -342,14 +346,14 @@ export default function HeaderProps({ onProfileClick }: HeaderPropsInterface) {
 
             <button
               onClick={handleProfileClick}
-              className="p-2 text-[#664998]"
+              className="p-2 text-[#270e4f]"
               title="الملف الشخصي"
             >
               <FiUser className="text-xl" />
             </button>
             <button
               onClick={handleAuthButtonClick}
-              className="p-2 text-[#664998]"
+              className="p-2 text-[#270e4f]"
               title={isLoggedIn ? "تسجيل خروج" : "تسجيل الدخول"}
             >
               <CgPushLeft className="text-2xl" />
@@ -361,7 +365,7 @@ export default function HeaderProps({ onProfileClick }: HeaderPropsInterface) {
         {isMenuOpen && (
           <div className="md:hidden container mx-auto px-4 pb-4">
             <div className="bg-white rounded-2xl shadow-xl border border-purple-100 p-5">
-              <h3 className="text-center text-[#664998] font-bold text-lg mb-4">
+              <h3 className="text-center text-[#270e4f] font-bold text-lg mb-4">
                 دكتور هوب
               </h3>
               <div className="grid grid-cols-2 gap-3 text-sm">
@@ -375,7 +379,7 @@ export default function HeaderProps({ onProfileClick }: HeaderPropsInterface) {
                         }}
                         className="w-full flex items-center gap-2 p-3 rounded-xl hover:bg-purple-50 text-right"
                       >
-                        <item.icon className="text-xl text-[#BC4584]" />
+                        <item.icon className="text-xl text-[#e9479a]" />
                         <div>
                           <p className="font-medium text-base">{item.label}</p>
                           <p className="font-normal text-sm text-gray-600">
@@ -389,7 +393,7 @@ export default function HeaderProps({ onProfileClick }: HeaderPropsInterface) {
                         onClick={() => setIsMenuOpen(false)}
                         className="flex items-center gap-2 p-3 rounded-xl hover:bg-purple-50"
                       >
-                        <item.icon className="text-xl text-[#BC4584]" />
+                        <item.icon className="text-xl text-[#e9479a]" />
                         <div>
                           <p className="font-medium text-base">{item.label}</p>
                           <p className="font-normal text-sm text-gray-600">
