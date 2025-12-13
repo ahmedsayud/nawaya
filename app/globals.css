@@ -13,42 +13,49 @@
   font-weight: 200;
   font-display: swap;
 }
+
 @font-face {
   font-family: 'Cairo';
   src: url('/fonts/Cairo-Regular.ttf') format('woff2');
   font-weight: 300;
   font-display: swap;
 }
+
 @font-face {
   font-family: 'Cairo';
   src: url('/fonts/Cairo-Medium.ttf') format('woff2');
   font-weight: 400;
   font-display: swap;
 }
+
 @font-face {
   font-family: 'Cairo';
   src: url('/fonts/Cairo-Light.ttf') format('woff2');
   font-weight: 500;
   font-display: swap;
 }
+
 @font-face {
   font-family: 'Cairo';
   src: url('/fonts/Cairo-ExtraLight.ttf') format('woff2');
   font-weight: 600;
   font-display: swap;
 }
+
 @font-face {
   font-family: 'Cairo';
   src: url('/fonts/Cairo-ExtraBold.ttf') format('woff2');
   font-weight: 700;
   font-display: swap;
 }
+
 @font-face {
   font-family: 'Cairo';
   src: url('/fonts/Cairo-Bold.ttf') format('woff2');
   font-weight: 800;
   font-display: swap;
 }
+
 @font-face {
   font-family: 'Cairo';
   src: url('/fonts/Cairo-Black.ttf') format('woff2');
@@ -57,7 +64,9 @@
 }
 
 /* تطبيق الخط على كل المشروع */
-html, body, * {
+html,
+body,
+* {
   font-family: 'Cairo', sans-serif !important;
 }
 
@@ -84,4 +93,52 @@ html, body, * {
 .custom-scrollbar {
   scrollbar-width: thin;
   scrollbar-color: #c3b5fd #f1f1f1;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-slideDown {
+  animation: slideDown 0.3s ease-out forwards;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-slideUp {
+  animation: slideUp 0.3s ease-out forwards;
+}
+
+@keyframes fadeOutUp {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  to {
+    transform: translateY(-120vh);
+    opacity: 0;
+  }
+}
+
+.animate-fadeOutUp {
+  animation: fadeOutUp 1.5s ease-in forwards;
 }

@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { BiX, BiCart, BiMinus, BiPlus, BiTrash, BiShoppingBag, BiArrowBack, BiCreditCard, BiBuildingHouse } from "react-icons/bi";
 import { RiVisaLine, RiMastercardFill } from "react-icons/ri";
 import { API_BASE_URL } from "@/lib/config";
+import { useToast } from "@/context/ToastContext";
 
 interface Product {
   id: number;
@@ -78,13 +79,7 @@ export default function BoutiqueModal({ isOpen, onClose }: BoutiqueModalProps) {
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
 
-  // Notification State
-  const [notification, setNotification] = useState<{ message: string; type: "success" | "error" } | null>(null);
-
-  const showNotification = (message: string, type: "success" | "error") => {
-    setNotification({ message, type });
-    setTimeout(() => setNotification(null), 3000); // Hide after 3 seconds
-  };
+  const { showToast } = useToast();
 
   // Checkout State
   const [checkoutStep, setCheckoutStep] = useState<"cart" | "checkout">("cart");
@@ -175,7 +170,11 @@ export default function BoutiqueModal({ isOpen, onClose }: BoutiqueModalProps) {
     try {
       const token = localStorage.getItem("authToken");
       if (!token) {
-        alert("يجب تسجيل الدخول أولاً لإضافة منتجات للسلة");
+        if (!token) {
+          showToast("يجب تسجيل الدخول أولاً لإضافة منتجات للسلة", "error");
+          setAddingToCartId(null);
+          return;
+        }
         setAddingToCartId(null);
         return;
       }
@@ -204,12 +203,12 @@ export default function BoutiqueModal({ isOpen, onClose }: BoutiqueModalProps) {
           await fetchCart();
         }
       } else {
-        showNotification(data.msg || "فشل إضافة المنتج للسلة", "error");
+        showToast(data.msg || "فشل إضافة المنتج للسلة", "error");
       }
 
     } catch (err) {
       console.error("Error adding to cart:", err);
-      showNotification("حدث خطأ أثناء الإضافة للسلة", "error");
+      showToast("حدث خطأ أثناء الإضافة للسلة", "error");
     } finally {
       setAddingToCartId(null);
     }
@@ -240,13 +239,13 @@ export default function BoutiqueModal({ isOpen, onClose }: BoutiqueModalProps) {
 
       if (!response.ok || data.key !== "success") {
         setCart(previousCart);
-        showNotification(data.msg || "فشل حذف المنتج", "error");
+        showToast(data.msg || "فشل حذف المنتج", "error");
       }
       // If success, we don't need to do anything as the UI is already updated
     } catch (err) {
       console.error("Error deleting item:", err);
       setCart(previousCart);
-      showNotification("حدث خطأ أثناء الحذف", "error");
+      showToast("حدث خطأ أثناء الحذف", "error");
     }
   };
 
@@ -325,11 +324,11 @@ export default function BoutiqueModal({ isOpen, onClose }: BoutiqueModalProps) {
           setPaymentMethod("bank");
         }
       } else {
-        showNotification(data.msg || "فشل تحميل ملخص الطلب", "error");
+        showToast(data.msg || "فشل تحميل ملخص الطلب", "error");
       }
     } catch (err) {
       console.error("Error fetching summary:", err);
-      showNotification("حدث خطأ أثناء تحميل ملخص الطلب", "error");
+      showToast("حدث خطأ أثناء تحميل ملخص الطلب", "error");
     } finally {
       setIsFetchingSummary(false);
     }
@@ -347,7 +346,7 @@ export default function BoutiqueModal({ isOpen, onClose }: BoutiqueModalProps) {
     try {
       const token = localStorage.getItem("authToken");
       if (!token) {
-        showNotification("يجب تسجيل الدخول أولاً", "error");
+        showToast("يجب تسجيل الدخول أولاً", "error");
         setIsCheckingOut(false);
         return;
       }
@@ -378,21 +377,21 @@ export default function BoutiqueModal({ isOpen, onClose }: BoutiqueModalProps) {
 
         // Case 2: Bank Transfer - Show Message
         if (data.data?.order_id) {
-          alert(data.data.message || "تم استلام طلبك بنجاح، سيتم التواصل معك قريباً");
+          showToast(data.data.message || "تم استلام طلبك بنجاح، سيتم التواصل معك قريباً", "success");
           onClose();
         } else {
           // Fallback
-          alert(data.msg || "تم إنشاء الطلب بنجاح");
+          showToast(data.msg || "تم إنشاء الطلب بنجاح", "success");
           onClose();
         }
 
       } else {
         // Failure cases (Empty cart, Payment unavailable, etc)
-        alert(data.msg || "فشل إنشاء الطلب");
+        showToast(data.msg || "فشل إنشاء الطلب", "error");
       }
     } catch (err) {
       console.error("Error creating order:", err);
-      alert("حدث خطأ أثناء إنشاء الطلب");
+      showToast("حدث خطأ أثناء إنشاء الطلب", "error");
     } finally {
       setIsCheckingOut(false);
     }
@@ -687,7 +686,7 @@ export default function BoutiqueModal({ isOpen, onClose }: BoutiqueModalProps) {
                         </div>
                         <button
                           className="w-full mt-6 py-4 rounded-xl bg-gradient-to-r from-[#6B4B9F] to-[#C77FB5] text-white font-bold text-lg hover:opacity-90 transition shadow-lg shadow-purple-200"
-                          onClick={() => alert("سيتم تفعيل الدفع الإلكتروني قريباً")}
+                          onClick={() => showToast("سيتم تفعيل الدفع الإلكتروني قريباً", "info")}
                         >
                           دفع {orderSummary.prices.total_price} جنيه
                         </button>

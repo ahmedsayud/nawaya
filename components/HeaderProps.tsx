@@ -21,7 +21,7 @@ import Image from "next/image";
 import logo from "@/public/image 22 (1).png";
 
 import AuthModal from "./AuthModal";
-import NotificationDropdown from "./NotificationDropdown";
+
 import VideoModal from "./VideoModal";
 import InstagramModal from "./InstagramModal";
 import BoutiqueModal from "./BoutiqueModal";
@@ -39,7 +39,7 @@ export default function HeaderProps({ onProfileClick }: HeaderPropsInterface) {
   const router = useRouter();
   const { settings, isLoading: settingsLoading } = useSettings();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isNotificationOpen, setIsNotificationOpen] = useState(false);
+
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [authRedirectUrl, setAuthRedirectUrl] = useState<string | undefined>(undefined);
   const [showVideoModal, setShowVideoModal] = useState(false);
@@ -279,10 +279,7 @@ export default function HeaderProps({ onProfileClick }: HeaderPropsInterface) {
 
           {/* الأزرار اليمين */}
           <div className="flex items-center gap-4">
-            <NotificationDropdown
-              isOpen={isNotificationOpen}
-              onToggle={() => setIsNotificationOpen(!isNotificationOpen)}
-            />
+
             <button
               onClick={handleProfileClick}
               className="p-2 rounded-xl text-[#664998] hover:bg-purple-50 transition"
@@ -334,10 +331,7 @@ export default function HeaderProps({ onProfileClick }: HeaderPropsInterface) {
                   }`}
               />
             </button>
-            <NotificationDropdown
-              isOpen={isNotificationOpen}
-              onToggle={() => setIsNotificationOpen(!isNotificationOpen)}
-            />
+
             <button
               onClick={handleProfileClick}
               className="p-2 text-[#664998]"
