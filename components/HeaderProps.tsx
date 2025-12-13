@@ -114,7 +114,15 @@ export default function HeaderProps({ onProfileClick }: HeaderPropsInterface) {
     }
   };
 
-  const dropdownItems = [
+  interface DropdownItem {
+    icon: React.ElementType;
+    label: string;
+    p: string;
+    onClick?: () => void;
+    href?: string;
+  }
+
+  const dropdownItems: DropdownItem[] = [
     {
       icon: PiGraduationCapLight,
       label: "من هي دكتور هوب",
@@ -234,7 +242,7 @@ export default function HeaderProps({ onProfileClick }: HeaderPropsInterface) {
                       {item.onClick ? (
                         <button
                           onClick={() => {
-                            item.onClick();
+                            item.onClick?.();
                             setIsMenuOpen(false);
                           }}
                           className="w-full flex items-center gap-3 p-4 rounded-2xl hover:bg-purple-50 transition-colors group text-right"
@@ -362,7 +370,7 @@ export default function HeaderProps({ onProfileClick }: HeaderPropsInterface) {
                     {item.onClick ? (
                       <button
                         onClick={() => {
-                          item.onClick();
+                          item.onClick?.();
                           setIsMenuOpen(false);
                         }}
                         className="w-full flex items-center gap-2 p-3 rounded-xl hover:bg-purple-50 text-right"
