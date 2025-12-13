@@ -743,6 +743,7 @@ export default function ProfileModal({ isOpen, onClose }: ProfileModalProps) {
         isOpen={isSubscriptionModalOpen}
         onClose={() => setIsSubscriptionModalOpen(false)}
         workshop={selectedWorkshop}
+        onAuthRequired={() => window.location.reload()}
       />
 
       {/* Success Popup */}
