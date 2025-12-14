@@ -31,15 +31,24 @@ export default function VideoModal({ isOpen, onClose }: VideoModalProps) {
     }
   }, [isOpen]);
 
+  const getHeaders = () => {
+    const token = localStorage.getItem("authToken");
+    const headers: any = {
+      "Accept": "application/json",
+      "Content-Type": "application/json",
+    };
+    if (token) {
+      headers["Authorization"] = `Bearer ${token}`;
+    }
+    return headers;
+  };
+
   const fetchVideos = async () => {
     setIsLoading(true);
     setError("");
     try {
       const response = await fetch(`${API_BASE_URL}/drhope/videos`, {
-        headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json",
-        },
+        headers: getHeaders(),
       });
       const data = await response.json();
 
@@ -49,7 +58,8 @@ export default function VideoModal({ isOpen, onClose }: VideoModalProps) {
           setCurrentVideo(data.data[0]);
         }
       } else {
-        setError("فشل تحميل الفيديوهات");
+        // Show server message if available, otherwise generic error
+        setError(data.msg || "فشل تحميل الفيديوهات");
       }
     } catch (err) {
       console.error("Error fetching videos:", err);
