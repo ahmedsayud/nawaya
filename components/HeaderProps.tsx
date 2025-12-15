@@ -190,7 +190,7 @@ export default function HeaderProps({ onProfileClick }: HeaderPropsInterface) {
 
   return (
     <>
-      <header className="w-full bg-white shadow-sm sticky top-0 z-40">
+      <header className="w-full bg-gradient-to-r from-[#270e4f] to-[#5b21b6] shadow-sm sticky top-0 z-40">
         {/* Desktop Header */}
         <div className="hidden md:flex container mx-auto px-4 sm:px-6 lg:px-10 py-3 items-center justify-between font-semibold">
           <Link href="/" className="flex items-center">
@@ -202,7 +202,7 @@ export default function HeaderProps({ onProfileClick }: HeaderPropsInterface) {
                     alt="شعار نوايا"
                     width={100}
                     height={100}
-                    className="w-full h-full object-contain"
+                    className="w-full h-full object-contain transition-transform duration-500 hover:-rotate-45"
                     priority
                   />
                 ) : (
@@ -211,7 +211,7 @@ export default function HeaderProps({ onProfileClick }: HeaderPropsInterface) {
                     alt="شعار نوايا"
                     width={100}
                     height={100}
-                    className="w-full h-full object-contain"
+                    className="w-full h-full object-contain transition-transform duration-500 hover:-rotate-45"
                     priority
                   />
                 )}
@@ -220,10 +220,14 @@ export default function HeaderProps({ onProfileClick }: HeaderPropsInterface) {
           </Link>
 
           {/* دكتور هوب منيو */}
-          <div className="relative">
+          <div
+            className="relative"
+            onMouseEnter={() => setIsMenuOpen(true)}
+            onMouseLeave={() => setIsMenuOpen(false)}
+          >
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="flex items-center gap-2 text-[#270e4f] hover:text-[#e9479a] transition-colors duration-200 text-xl font-bold"
+              className="flex items-center gap-2 text-white hover:text-purple-200 transition-colors duration-200 text-xl font-bold py-2" // Added py-2 for better hover area
             >
               دكتور هوب
               <FiChevronDown
@@ -233,57 +237,59 @@ export default function HeaderProps({ onProfileClick }: HeaderPropsInterface) {
             </button>
 
             {isMenuOpen && (
-              <div
-                className="absolute left-1/2 -translate-x-1/2 mt-4 w-150 bg-white rounded-3xl shadow-2xl border-2 border-[#e9479a]/20 p-6 z-50"
-                dir="rtl"
-              >
-                <h3 className="text-center text-[#270e4f] font-bold text-xl mb-5">
-                  دكتور هوب
-                </h3>
-                <div className="grid grid-cols-2 gap-4">
-                  {dropdownItems.map((item, idx) => (
-                    <div key={idx}>
-                      {item.onClick ? (
-                        <button
-                          onClick={() => {
-                            item.onClick?.();
-                            setIsMenuOpen(false);
-                          }}
-                          className="w-full flex items-center gap-3 p-4 rounded-2xl hover-lift group text-right border border-transparent hover:border-[#e9479a]/30"
-                        >
-                          <div className="p-2 rounded-xl text-[#e9479a] group-hover:scale-110 transition-transform">
-                            <item.icon className="text-3xl" />
-                          </div>
-                          <div>
-                            <p className="font-bold text-lg text-[#270e4f]">
-                              {item.label}
-                            </p>
-                            <p className="font-normal text-sm text-gray-600">
-                              {item.p}
-                            </p>
-                          </div>
-                        </button>
-                      ) : (
-                        <Link
-                          href={item.href!}
-                          onClick={() => setIsMenuOpen(false)}
-                          className="flex items-center gap-3 p-4 rounded-2xl hover-lift group border border-transparent hover:border-[#e9479a]/30"
-                        >
-                          <div className="p-2 rounded-xl text-[#e9479a] group-hover:scale-110 transition-transform">
-                            <item.icon className="text-3xl" />
-                          </div>
-                          <div>
-                            <p className="font-bold text-lg text-[#270e4f]">
-                              {item.label}
-                            </p>
-                            <p className="font-normal text-sm text-gray-600">
-                              {item.p}
-                            </p>
-                          </div>
-                        </Link>
-                      )}
-                    </div>
-                  ))}
+              <div className="absolute left-1/2 -translate-x-1/2 top-full pt-4 w-150 z-50">
+                <div
+                  className="bg-[#270e4f] rounded-3xl shadow-2xl border border-white/10 p-6"
+                  dir="rtl"
+                >
+                  <h3 className="text-center text-white font-bold text-xl mb-5">
+                    دكتور هوب
+                  </h3>
+                  <div className="grid grid-cols-2 gap-4">
+                    {dropdownItems.map((item, idx) => (
+                      <div key={idx}>
+                        {item.onClick ? (
+                          <button
+                            onClick={() => {
+                              item.onClick?.();
+                              setIsMenuOpen(false);
+                            }}
+                            className="w-full flex items-center gap-3 p-4 rounded-2xl hover-lift group text-right border border-transparent hover:bg-white/5 transition-all duration-300 hover:scale-[1.02]"
+                          >
+                            <div className="p-2 rounded-xl text-[#e9479a] group-hover:scale-110 transition-transform bg-white/5">
+                              <item.icon className="text-3xl" />
+                            </div>
+                            <div>
+                              <p className="font-bold text-lg text-white">
+                                {item.label}
+                              </p>
+                              <p className="font-normal text-sm text-gray-300">
+                                {item.p}
+                              </p>
+                            </div>
+                          </button>
+                        ) : (
+                          <Link
+                            href={item.href!}
+                            onClick={() => setIsMenuOpen(false)}
+                            className="flex items-center gap-3 p-4 rounded-2xl hover-lift group border border-transparent hover:bg-white/5 transition-all duration-300 hover:scale-[1.02]"
+                          >
+                            <div className="p-2 rounded-xl text-[#e9479a] group-hover:scale-110 transition-transform bg-white/5">
+                              <item.icon className="text-3xl" />
+                            </div>
+                            <div>
+                              <p className="font-bold text-lg text-white">
+                                {item.label}
+                              </p>
+                              <p className="font-normal text-sm text-gray-300">
+                                {item.p}
+                              </p>
+                            </div>
+                          </Link>
+                        )}
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             )}
@@ -294,7 +300,7 @@ export default function HeaderProps({ onProfileClick }: HeaderPropsInterface) {
 
             <button
               onClick={handleProfileClick}
-              className="p-2 rounded-xl text-[#270e4f] hover:bg-purple-50 transition border border-[#270e4f]/20 hover:border-[#270e4f]"
+              className="p-2 rounded-xl text-white hover:bg-white/10 transition-all duration-500 hover:-rotate-45"
               title="الملف الشخصي"
             >
               <FiUser className="text-2xl" />
@@ -335,7 +341,7 @@ export default function HeaderProps({ onProfileClick }: HeaderPropsInterface) {
           <div className="flex items-center gap-4">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="flex items-center gap-1 text-[#270e4f] text-sm"
+              className="flex items-center gap-1 text-white text-sm"
             >
               دكتور هوب
               <FiChevronDown
@@ -346,14 +352,14 @@ export default function HeaderProps({ onProfileClick }: HeaderPropsInterface) {
 
             <button
               onClick={handleProfileClick}
-              className="p-2 text-[#270e4f]"
+              className="p-2 text-white transition-transform duration-500 hover:-rotate-45"
               title="الملف الشخصي"
             >
               <FiUser className="text-xl" />
             </button>
             <button
               onClick={handleAuthButtonClick}
-              className="p-2 text-[#270e4f]"
+              className="p-2 text-white"
               title={isLoggedIn ? "تسجيل خروج" : "تسجيل الدخول"}
             >
               <CgPushLeft className="text-2xl" />
@@ -408,15 +414,16 @@ export default function HeaderProps({ onProfileClick }: HeaderPropsInterface) {
             </div>
           </div>
         )}
-      </header>
+      </header >
 
       {/* المودالات */}
-      <AuthModal
+      < AuthModal
         isOpen={showAuthModal}
         onClose={() => {
           setShowAuthModal(false);
           setAuthRedirectUrl(undefined);
-        }}
+        }
+        }
         redirectUrl={authRedirectUrl}
         onLoginSuccess={() => {
           setIsLoggedIn(true);
@@ -426,31 +433,31 @@ export default function HeaderProps({ onProfileClick }: HeaderPropsInterface) {
           }
         }}
       />
-      <VideoModal
+      < VideoModal
         isOpen={showVideoModal}
         onClose={() => setShowVideoModal(false)}
       />
-      <InstagramModal
+      < InstagramModal
         isOpen={showInstagramModal}
         onClose={() => setShowInstagramModal(false)}
       />
-      <BoutiqueModal
+      < BoutiqueModal
         isOpen={showBoutiqueModal}
         onClose={() => setShowBoutiqueModal(false)}
       />
-      <PartnersModal
+      < PartnersModal
         isOpen={partnersModal}
         onClose={() => setPartnersModal(false)}
       />
-      <GalleryModal
+      < GalleryModal
         isOpen={showGalleryModal}
         onClose={() => setShowGalleryModal(false)}
       />
-      <ConsultationModal
+      < ConsultationModal
         isOpen={showConsultationModal}
         onClose={() => setShowConsultationModal(false)}
       />
-      <OpinionsModal
+      < OpinionsModal
         isOpen={showOpinionsModal}
         onClose={() => setShowOpinionsModal(false)}
       />

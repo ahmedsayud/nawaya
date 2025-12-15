@@ -104,19 +104,19 @@ export default function GalleryModal({ isOpen, onClose }: GalleryModalProps) {
       {/* المودال */}
       <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4">
         <div
-          className="bg-white rounded-3xl shadow-2xl w-full max-w-5xl max-h-[90vh] overflow-hidden flex flex-col "
+          className="bg-gradient-to-br from-[#270e4f] to-[#5b21b6] border border-white/10 rounded-3xl shadow-2xl w-full max-w-5xl max-h-[90vh] overflow-hidden flex flex-col "
           onClick={(e) => e.stopPropagation()}
         >
           {/* الهيدر */}
           <div className="relative px-8 pt-6 pb-4 flex items-center justify-between ">
-            <h3 className="text-2xl sm:text-3xl  text-[#270e4f]">
+            <h3 className="text-2xl sm:text-3xl text-white">
               ألبوم الصور
             </h3>
             <button
               onClick={onClose}
-              className="bg-white/80 hover:bg-gray-100 rounded-full p-2 shadow-lg transition"
+              className="bg-white/10 hover:bg-white/20 rounded-full p-2 shadow-lg transition text-white"
             >
-              <BiX className="w-7 h-7 text-gray-700" />
+              <BiX className="w-7 h-7" />
             </button>
           </div>
           <div className="px-8">
@@ -126,7 +126,7 @@ export default function GalleryModal({ isOpen, onClose }: GalleryModalProps) {
           <div className="flex-1 overflow-y-auto px-8 pb-6">
             {isLoading ? (
               <div className="flex justify-center items-center h-64">
-                <div className="w-12 h-12 border-4 border-[#270e4f] border-t-transparent rounded-full animate-spin"></div>
+                <div className="w-12 h-12 border-4 border-[#e9479a] border-t-transparent rounded-full animate-spin"></div>
               </div>
             ) : error ? (
               <div className="text-center py-20 text-red-500">{error}</div>
@@ -148,7 +148,7 @@ export default function GalleryModal({ isOpen, onClose }: GalleryModalProps) {
                       </div>
                     ))
                   ) : (
-                    <div className="col-span-full text-center py-20 text-gray-500">
+                    <div className="col-span-full text-center py-20 text-white/50">
                       لا توجد صور متاحة حالياً
                     </div>
                   )}
@@ -160,7 +160,7 @@ export default function GalleryModal({ isOpen, onClose }: GalleryModalProps) {
                     <button
                       onClick={loadMore}
                       disabled={isLoadingMore}
-                      className="px-8 py-2 rounded-full border-2 border-[#270e4f] text-[#270e4f] font-bold hover:bg-[#270e4f] hover:text-white transition-all disabled:opacity-50 flex items-center gap-2"
+                      className="px-8 py-2 rounded-full border-2 border-white text-white font-bold hover:bg-white hover:text-[#270e4f] transition-all disabled:opacity-50 flex items-center gap-2"
                     >
                       {isLoadingMore ? (
                         <>

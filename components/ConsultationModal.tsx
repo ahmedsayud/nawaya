@@ -77,7 +77,7 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
       {/* المودال */}
       <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4">
         <div
-          className="bg-white rounded-3xl shadow-2xl w-full max-w-2xl overflow-hidden flex flex-col"
+          className="bg-gradient-to-br from-[#270e4f] to-[#5b21b6] border border-white/10 rounded-3xl shadow-2xl w-full max-w-2xl overflow-hidden flex flex-col"
           onClick={(e) => e.stopPropagation()}
           dir="rtl"
         >
@@ -85,11 +85,11 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
           <div className="relative px-6 pt-5 pb-3">
             <button
               onClick={handleClose}
-              className="absolute left-6 top-5 bg-white/90 hover:bg-gray-100 rounded-full p-1.5 shadow-md transition"
+              className="absolute left-6 top-5 bg-white/10 hover:bg-white/20 rounded-full p-1.5 shadow-md transition text-white"
             >
-              <BiX className="w-6 h-6 text-gray-600" />
+              <BiX className="w-6 h-6" />
             </button>
-            <h3 className="text-2xl text-[#270e4f] mb-2 font-bold text-center">
+            <h3 className="text-2xl text-white mb-2 font-bold text-center">
               طلب استشارة خاصة
             </h3>
             <div className="w-full h-[1px] bg-[#e9479a] mt-5" />
@@ -109,8 +109,8 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
             ) : (
               <>
                 {/* البوكس الوردي */}
-                <div className="mb-6 rounded-xl border border-pink-200 bg-[#FFF5F9] p-5 text-center">
-                  <p className="text-[#270e4f] text-base leading-relaxed font-medium">
+                <div className="mb-6 rounded-xl border border-[#e9479a] bg-[#e9479a]/10 p-5 text-center">
+                  <p className="text-white text-base leading-relaxed font-medium">
                     سيتم مراجعة طلبك والتواصل معك عن طريق إدارة أمر السحر لتأكيد الوقت المناسب
                   </p>
                 </div>
@@ -124,13 +124,13 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
                 {/* الفورم */}
                 <div className="space-y-4">
                   <div>
-                    <label className="block text-gray-500 text-sm mb-2 text-right">مستوى الاستشاره</label>
+                    <label className="block text-gray-300 text-sm mb-2 text-right">مستوى الاستشاره</label>
                     <textarea
                       value={message}
                       onChange={(e) => setMessage(e.target.value)}
                       placeholder="اكتبي هنا موضوع الاستشارة بالتفصيل لكي نرتب لها الوقت المناسب..."
                       rows={5}
-                      className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#e9479a] focus:ring-1 focus:ring-[#e9479a] focus:outline-none resize-none transition text-gray-700 placeholder-gray-400"
+                      className="w-full px-4 py-3 rounded-xl border border-[#5b21b6] bg-[#1a0536] text-white focus:border-[#e9479a] focus:ring-1 focus:ring-[#e9479a] focus:outline-none resize-none transition placeholder-gray-400"
                     />
                   </div>
 
@@ -139,7 +139,7 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
                     <button
                       onClick={handleClose}
                       disabled={isLoading}
-                      className="px-8 py-2.5 border border-gray-300 text-gray-600 font-medium rounded-xl hover:bg-gray-50 transition disabled:opacity-50"
+                      className="px-8 py-2.5 border border-gray-500 text-gray-300 font-medium rounded-xl hover:bg-white/5 transition disabled:opacity-50"
                     >
                       إلغاء
                     </button>

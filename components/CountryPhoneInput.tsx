@@ -22,6 +22,8 @@ interface CountryPhoneInputProps {
     placeholder?: string;
     label?: string;
     required?: boolean;
+    className?: string;
+    dropdownClassName?: string;
 }
 
 export default function CountryPhoneInput({
@@ -32,6 +34,8 @@ export default function CountryPhoneInput({
     placeholder = "رقم الهاتف",
     label = "رقم الهاتف",
     required = false,
+    className,
+    dropdownClassName,
 }: CountryPhoneInputProps) {
     const [countries, setCountries] = useState<Country[]>([]);
     const [isCountryOpen, setIsCountryOpen] = useState(false);
@@ -83,12 +87,12 @@ export default function CountryPhoneInput({
 
     return (
         <div className="space-y-2">
-            <p className="font-medium text-gray-600">{label}</p>
+            <p className={`font-medium ${className?.includes('text-white') ? 'text-white' : 'text-gray-600'} text-right`}>{label}</p>
             <div className="relative">
                 <button
                     type="button"
                     onClick={() => setIsCountryOpen(!isCountryOpen)}
-                    className="w-full p-3 rounded-xl border-2 border-[#e9479a]/20 focus:border-[#270e4f] focus:outline-none text-right flex items-center justify-between"
+                    className={`w-full p-3 rounded-xl border-2 focus:outline-none text-right flex items-center justify-between ${className ? className : 'border-[#e9479a]/20 focus:border-[#270e4f]'}`}
                 >
                     <span className="flex items-center gap-2" dir="ltr">
                         <span>{selectedCountryCode}</span>
@@ -97,8 +101,8 @@ export default function CountryPhoneInput({
                     <FiChevronDown className={`transition-transform ${isCountryOpen ? "rotate-180" : ""}`} />
                 </button>
                 {isCountryOpen && (
-                    <div className="absolute top-full left-0 right-0 mt-1 bg-white rounded-xl shadow-lg border border-gray-200 z-[9999] max-h-60 overflow-y-auto">
-                        <div className="p-2 border-b">
+                    <div className={`absolute top-full left-0 right-0 mt-1 max-h-60 overflow-y-auto rounded-xl shadow-lg border z-[9999] ${dropdownClassName ? dropdownClassName : 'bg-white border-gray-200'}`}>
+                        <div className="p-2 border-b border-gray-100/10">
                             <div className="relative">
                                 <FiSearch className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400" />
                                 <input
@@ -106,7 +110,7 @@ export default function CountryPhoneInput({
                                     placeholder="ابحث..."
                                     value={searchTerm}
                                     onChange={(e) => setSearchTerm(e.target.value)}
-                                    className="w-full pr-10 pl-3 py-2 rounded-lg border focus:outline-none"
+                                    className={`w-full pr-10 pl-3 py-2 rounded-lg border focus:outline-none ${dropdownClassName ? 'bg-transparent border-white/20 text-white placeholder-gray-400' : ''}`}
                                     autoFocus
                                 />
                             </div>
@@ -120,10 +124,10 @@ export default function CountryPhoneInput({
                                     setIsCountryOpen(false);
                                     setSearchTerm("");
                                 }}
-                                className="w-full px-3 py-2 text-right hover:bg-purple-50 flex justify-between items-center"
+                                className={`w-full px-3 py-2 text-right flex justify-between items-center ${dropdownClassName ? 'hover:bg-white/10' : 'hover:bg-purple-50'}`}
                             >
                                 <span>{country.name}</span>
-                                <span className="text-sm text-gray-500" dir="ltr">{country.code}</span>
+                                <span className={`text-sm ${dropdownClassName ? 'text-gray-300' : 'text-gray-500'}`} dir="ltr">{country.code}</span>
                             </button>
                         ))}
                     </div>
@@ -135,7 +139,7 @@ export default function CountryPhoneInput({
                     placeholder={placeholder}
                     value={phoneValue}
                     onChange={(e) => onPhoneChange(e.target.value)}
-                    className={`w-full p-3 rounded-xl border-2 ${phoneError ? 'border-red-500' : 'border-[#e9479a]/20'} focus:border-[#270e4f] focus:outline-none`}
+                    className={`w-full p-3 rounded-xl border-2 focus:outline-none ${phoneError ? 'border-red-500' : ''} ${className ? className : 'border-[#e9479a]/20 focus:border-[#270e4f]'}`}
                     required={required}
                 />
                 {phoneError && (

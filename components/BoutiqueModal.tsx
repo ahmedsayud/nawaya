@@ -414,12 +414,12 @@ export default function BoutiqueModal({ isOpen, onClose }: BoutiqueModalProps) {
 
       <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4">
         <div
-          className="bg-white rounded-3xl shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-hidden flex flex-col"
+          className="bg-gradient-to-br from-[#270e4f] to-[#5b21b6] border border-white/10 rounded-3xl shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-hidden flex flex-col"
           onClick={(e) => e.stopPropagation()}
           dir="rtl"
         >
           {/* Header */}
-          <div className="flex justify-between items-center px-8 py-5 border-b border-gray-100 bg-white sticky top-0 z-10">
+          <div className="flex justify-between items-center px-8 py-5 border-b border-[#e9479a] bg-transparent sticky top-0 z-10">
             <button
               onClick={() => {
                 if (activeTab === "cart") {
@@ -432,7 +432,7 @@ export default function BoutiqueModal({ isOpen, onClose }: BoutiqueModalProps) {
                   onClose();
                 }
               }}
-              className="bg-gray-50 hover:bg-gray-100 rounded-full p-2 transition text-gray-500 hover:text-[#e9479a]"
+              className="bg-white/10 hover:bg-white/20 rounded-full p-2 transition text-white hover:text-[#e9479a]"
             >
               {activeTab === "cart" ? (
                 <BiArrowBack className="w-6 h-6 rotate-180" />
@@ -441,14 +441,14 @@ export default function BoutiqueModal({ isOpen, onClose }: BoutiqueModalProps) {
               )}
             </button>
 
-            <h3 className="text-2xl font-bold text-[#270e4f]">
+            <h3 className="text-2xl font-bold text-white">
               بوتيك دكتور هوب
             </h3>
 
             <div className="relative cursor-pointer" onClick={() => setActiveTab("cart")}>
-              <BiCart className={`w-7 h-7 ${activeTab === "cart" ? "text-[#e9479a]" : "text-gray-600"}`} />
+              <BiCart className={`w-7 h-7 ${activeTab === "cart" ? "text-[#e9479a]" : "text-white"}`} />
               {cartCount > 0 && (
-                <span className="absolute -top-2 -right-2 bg-[#e9479a] text-white text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full border-2 border-white">
+                <span className="absolute -top-2 -right-2 bg-[#e9479a] text-white text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full border-2 border-[#270e4f]">
                   {cartCount}
                 </span>
               )}
@@ -456,15 +456,15 @@ export default function BoutiqueModal({ isOpen, onClose }: BoutiqueModalProps) {
           </div>
 
           {/* Tabs Content */}
-          <div className="flex-1 overflow-hidden flex flex-col bg-gray-50">
+          <div className="flex-1 overflow-hidden flex flex-col bg-transparent">
             {activeTab === "products" ? (
               <div
                 className="flex-1 overflow-y-auto p-6"
                 onScroll={handleScroll}
               >
                 {products.length === 0 && !isLoading ? (
-                  <div className="flex flex-col items-center justify-center h-full text-gray-500">
-                    <BiShoppingBag className="w-16 h-16 mb-4 opacity-20" />
+                  <div className="flex flex-col items-center justify-center h-full text-white/50">
+                    <BiShoppingBag className="w-16 h-16 mb-4 opacity-50" />
                     <p>لا توجد منتجات متاحة حالياً</p>
                   </div>
                 ) : (
@@ -472,9 +472,9 @@ export default function BoutiqueModal({ isOpen, onClose }: BoutiqueModalProps) {
                     {products.map((product) => (
                       <div
                         key={product.id}
-                        className="bg-white rounded-3xl shadow-sm hover-lift overflow-hidden border border-gray-100 flex flex-col group"
+                        className="bg-[#1a0536] rounded-3xl shadow-sm hover-lift overflow-hidden border border-[#5b21b6] flex flex-col group"
                       >
-                        <div className="h-48 overflow-hidden relative bg-gray-100">
+                        <div className="h-48 overflow-hidden relative bg-black/20">
                           <img
                             src={product.image || "/images/placeholder.png"}
                             alt={product.title}
@@ -483,7 +483,7 @@ export default function BoutiqueModal({ isOpen, onClose }: BoutiqueModalProps) {
                         </div>
 
                         <div className="p-5 flex-1 flex flex-col text-center">
-                          <h4 className="font-bold text-gray-800 text-lg mb-2 line-clamp-1">
+                          <h4 className="font-bold text-white text-lg mb-2 line-clamp-1">
                             {product.title}
                           </h4>
                           <p className="text-[#e9479a] font-bold text-xl mb-4">
@@ -511,7 +511,7 @@ export default function BoutiqueModal({ isOpen, onClose }: BoutiqueModalProps) {
                 )}
                 {isLoading && (
                   <div className="flex justify-center py-8 w-full">
-                    <div className="w-8 h-8 border-4 border-[#270e4f] border-t-transparent rounded-full animate-spin"></div>
+                    <div className="w-8 h-8 border-4 border-[#e9479a] border-t-transparent rounded-full animate-spin"></div>
                   </div>
                 )}
               </div>
@@ -521,8 +521,8 @@ export default function BoutiqueModal({ isOpen, onClose }: BoutiqueModalProps) {
                 {activeTab === "cart" && checkoutStep === "cart" && (
                   <div className="flex-1 overflow-y-auto p-6">
                     {cart.length === 0 ? (
-                      <div className="flex flex-col items-center justify-center h-full text-gray-500 space-y-4">
-                        <BiCart className="w-20 h-20 text-gray-300" />
+                      <div className="flex flex-col items-center justify-center h-full text-white/50 space-y-4">
+                        <BiCart className="w-20 h-20 text-white/30" />
                         <p className="text-lg">سلة المشتريات فارغة</p>
                         <button
                           onClick={() => setActiveTab("products")}
@@ -534,32 +534,32 @@ export default function BoutiqueModal({ isOpen, onClose }: BoutiqueModalProps) {
                     ) : (
                       <div className="space-y-4">
                         {cart.map((item) => (
-                          <div key={item.id} className="bg-white p-4 rounded-2xl flex items-center justify-between shadow-sm border border-gray-100">
+                          <div key={item.id} className="bg-[#1a0536] p-4 rounded-2xl flex items-center justify-between shadow-sm border border-[#5b21b6]">
                             <div className="flex items-center gap-4">
                               <img
                                 src={item.product.image}
                                 alt={item.product.title}
-                                className="w-20 h-20 object-cover rounded-xl bg-gray-50 border border-gray-100"
+                                className="w-20 h-20 object-cover rounded-xl bg-black/20 border border-[#5b21b6]"
                               />
                               <div>
-                                <h4 className="font-bold text-gray-800 mb-1">{item.product.title}</h4>
+                                <h4 className="font-bold text-white mb-1">{item.product.title}</h4>
                                 <p className="text-[#e9479a] font-bold">{item.price} جنيه</p>
                               </div>
                             </div>
 
                             <div className="flex items-center gap-6">
                               {/* Quantity Controls (Visual only for now until update API provided) */}
-                              <div className="flex items-center gap-3 bg-gray-50 rounded-xl px-2 py-1 border border-gray-200">
+                              <div className="flex items-center gap-3 bg-white/10 rounded-xl px-2 py-1 border border-[#5b21b6]">
                                 <button
                                   onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                                  className="w-7 h-7 flex items-center justify-center bg-white rounded-lg shadow-sm text-gray-600 hover:text-[#e9479a] transition"
+                                  className="w-7 h-7 flex items-center justify-center bg-transparent rounded-lg text-white hover:text-[#e9479a] transition"
                                 >
                                   <BiMinus />
                                 </button>
-                                <span className="font-bold w-4 text-center">{item.quantity}</span>
+                                <span className="font-bold w-4 text-center text-white">{item.quantity}</span>
                                 <button
                                   onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                                  className="w-7 h-7 flex items-center justify-center bg-white rounded-lg shadow-sm text-gray-600 hover:text-[#e9479a] transition"
+                                  className="w-7 h-7 flex items-center justify-center bg-transparent rounded-lg text-white hover:text-[#e9479a] transition"
                                 >
                                   <BiPlus />
                                 </button>
@@ -567,7 +567,7 @@ export default function BoutiqueModal({ isOpen, onClose }: BoutiqueModalProps) {
 
                               <button
                                 onClick={() => removeFromCart(item.id)}
-                                className="text-gray-400 hover:text-red-500 transition p-2"
+                                className="text-white/50 hover:text-red-500 transition p-2"
                               >
                                 <BiTrash className="w-5 h-5" />
                               </button>
@@ -575,10 +575,10 @@ export default function BoutiqueModal({ isOpen, onClose }: BoutiqueModalProps) {
                           </div>
                         ))}
 
-                        <div className="mt-8 bg-white p-6 rounded-3xl shadow-sm border border-gray-100">
+                        <div className="mt-8 bg-[#1a0536] p-6 rounded-3xl shadow-sm border border-[#5b21b6]">
                           <div className="flex justify-between items-center mb-6">
-                            <span className="text-gray-600 font-medium">إجمالي السلة</span>
-                            <span className="text-2xl font-bold text-[#270e4f]">{cartTotal} جنيه</span>
+                            <span className="text-gray-300 font-medium">إجمالي السلة</span>
+                            <span className="text-2xl font-bold text-white">{cartTotal} جنيه</span>
                           </div>
                           <button
                             className="w-full bg-gradient-to-r from-[#e1459b] to-[#5b21b6] text-white py-4 rounded-xl font-bold text-lg shadow-lg hover:shadow-xl gradient-shift disabled:opacity-70 disabled:cursor-not-allowed"
@@ -607,42 +607,42 @@ export default function BoutiqueModal({ isOpen, onClose }: BoutiqueModalProps) {
               <div className="flex-1 overflow-y-auto p-6 animate-fadeIn">
                 <div className="space-y-6">
                   {/* Invoice Summary */}
-                  <div className="bg-purple-50/50 rounded-2xl p-5 border-2 border-[#e9479a]/20">
-                    <h4 className="text-[#270e4f] font-bold mb-4 text-lg">ملخص الطلب</h4>
+                  <div className="bg-[#1a0536] rounded-2xl p-5 border-2 border-[#5b21b6]">
+                    <h4 className="text-white font-bold mb-4 text-lg">ملخص الطلب</h4>
                     <div className="space-y-3">
                       {orderSummary.products.map(p => (
-                        <div key={p.id} className="flex justify-between items-center text-gray-700 text-sm">
+                        <div key={p.id} className="flex justify-between items-center text-gray-300 text-sm">
                           <span>{p.title} (x{p.quantity})</span>
                           <span className="font-bold">{p.total_price} جنيه</span>
                         </div>
                       ))}
-                      <div className="border-t border-purple-200/60 my-2"></div>
-                      <div className="flex justify-between items-center text-gray-600">
+                      <div className="border-t border-white/10 my-2"></div>
+                      <div className="flex justify-between items-center text-gray-300">
                         <span>المجموع الفرعي</span>
                         <span>{orderSummary.prices.products_price} جنيه</span>
                       </div>
-                      <div className="flex justify-between items-center text-gray-600">
+                      <div className="flex justify-between items-center text-gray-300">
                         <span>الضريبة</span>
                         <span>{orderSummary.prices.tax} جنيه</span>
                       </div>
-                      <div className="border-t border-purple-200/60 my-2"></div>
+                      <div className="border-t border-white/10 my-2"></div>
                       <div className="flex justify-between items-center">
-                        <span className="font-medium text-gray-600">المبلغ الإجمالي للدفع</span>
-                        <span className="font-bold text-xl text-[#270e4f]">{orderSummary.prices.total_price} جنيه</span>
+                        <span className="font-medium text-gray-300">المبلغ الإجمالي للدفع</span>
+                        <span className="font-bold text-xl text-[#e9479a]">{orderSummary.prices.total_price} جنيه</span>
                       </div>
                     </div>
                   </div>
 
                   {/* Payment Types */}
                   <div>
-                    <h4 className="text-gray-700 font-bold mb-3 text-sm">اختر طريقة الدفع</h4>
+                    <h4 className="text-white font-bold mb-3 text-sm">اختر طريقة الدفع</h4>
                     <div className="flex gap-3">
                       {orderSummary.payment_options.online_payment && (
                         <button
                           onClick={() => setPaymentMethod('card')}
                           className={`flex-1 py-3.5 px-4 rounded-xl border-2 flex items-center justify-center gap-2 transition-all ${paymentMethod === 'card'
                             ? "border-[#e9479a] bg-[#e9479a] text-white shadow-md shadow-[#e9479a]/20"
-                            : "border-gray-200 bg-white text-gray-600 hover:border-[#e9479a]/50"
+                            : "border-[#5b21b6] bg-[#1a0536] text-gray-300 hover:border-[#e9479a]/50"
                             }`}
                         >
                           <BiCreditCard className="text-xl" />
@@ -655,7 +655,7 @@ export default function BoutiqueModal({ isOpen, onClose }: BoutiqueModalProps) {
                           onClick={() => setPaymentMethod('bank')}
                           className={`flex-1 py-3.5 px-4 rounded-xl border-2 flex items-center justify-center gap-2 transition-all ${paymentMethod === 'bank'
                             ? "border-[#e9479a] bg-[#e9479a] text-white shadow-md shadow-[#e9479a]/20"
-                            : "border-gray-200 bg-white text-gray-600 hover:border-[#e9479a]/50"
+                            : "border-[#5b21b6] bg-[#1a0536] text-gray-300 hover:border-[#e9479a]/50"
                             }`}
                         >
                           <BiBuildingHouse className="text-xl" />
@@ -696,23 +696,23 @@ export default function BoutiqueModal({ isOpen, onClose }: BoutiqueModalProps) {
                     {paymentMethod === 'bank' && orderSummary.payment_options.bank_transfer && orderSummary.bank_account && (
                       <div className="space-y-6">
                         <div>
-                          <h5 className="text-[#270e4f] font-bold mb-3 text-sm">تفاصيل الحساب البنكي</h5>
-                          <div className="bg-gray-50 border border-gray-200 rounded-xl p-5 space-y-3 shadow-inner">
-                            <div className="flex justify-between border-b border-gray-200 pb-2">
-                              <span className="text-gray-500 text-sm">اسم صاحب الحساب</span>
-                              <span className="font-bold text-gray-800 text-sm">{orderSummary.bank_account.account_name}</span>
+                          <h5 className="text-white font-bold mb-3 text-sm">تفاصيل الحساب البنكي</h5>
+                          <div className="bg-[#1a0536] border border-[#5b21b6] rounded-xl p-5 space-y-3 shadow-inner">
+                            <div className="flex justify-between border-b border-white/10 pb-2">
+                              <span className="text-gray-400 text-sm">اسم صاحب الحساب</span>
+                              <span className="font-bold text-white text-sm">{orderSummary.bank_account.account_name}</span>
                             </div>
-                            <div className="flex justify-between border-b border-gray-200 pb-2">
-                              <span className="text-gray-500 text-sm">اسم البنك</span>
-                              <span className="font-bold text-gray-800 text-sm">{orderSummary.bank_account.bank_name}</span>
+                            <div className="flex justify-between border-b border-white/10 pb-2">
+                              <span className="text-gray-400 text-sm">اسم البنك</span>
+                              <span className="font-bold text-white text-sm">{orderSummary.bank_account.bank_name}</span>
                             </div>
-                            <div className="flex justify-between border-b border-gray-200 pb-2">
-                              <span className="text-gray-500 text-sm">رقم الايبان</span>
-                              <span className="font-bold text-gray-800 text-sm dir-ltr tracking-wide">{orderSummary.bank_account.IBAN_number}</span>
+                            <div className="flex justify-between border-b border-white/10 pb-2">
+                              <span className="text-gray-400 text-sm">رقم الايبان</span>
+                              <span className="font-bold text-white text-sm dir-ltr tracking-wide">{orderSummary.bank_account.IBAN_number}</span>
                             </div>
-                            <div className="flex justify-between border-b border-gray-200 pb-2">
-                              <span className="text-gray-500 text-sm">رقم الحساب</span>
-                              <span className="font-bold text-gray-800 text-sm tracking-wider">{orderSummary.bank_account.account_number}</span>
+                            <div className="flex justify-between border-b border-white/10 pb-2">
+                              <span className="text-gray-400 text-sm">رقم الحساب</span>
+                              <span className="font-bold text-white text-sm tracking-wider">{orderSummary.bank_account.account_number}</span>
                             </div>
                           </div>
                         </div>

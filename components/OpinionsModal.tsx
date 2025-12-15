@@ -85,19 +85,19 @@ export default function OpinionsModal({ isOpen, onClose }: OpinionsModalProps) {
 
       <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4">
         <div
-          className="bg-white rounded-3xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-hidden flex flex-col"
+          className="bg-gradient-to-br from-[#270e4f] to-[#5b21b6] border border-white/10 rounded-3xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-hidden flex flex-col"
           onClick={(e) => e.stopPropagation()}
           dir="rtl"
         >
           {/* الهيدر */}
-          <div className="relative px-8 pt-6 pb-4 text-right border-b border-[#e9479a]/20">
+          <div className="relative px-8 pt-6 pb-4 text-right border-b border-[#e9479a]">
             <button
               onClick={onClose}
-              className="absolute left-6 top-6 bg-white/90 hover:bg-gray-100 rounded-full p-2 shadow-md transition"
+              className="absolute left-6 top-6 bg-white/10 hover:bg-white/20 rounded-full p-2 shadow-md transition text-white"
             >
-              <BiX className="w-6 h-6 text-gray-600" />
+              <BiX className="w-6 h-6" />
             </button>
-            <h3 className="text-3xl font-bold text-[#270e4f] pr-10">
+            <h3 className="text-3xl font-bold text-white pr-10">
               آراء المشتركات
             </h3>
           </div>
@@ -106,21 +106,21 @@ export default function OpinionsModal({ isOpen, onClose }: OpinionsModalProps) {
           <div className="flex-1 overflow-y-auto px-6 py-6 space-y-5">
             {isLoading ? (
               <div className="flex justify-center items-center h-40">
-                <div className="w-10 h-10 border-4 border-[#270e4f] border-t-transparent rounded-full animate-spin"></div>
+                <div className="w-10 h-10 border-4 border-[#e9479a] border-t-transparent rounded-full animate-spin"></div>
               </div>
             ) : error ? (
-              <div className="text-center text-red-500 py-10">{error}</div>
+              <div className="text-center text-red-400 py-10">{error}</div>
             ) : reviews.length > 0 ? (
               reviews.map((review) => {
                 const { name, date } = parseUserDate(review.user_name_and_date);
                 return (
                   <div
                     key={review.id}
-                    className="rounded-2xl border border-gray-200 bg-gradient-to-br from-pink-50/70 to-purple-50/70 p-6 shadow-sm hover-lift"
+                    className="rounded-2xl border border-[#5b21b6] bg-[#1a0536] p-6 shadow-sm hover-lift"
                   >
                     {/* العنوان والتقييم */}
                     <div className="flex justify-between items-start mb-3">
-                      <h4 className="font-bold text-[#270e4f] text-lg leading-tight">
+                      <h4 className="font-bold text-white text-lg leading-tight">
                         {review.workshop_title}
                       </h4>
                       <div className="flex gap-1">
@@ -131,28 +131,28 @@ export default function OpinionsModal({ isOpen, onClose }: OpinionsModalProps) {
                     </div>
 
                     {/* المدربة */}
-                    <div className="text-sm text-gray-700 mb-3 flex items-center gap-2">
-                      <PiGraduationCapLight className="w-5 h-5 text-[#270e4f]" />
+                    <div className="text-sm text-gray-300 mb-3 flex items-center gap-2">
+                      <PiGraduationCapLight className="w-5 h-5 text-[#e9479a]" />
                       <span>{review.workshop_teacher}</span>
                     </div>
 
                     {/* التعليق */}
                     <div className="flex items-start gap-3">
-                      <div className="w-1 h-16 bg-gradient-to-b from-[#e1459b] to-[#5b21b6] rounded-full flex-shrink-0" />
-                      <p className="text-gray-800 font-medium leading-relaxed">
+                      <div className="w-1 h-16 bg-gradient-to-b from-[#e9479a] to-[#5b21b6] rounded-full flex-shrink-0" />
+                      <p className="text-gray-200 font-medium leading-relaxed">
                         {review.review}
                       </p>
                     </div>
 
                     {/* اسم المشتركة والتاريخ */}
-                    <div className="mt-4 text-sm text-gray-500 text-left" dir="ltr">
-                      <span className="text-gray-400">{date} • </span> {name} -
+                    <div className="mt-4 text-sm text-gray-400 text-left" dir="ltr">
+                      <span className="text-gray-500">{date} • </span> {name} -
                     </div>
                   </div>
                 );
               })
             ) : (
-              <div className="text-center text-gray-500 py-10">لا توجد آراء للمشتركات حالياً</div>
+              <div className="text-center text-white/50 py-10">لا توجد آراء للمشتركات حالياً</div>
             )}
           </div>
 

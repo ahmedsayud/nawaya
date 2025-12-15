@@ -105,15 +105,13 @@ export default function CoursesSection() {
 
   const getTypeStyle = (type: string) => {
     if (type.includes("حضوري") && type.includes("أونلاين")) {
-      return "bg-blue-100 text-blue-700";
+      return "bg-purple-50 text-purple-600";
     } else if (type.includes("حضوري")) {
-      return "bg-orange-100 text-orange-700";
+      return "bg-orange-50 text-orange-600";
     } else if (type.includes("أونلاين")) {
-      return "bg-purple-100 text-purple-700";
-    } else if (type.includes("مسجلة")) {
-      return "bg-gray-100 text-gray-700";
+      return "bg-blue-50 text-blue-600";
     }
-    return "bg-gray-100 text-gray-700";
+    return "bg-gray-50 text-gray-600";
   };
 
   const handleSubscribeClick = (workshop: Workshop) => {
@@ -193,65 +191,67 @@ export default function CoursesSection() {
               {currentWorkshops.map((workshop) => (
                 <div
                   key={workshop.id}
-                  className="bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden hover-lift group relative"
+                  className="bg-gradient-to-b from-purple-100 via-purple-50 to-white rounded-[2rem] shadow-sm hover:shadow-[0_20px_50px_rgba(233,71,154,0.5)] border border-gray-100 hover:border-[#e9479a] transition-all duration-300 hover:-translate-y-3 overflow-hidden group flex flex-col"
                 >
-                  {/* Badge */}
-                  {workshop.has_multiple_packages && (
-                    <div className="absolute top-4 left-4 z-10">
-                      <span className="bg-[#5b21b6] text-white px-3 py-1 rounded-full text-xs font-bold">
-                        عدة باقات
+                  <div className="p-6 flex flex-col h-full">
+                    {/* Top: Type Badge */}
+                    <div className="flex justify-end mb-4">
+                      <span className={`px-4 py-1.5 rounded-full text-sm font-bold ${getTypeStyle(workshop.type_label)}`}>
+                        {workshop.type_label}
                       </span>
                     </div>
-                  )}
 
-                  <div className="p-6">
-                    {/* Type */}
-                    <span className={`inline-block px-4 py-1.5 rounded-full text-xs font-semibold mb-4 ${getTypeStyle(workshop.type_label)}`}>
-                      {workshop.type_label}
-                    </span>
-
-                    <h3 className="text-xl font-bold text-gray-900 mb-3 line-clamp-2">
+                    {/* Title */}
+                    <h3 className="text-xl font-bold text-gray-900 text-center mb-4 line-clamp-2 min-h-[3.5rem] flex items-center justify-center">
                       {workshop.title}
                     </h3>
 
-                    <div className="flex items-center gap-3 text-gray-600 mb-4">
-                      <PiGraduationCapLight className="w-6 h-6 text-[#e9479a]" />
-                      <span className="font-medium">{workshop.teacher}</span>
+                    {/* Instructor */}
+                    <div className="flex justify-center mb-8">
+                      <div className="flex items-center gap-2 bg-gray-100/80 px-4 py-1.5 rounded-full text-gray-600 text-sm font-medium">
+                        <PiGraduationCapLight className="w-5 h-5 text-[#e9479a]" />
+                        <span>{workshop.teacher}</span>
+                      </div>
                     </div>
 
-                    <div className="w-full h-px bg-gray-200 my-5"></div>
-
-                    {/* Details */}
-                    <div className="space-y-4 text-sm text-gray-600">
+                    {/* Info Blocks */}
+                    <div className="space-y-3 mb-8 flex-grow">
                       {workshop.address && (
-                        <div className="flex items-center gap-3">
-                          <PiGlobeSimple className="w-5 h-5 text-[#e9479a]" />
-                          <span>{workshop.address}</span>
+                        <div className="flex items-center gap-3 bg-gray-50 p-3 rounded-xl text-sm text-gray-600">
+                          <PiGlobeSimple className="w-5 h-5 text-[#e9479a] flex-shrink-0" />
+                          <span className="line-clamp-1">{workshop.address}</span>
                         </div>
                       )}
-                      <div className="flex items-center gap-3">
-                        <PiCalendarMinus className="w-5 h-5 text-[#e9479a]" />
+                      <div className="flex items-center gap-3 bg-gray-50 p-3 rounded-xl text-sm text-gray-600">
+                        <PiCalendarMinus className="w-5 h-5 text-[#e9479a] flex-shrink-0" />
                         <span>{workshop.date_range}</span>
                       </div>
-                      <div className="flex items-center gap-3">
-                        <FcAlarmClock className="w-5 h-5" />
-                        <span>
+                      <div className="flex items-center gap-3 bg-gray-50 p-3 rounded-xl text-sm text-gray-600">
+                        <FcAlarmClock className="w-5 h-5 flex-shrink-0" />
+                        <span dir="ltr">
                           {workshop.start_time}
                           {workshop.end_time && ` - ${workshop.end_time}`}
                         </span>
                       </div>
                     </div>
 
-                    <div className="w-full h-px bg-gray-200 my-5"></div>
+                    {/* Footer: Button & Price/Badge */}
+                    <div className="flex items-center justify-between gap-4 mt-auto">
+                      {workshop.has_multiple_packages ? (
+                        <div className="px-4 py-2 bg-pink-50 text-[#e9479a] rounded-xl font-bold text-sm whitespace-nowrap">
+                          باقات متعددة
+                        </div>
+                      ) : (
+                        <div className="px-4 py-2 text-gray-400">
+                          <BiChevronLeft className="w-6 h-6" />
+                        </div>
+                      )}
 
-                    {/* CTA */}
-                    <div className="flex items-center justify-center">
                       <button
                         onClick={() => handleSubscribeClick(workshop)}
-                        className="w-full bg-gradient-to-r from-[#e1459b] to-[#5b21b6] text-white px-6 py-3 rounded-xl font-medium gradient-shift flex items-center justify-center gap-2"
+                        className="bg-gradient-to-r from-[#e1459b] to-[#5b21b6] text-white px-8 py-2.5 rounded-xl font-bold text-sm shadow-lg shadow-[#e9479a]/20 hover:shadow-[#e9479a]/40 transition-all active:scale-95"
                       >
-                        التفاصيل والاشتراك
-                        <span className="transform rotate-180">←</span>
+                        التفاصيل
                       </button>
                     </div>
                   </div>
